@@ -81,34 +81,34 @@
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="31" parent="7" name="room">
+    <column id="31" parent="7" name="professor">
       <Position>6</Position>
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="32" parent="7" name="professor">
+    <column id="32" parent="7" name="crn">
       <Position>7</Position>
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="33" parent="7" name="crn">
+    <column id="33" parent="7" name="notes">
       <Position>8</Position>
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="34" parent="7" name="notes">
+    <column id="34" parent="7" name="floor">
       <Position>9</Position>
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="35" parent="7" name="floor">
+    <column id="35" parent="7" name="tutor_id">
       <Position>10</Position>
+      <DataType>integer|0s</DataType>
+    </column>
+    <column id="36" parent="7" name="room">
+      <Position>11</Position>
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
-    </column>
-    <column id="36" parent="7" name="tutor_id">
-      <Position>11</Position>
-      <DataType>integer|0s</DataType>
     </column>
     <index id="37" parent="7" name="CS416Project_si_session_tutor_id_39d7dd04">
       <ColNames>tutor_id</ColNames>
