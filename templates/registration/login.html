@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+
+
+
+{% block body %}
+        <br>
+        <br>
+        <br>
+        <br>
+{% load static %}
+<div style="text-align: center;">
+     <h1  class="tr">Welcome! You can login here</h1>
+
+</div>
+
+
+<div class="container">
+              <br>
+              <br>
+
+          <div class="container" style=" text-align: center ">
+
+
+
+                <form method="post">
+                     <h3>Login</h3>
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit" class="btn btn-success" >Submit</button>
+                </form>
+
+
+          </div>
+</div>
+ {% endblock %}
