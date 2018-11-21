@@ -61,22 +61,54 @@ class SI_Session(models.Model):
         ('11:00', '11:00'),
         ('11:30', '11:30'),
         ('12:00', '12:00'),
+        ('12:30', '12:30'),
+        ('1:00', '1:00'),
+        ('1:30', '1:30'),
+        ('2:00', '2:00'),
+        ('2:30', '2:30'),
+        ('3:00', '3:00'),
+        ('3:30', '3:30'),
+        ('4:00', '4:00'),
+        ('4:30', '4:30'),
+        ('5:00', '5:00'),
+        ('5:30', '5:30'),
+        ('6:00', '6:00'),
+        ('6:30', '6:30'),
+        ('7:00', '7:00'),
+        ('7:30', '7:30'),
+        ('8:00', '8:00'),
+        ('8:30', '8:30'),
 
     )
+
+    crn_choices = (
+        ('', '--------'),
+        ('2133', '2134'),
+        ('2435', '2435'),
+        ('1341', '1341'),
+    )
+
+    faculty_choices = (
+        ('', '--------'),
+        ('Smith', 'Smith'),
+        ('Thomas', 'Thomas'),
+        ('Daddona', 'Daddona'),
+    )
+
     day = models.CharField(max_length=50, choices=day_choices)
     tutor = models.ForeignKey(Tutor,on_delete=models.SET_NULL, null=True)
     backup = models.CharField(max_length=50, blank=True)
-    sessionTime_from = models.CharField(max_length=50, default='', choices=time_choices)
-    sessionTime_to = models.CharField(max_length=50, default='', choices=time_choices)
+    sessionTime_from = models.CharField(max_length=50,default='', choices=time_choices)
+    sessionTime_to = models.CharField(max_length=50,default='', choices=time_choices)
     room = models.CharField(max_length=50,default='',choices=room_choices)
-    professor = models.CharField(max_length=50)
-    crn = models.CharField(max_length=50)
+    professor = models.CharField(max_length=50,default='', choices=faculty_choices)
+    crn = models.CharField(max_length=50, default='', choices=crn_choices)
     notes = models.CharField(max_length=50,blank=True)
     floor = models.CharField(max_length=50, default='', blank=True)
 
 
     def __str__(self):
-        return 'CRN:' + self.crn +' ' + self.day + self.sessionTime_from + '-' + self.sessionTime_to
+        return 'CRN:' + self.crn +' ' + self.day + self.sessionTime_from + '-' + self.sessionTime_to + " " + self.tutor.firstname
 
     class Meta: #order by desc
          # ordering = ['sessionTime_from']
