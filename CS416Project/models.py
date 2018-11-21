@@ -60,6 +60,7 @@ class SI_Session(models.Model):
     notes = models.CharField(max_length=50,blank=True)
     floor = models.CharField(max_length=50, default='', blank=True)
 
+
     def __str__(self):
         return 'CRN:' + self.crn +' ' + self.day + self.sessionTime_from + '-' + self.sessionTime_to
 
