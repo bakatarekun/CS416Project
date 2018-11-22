@@ -25,11 +25,13 @@ from django.contrib.auth import views as auth_views
 #from django.conf.urls import include
 
 urlpatterns = [
+    url(r'^$', views.login_redirect, name='login_redirect'),
     url(r'^admin/', admin.site.urls),
     url(r'^login/$', auth_views.LoginView.as_view(), name='login'),
-    # url(r'^test/', views.index),
-
-    url(r'^$', views.home),
+    url(r'^home$', views.home),
+    url(r'^(?P<tutor_id>[0-9]+)/tutor$', views.tutorInfo, name="tutorInfo"),
+    # url(r'^polls/', include('polls.urls', namespace='polls')),
+    path('/', include('django.contrib.auth.urls')),
 
     url(r'^showSiBackupPlan/$', views.showSiBackupPlan, name='showSiBackupPlan'),
     # url(r'^test_app/', include('test_app.urls')),

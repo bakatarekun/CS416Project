@@ -1,11 +1,17 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404, redirect
 from django.http import  HttpResponse
-from .models import People, SI_Session
+from .models import People, SI_Session, Tutor
 from django.contrib.auth import update_session_auth_hash
 # Create your views here.
 
+def login_redirect(request):
+    return redirect('/login')
 
 
+def tutorInfo(request, tutor_id):
+    tutorInfo = get_object_or_404(Tutor, pk=tutor_id)
+
+    return render(request, 'tutor_info.html', {'tutorInfo': tutorInfo})
 
 
 
