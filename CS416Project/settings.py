@@ -25,8 +25,8 @@ SECRET_KEY = '&!!s6x*76vsi4c=kwl6h8$szdim3(9w(1hg(77e*j86k@22okl'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['bakatarekun2.pythonanywhere.com']
-
+# ALLOWED_HOSTS = ['bakatarekun2.pythonanywhere.com']
+ALLOWED_HOSTS = ['bakatarekun2.pythonanywhere.com','127.0.0.1']
 
 # Application definition
 
@@ -127,10 +127,10 @@ LOGOUT_REDIRECT_URL = '/'
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
-   '/home/Bakatarekun2/bakatarekun2.pythonanywhere.com/static',
-
+    '/home/Bakatarekun2/bakatarekun2.pythonanywhere.com/static',
+    '/var/www/static/',
 ]
 
 MEDIA_URL = '/media/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
