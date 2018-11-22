@@ -5,25 +5,39 @@
 
 {% block body %}
 
-{% load static %}
-<div style="text-align: center;">
-     <h1  class="tr">Welcome! You can login here</h1>
-
-</div>
+    {% load static %}
 
 
-<div class="container">
 
-          <div class="container" style=" text-align: center ">
+    {% if user.is_authenticated %}
+
+        <div class="tr">
+            <h2>Hi {{ user.username }}!</h2>
+            <h1>You're now logged in</h1>
+            <br>
+            <h2> <a href="/showSiBackupPlan/">View SI Backup Plan</a></h2>
+        </div>
+    {% else %}
+
+        <div style="text-align: center;">
+            <h1  class="tr">Welcome! You can login here</h1>
+
+        </div>
+        <div class="container">
+
+            <div class="container" style=" text-align: center ">
 
                 <form method="post">
-                     <h3>Login</h3>
+                    <h3>Login</h3>
                     {% csrf_token %}
                     {{ form.as_p }}
-                    <button type="submit" class="btn btn-success" >Submit</button>
+                    <button type="submit" class="btn btn-primary" >Submit</button>
                 </form>
 
 
-          </div>
-</div>
- {% endblock %}
+            </div>
+        </div>
+
+    {% endif %}
+
+{% endblock %}
