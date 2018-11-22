@@ -1,8 +1,11 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.http import  HttpResponse
 from .models import People, SI_Session, Tutor
 from django.contrib.auth import update_session_auth_hash
 # Create your views here.
+
+def login_redirect(request):
+    return redirect('/login')
 
 
 def tutorInfo(request, tutor_id):

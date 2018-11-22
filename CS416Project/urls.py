@@ -32,7 +32,6 @@ urlpatterns = [
     # url(r'^polls/', include('polls.urls', namespace='polls')),
 
 
-
     url(r'^showSiBackupPlan/$', views.showSiBackupPlan, name='showSiBackupPlan'),
     # url(r'^test_app/', include('test_app.urls')),
    # path('/', include('django.contrib.auth.urls')),

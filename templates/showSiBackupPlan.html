@@ -22,7 +22,10 @@
 
     <script>
         $(document).ready(function(){
-             $('[data-toggle="tooltip"]').tooltip();
+            $('a').click(function(e) {
+                e.preventDefault();
+            });
+            $('[data-toggle="tooltip"]').tooltip();
              $('[data-toggle="popover"]').popover();
             //var t =[]; t= $('table td');
             var t= $('td[name=backup], td[name=sileader]');
@@ -60,10 +63,11 @@
 
 <body>
 {% include "header.html" %}
- <a href="#" data-toggle="popover" title="This is title" data-content="Hello Worlld!">Toggle popover</a>
+
 {% if user.is_authenticated %}
-    <h2>{{ singleday.day }}</h2>
-    <table align="center" style="font-size: large">
+    <h2>Monday</h2>
+{#    <table align="center" style="font-size: large">#}
+      <table class="table table-striped">
         <tr>
             <!--<th>day</th>-->
             <th>SI Leader</th>
@@ -81,8 +85,8 @@
         {% for day in monday %}
 
             <tr>
-                <!--<td> {{day.day}} </td>-->
-                  <td name="sileader"> <a href="#" data-toggle="popover" title="Tutor Info" data-content="{{day.tutor.firstname}} {{day.tutor.lastname}} ; Subject: {{day.tutor.subject1}} {{day.tutor.subject2}}">{{day.tutor.firstname}}</a> </td>
+
+                <td name="sileader"> <a href="#" data-toggle="popover" title="Tutor Info" data-content="{{day.tutor.firstname}} {{day.tutor.lastname}} ; Subject: {{day.tutor.subject1}} {{day.tutor.subject2}}">{{day.tutor.firstname}}</a> </td>
 {#              <td name="sileader"> <a href="/{{ day.tutor.id }}/tutor" data-toggle="tooltip" title="{{day.tutor.subject1}} Tutor">{{day.tutor.firstname}}</a>  </td>#}
                 <td name="backup"> {{day.backup}}  </td>
                 <td> {{day.room}}  </td>
@@ -100,7 +104,7 @@
 
 
     <h2>Tuesday</h2>
-    <table align="center" style="font-size: large">
+    <table  class="table table-striped">
         <tr>
 
             <th>SI Leader</th>
@@ -139,7 +143,7 @@
     </table>
 
     <h2>Wednesday</h2>
-    <table align="center" style="font-size: large">
+    <table  class="table table-striped">
         <tr>
 
             <th>SI Leader</th>
@@ -176,7 +180,7 @@
     </table>
 
     <h2>Thusday</h2>
-    <table align="center" style="font-size: large">
+    <table  class="table table-striped">
         <tr>
 
             <th>SI Leader</th>
@@ -214,8 +218,7 @@
     </table>
 
 {% else %}
-    <br>
-    <br>
+
 
     <h2 class="tr">You are now logged out</h2>
     <br>
