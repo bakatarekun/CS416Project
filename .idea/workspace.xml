@@ -2,13 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e3d30188-4b21-4f4f-8d5f-3826003903ce" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/CS416Project/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/CS416Project/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CS416Project/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/CS416Project/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CS416Project/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/CS416Project/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/header.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/registration/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/registration/login.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/showSiBackupPlan.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/showSiBackupPlan.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -117,8 +110,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/templates/showSiBackupPlan.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="250">
-              <caret line="24" column="16" selection-start-line="24" selection-start-column="16" selection-end-line="24" selection-end-column="16" />
+            <state relative-caret-position="375">
+              <caret line="25" column="35" lean-forward="true" selection-start-line="25" selection-start-column="35" selection-end-line="25" selection-end-column="35" />
             </state>
           </provider>
         </entry>
@@ -279,7 +272,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="18969000" />
+    <option name="totallyTimeSpent" value="19773000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1360" y="25" width="1920" height="990" extended-state="6" />
@@ -432,8 +425,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/showSiBackupPlan.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="250">
-          <caret line="24" column="16" selection-start-line="24" selection-start-column="16" selection-end-line="24" selection-end-column="16" />
+        <state relative-caret-position="375">
+          <caret line="25" column="35" lean-forward="true" selection-start-line="25" selection-start-column="35" selection-end-line="25" selection-end-column="35" />
         </state>
       </provider>
     </entry>
