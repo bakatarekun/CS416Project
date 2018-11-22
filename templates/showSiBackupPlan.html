@@ -13,7 +13,6 @@
     <meta charset="UTF-8">
     <title>items</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
-{#    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">#}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
@@ -30,8 +29,6 @@
             $( "h3" ).addClass( "display-5" );
             $( "table" ).addClass( "table table-striped  table-sm" );
 
-
-            //var t =[]; t= $('table td');
             var t= $('td[name=backup], td[name=sileader]');
 
             for(i=1;i<t.length;i=i+2){
@@ -62,7 +59,7 @@
             width :auto;
             height:auto;
             font-size: large;
-            {#padding:5px;#}
+        {#padding:5px;#}
             text-align: center;
         }
         .popup{
@@ -78,144 +75,126 @@
 
 {% if user.is_authenticated %}
 
-{#    <table align="center" style="font-size: large">#}
- <h3 >Math SI Backup Plan</h3>
-     <h4 >Monday</h4>
+
+    <h3 >Math SI Backup Plan</h3>
+    <h4 >Monday</h4>
     <div class="table-responsive">
-      <table align="center" >
-        <tr >
+        <table align="center" >
+            <tr >
 
-            <td>SI Leader</td>
-            <td>Backup</td>
-            <td>Room</td>
-            <td>From</td>
-            <td>To</td>
-            <td>Professor</td>
-            <td>CRN</td>
-            <td>Notes</td>
-            <td>Floor</td>
+                <td>SI Leader</td>
+                <td>Backup</td>
+                <td>Room</td>
+                <td>From</td>
+                <td>To</td>
+                <td>Professor</td>
+                <td>CRN</td>
+                <td>Notes</td>
+                <td>Floor</td>
 
-        </tr>
-
-{#        <tr>#}
-{#             <th colspan="9">Monday</th>#}
-{##}
-{#        </tr>#}
-
-        {% for day in monday %}
-
-            <tr>
-
-                <td name="sileader"> <a class="popup" href="#" data-toggle="popover" title="Tutor Info" data-content="{{day.tutor.firstname}} {{day.tutor.lastname}} ; Subject: {{day.tutor.subject1}} {{day.tutor.subject2}}">{{day.tutor.firstname}}</a> </td>
-{#              <td name="sileader"> <a href="/{{ day.tutor.id }}/tutor" data-toggle="tooltip" title="{{day.tutor.subject1}} Tutor">{{day.tutor.firstname}}</a>  </td>#}
-                <td name="backup"> {{day.backup}}  </td>
-                <td> {{day.room}}  </td>
-                <td> {{day.sessionTime_from}} </td>
-                <td> {{day.sessionTime_to}} </td>
-                <td> {{day.professor}} </td>
-                <td> {{day.crn}} </td>
-                <td> {{day.notes}} </td>
-                <td> {{day.floor}} </td>
             </tr>
 
-        {% endfor %}
+            {% for day in monday %}
 
+                <tr>
 
+                    <td name="sileader"> <a class="popup" href="#" data-toggle="popover" title="Tutor Info" data-content="{{day.tutor.firstname}} {{day.tutor.lastname}} ; Subject: {{day.tutor.subject1}} {{day.tutor.subject2}}">{{day.tutor.firstname}}</a> </td>
+                    {#              <td name="sileader"> <a href="/{{ day.tutor.id }}/tutor" data-toggle="tooltip" title="{{day.tutor.subject1}} Tutor">{{day.tutor.firstname}}</a>  </td>#}
+                    <td name="backup"> {{day.backup}}  </td>
+                    <td> {{day.room}}  </td>
+                    <td> {{day.sessionTime_from}} </td>
+                    <td> {{day.sessionTime_to}} </td>
+                    <td> {{day.professor}} </td>
+                    <td> {{day.crn}} </td>
+                    <td> {{day.notes}} </td>
+                    <td> {{day.floor}} </td>
+                </tr>
 
-
-
-
-
-
-        <tr>
-
-            <th colspan="9">Tuesday</th>
-
-        </tr>
-
-
-        {% for day in tuesday %}
+            {% endfor %}
 
 
             <tr>
 
-                <td name="sileader"> <a class="popup" href="#" data-toggle="popover" title="Tutor Info" data-content="{{day.tutor.firstname}} {{day.tutor.lastname}} ; Subject: {{day.tutor.subject1}} {{day.tutor.subject2}}">{{day.tutor.firstname}}</a> </td>
-{#                   <td name="sileader"> <a href="/{{ day.tutor.id }}/tutor">{{day.tutor.firstname}}</a> </td>#}
-                <td name="backup"> {{day.backup}}  </td>
-                <td> {{day.room}}  </td>
-                <td> {{day.sessionTime_from}} </td>
-                <td> {{day.sessionTime_to}} </td>
-                <td> {{day.professor}} </td>
-                <td> {{day.crn}} </td>
-                <td> {{day.notes}} </td>
-                <td> {{day.floor}} </td>
+                <th colspan="9">Tuesday</th>
+
             </tr>
 
 
-        {% endfor %}
+            {% for day in tuesday %}
 
 
+                <tr>
+
+                    <td name="sileader"> <a class="popup" href="#" data-toggle="popover" title="Tutor Info" data-content="{{day.tutor.firstname}} {{day.tutor.lastname}} ; Subject: {{day.tutor.subject1}} {{day.tutor.subject2}}">{{day.tutor.firstname}}</a> </td>
+                    {#                   <td name="sileader"> <a href="/{{ day.tutor.id }}/tutor">{{day.tutor.firstname}}</a> </td>#}
+                    <td name="backup"> {{day.backup}}  </td>
+                    <td> {{day.room}}  </td>
+                    <td> {{day.sessionTime_from}} </td>
+                    <td> {{day.sessionTime_to}} </td>
+                    <td> {{day.professor}} </td>
+                    <td> {{day.crn}} </td>
+                    <td> {{day.notes}} </td>
+                    <td> {{day.floor}} </td>
+                </tr>
 
 
-
-        <tr>
-
-            <th colspan="9">Wednesday</th>
-
-        </tr>
-
-
-        {% for day in wednesday %}
+            {% endfor %}
 
 
             <tr>
 
-                <td name="sileader"> <a class="popup" href="#" data-toggle="popover" title="Tutor Info" data-content="{{day.tutor.firstname}} {{day.tutor.lastname}} ; Subject: {{day.tutor.subject1}} {{day.tutor.subject2}}">{{day.tutor.firstname}}</a> </td>
-                <td name="backup"> {{day.backup}}  </td>
-                <td> {{day.room}}  </td>
-                <td> {{day.sessionTime_from}} </td>
-                <td> {{day.sessionTime_to}} </td>
-                <td> {{day.professor}} </td>
-                <td> {{day.crn}} </td>
-                <td> {{day.notes}} </td>
-                <td> {{day.floor}} </td>
+                <th colspan="9">Wednesday</th>
+
             </tr>
 
 
-        {% endfor %}
+            {% for day in wednesday %}
 
 
+                <tr>
+
+                    <td name="sileader"> <a class="popup" href="#" data-toggle="popover" title="Tutor Info" data-content="{{day.tutor.firstname}} {{day.tutor.lastname}} ; Subject: {{day.tutor.subject1}} {{day.tutor.subject2}}">{{day.tutor.firstname}}</a> </td>
+                    <td name="backup"> {{day.backup}}  </td>
+                    <td> {{day.room}}  </td>
+                    <td> {{day.sessionTime_from}} </td>
+                    <td> {{day.sessionTime_to}} </td>
+                    <td> {{day.professor}} </td>
+                    <td> {{day.crn}} </td>
+                    <td> {{day.notes}} </td>
+                    <td> {{day.floor}} </td>
+                </tr>
 
 
-
-
-        <tr>
-
-             <th colspan="9">Thursday</th>
-
-        </tr>
-
-
-        {% for day in thursday %}
+            {% endfor %}
 
 
             <tr>
 
-                <td name="sileader"> <a class="popup" href="#" data-toggle="popover" title="Tutor Info" data-content="{{day.tutor.firstname}} {{day.tutor.lastname}} ; Subject: {{day.tutor.subject1}} {{day.tutor.subject2}}">{{day.tutor.firstname}}</a> </td>
-                <td name="backup"> {{day.backup}}  </td>
-                <td> {{day.room}}  </td>
-                <td> {{day.sessionTime_from}} </td>
-                <td> {{day.sessionTime_to}} </td>
-                <td> {{day.professor}} </td>
-                <td> {{day.crn}} </td>
-                <td> {{day.notes}} </td>
-                <td> {{day.floor}} </td>
+                <th colspan="9">Thursday</th>
+
             </tr>
 
 
-        {% endfor %}
+            {% for day in thursday %}
 
-    </table>
+
+                <tr>
+
+                    <td name="sileader"> <a class="popup" href="#" data-toggle="popover" title="Tutor Info" data-content="{{day.tutor.firstname}} {{day.tutor.lastname}} ; Subject: {{day.tutor.subject1}} {{day.tutor.subject2}}">{{day.tutor.firstname}}</a> </td>
+                    <td name="backup"> {{day.backup}}  </td>
+                    <td> {{day.room}}  </td>
+                    <td> {{day.sessionTime_from}} </td>
+                    <td> {{day.sessionTime_to}} </td>
+                    <td> {{day.professor}} </td>
+                    <td> {{day.crn}} </td>
+                    <td> {{day.notes}} </td>
+                    <td> {{day.floor}} </td>
+                </tr>
+
+
+            {% endfor %}
+
+        </table>
 
     </div>
 {% else %}
@@ -225,7 +204,7 @@
     <br>
     <div class="container" style="text-align: center">
 
-        <a class="btn btn-primary" href="{% url 'login' %}" role="button">Login</a>
+    <a class="btn btn-primary" href="{% url 'login' %}" role="button">Login</a>
 
 {% endif %}
 </body>

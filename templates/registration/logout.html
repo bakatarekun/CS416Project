@@ -1,20 +1,16 @@
 {% extends 'base.html' %}
 
+{% block body %}
+
+    {% load static %}
 
 
+    <div class="container">
 
+        <div class="container  " style="justify-content:center;width: 40%; ">
 
-    {% block body %}
-
-{% load static %}
-
-
-<div class="container">
-
-          <div class="container  " style="justify-content:center;width: 40%; ">
-
-              <h1 style="text-align: center; color: red;">Logout</h1>
-              <a class="btn btn-primary" href="{% url 'login' %}" role="button">Login</a>
-          </div>
-</div>
-  > {% endblock %}
+            <h1 style="text-align: center; color: red;">Logout</h1>
+            <a class="btn btn-primary" href="{% url 'login' %}" role="button">Login</a>
+        </div>
+    </div>
+    > {% endblock %}
