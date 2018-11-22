@@ -13,12 +13,31 @@ class People(models.Model):
         return "{self.first_name}"
 
 class Tutor(models.Model):
+    type_choices = (
+        ('', '--------'),
+        ('EA', 'EA'),
+        ('SA', 'SA'),
+        ('Work Study', 'Work Study'),
+        ('Volunteer', 'Volunteer'),
 
+    )
+
+    subject_choices = (
+        ('', '--------'),
+        ('Math', 'Math'),
+        ('English', 'English'),
+        ('Biology', 'Biology'),
+        ('Chemistry', 'Chemistry'),
+        ('Physics', 'Physics'),
+        ('Computer', 'Computer'),
+
+    )
     firstname = models.CharField(max_length=50,default='')
     lastname = models.CharField(max_length=50,default='')
     hours = models.IntegerField(default=0)
-    subject1 = models.CharField(max_length=50, default='', null=True)
-    subject2 = models.CharField(max_length=50, default='', null=True)
+    type = models.CharField(max_length=50, default='',choices=type_choices)
+    subject1 = models.CharField(max_length=50, default='', null=True, choices=subject_choices)
+    subject2 = models.CharField(max_length=50, default='', null=True, choices=subject_choices)
 
 
     def __str__(self):
