@@ -41,7 +41,7 @@ class Tutor(models.Model):
 
 
     def __str__(self):
-        return self.firstname + self.lastname
+        return self.firstname + ' '+ self.lastname
 
     class Meta: #order by desc
          ordering = ['firstname']
