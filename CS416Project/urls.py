@@ -29,6 +29,8 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^login/$', auth_views.LoginView.as_view(), name='login'),
     url(r'^home$', views.home),
+    url(r'^schedule$', views.schedule, name="schedule"),
+
     url(r'^(?P<tutor_id>[0-9]+)/tutor$', views.tutorInfo, name="tutorInfo"),
 
     path('CS416Project/', include('django.contrib.auth.urls')),

@@ -19,6 +19,9 @@ def home(request):
 
     return render(request, 'home.html')
 
+def schedule(request):
+
+    return render(request, 'mathSchedule.html')
 
 
 
