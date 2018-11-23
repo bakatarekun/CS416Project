@@ -15,7 +15,6 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-
 from django.conf.urls import url, include
 from django.contrib import admin
 from . import views
@@ -30,9 +29,10 @@ urlpatterns = [
     url(r'^login/$', auth_views.LoginView.as_view(), name='login'),
     url(r'^home$', views.home),
     url(r'^schedule$', views.schedule, name="schedule"),
-
+    url(r'^showSiBackupPlanByTutor$', views.showSiBakcupbyTutor, name="showSiBakcupbyTutor"),
     url(r'^(?P<tutor_id>[0-9]+)/tutor$', views.tutorInfo, name="tutorInfo"),
-
+    #url(r'^showSiBackupPlan/(?P<tutor_name>w[0-9]+)$', views.showSiBakcupbyTutor, name="showSiBakcupbyTutor"),
+    #path('showSiBackupPlan/<tutor_name>/', views.showSiBakcupbyTutor, name="showSiBakcupbyTutor"),
     path('CS416Project/', include('django.contrib.auth.urls')),
 
     url(r'^showSiBackupPlan/$', views.showSiBackupPlan, name='showSiBackupPlan'),

@@ -1,10 +1,112 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>backupByTutor</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+
+
+
+    <script>
+        $(document).ready(function(){
+            $('a.popup').click(function(e) {
+                e.preventDefault();
+            });
+            $('[data-toggle="tooltip"]').tooltip();
+            $('[data-toggle="popover"]').popover();
+            $( "h3" ).addClass( "display-5" );
+            $( "table" ).addClass( "table table-striped  table-sm" );
+
+            var t= $('td[name=backup], td[name=sileader]');
+
+            for(i=1;i<t.length;i=i+2){
+                var txt=t[i].innerText;
+                if(txt  == '')
+                {
+                    $(t[i-1]).css("color","red");
+                    $(t[i]).text("No Backup");
+                    $(t[i]).css("color","red");
+                }
+
+            }
+        });
+    </script>
+
+
+    <style>
+        .table{
+
+            width: 90%;
+        }
+        td{ width :auto;
+            height:auto;
+            padding:5px;
+
+        }
+        th{
+            width :auto;
+            height:auto;
+            font-size: large;
+        {#padding:5px;#}
+            text-align: center;
+        }
+        .popup{
+
+        }
+        h3,h4{text-align:center;}
+        h4{ font-size: large;font-weight: bold}
+    </style>
 </head>
 <body>
-<h1> {{tutorInfo.firstname}}  {{tutorInfo.lastname}} Hours: {{tutorInfo.hours}} Subject1:{{tutorInfo.subject1}} Subject2:{{tutorInfo.subject2}}</h1>
+<h1 style="text-align: center">Returned:</h1>
+<br>
+<br>
+ <div class="table-responsive">
+        <table align="center" >
+            <tr >
+
+                <td>SI Leader</td>
+                <td>Backup</td>
+                  <td>Day</td>
+                <td>Room</td>
+                <td>From</td>
+                <td>To</td>
+                <td>Professor</td>
+                <td>CRN</td>
+                <td>Notes</td>
+                <td>Floor</td>
+
+            </tr>
+    {% for backupByTutor in backupByTutors %}
+
+                <tr>
+
+                    <td name="sileader"> <a   data-html="true" class="popup" href="#" data-toggle="popover" title="Tutor Info"
+                                              data-content="{{backupByTutor.tutor.firstname}} {{backupByTutor.tutor.lastname}}: {{backupByTutor.tutor.type}}
+                     <br>Subject1: {{backupByTutor.tutor.subject1}}
+                     <br>Subject2: {{backupByTutor.tutor.subject2}}" >{{backupByTutor.tutor.firstname}}</a> </td>
+                    {#              <td name="sileader"> <a href="/{{ backupByTutor.tutor.id }}/tutor" data-toggle="tooltip" title="{{backupByTutor.tutor.subject1}} Tutor">{{backupByTutor.tutor.firstname}}</a>  </td>#}
+                    <td name="backup"> {{backupByTutor.backup}}  </td>
+                       <td> {{backupByTutor.day}}  </td>
+                    <td> {{backupByTutor.room}}  </td>
+                    <td> {{backupByTutor.sessionTime_from}} </td>
+                    <td> {{backupByTutor.sessionTime_to}} </td>
+                    <td> {{backupByTutor.professor}} </td>
+                    <td> {{backupByTutor.crn}} </td>
+                    <td> {{backupByTutor.notes}} </td>
+                    <td> {{backupByTutor.floor}} </td>
+                </tr>
+
+   {%  endfor %}
+
+            </table>
+
+    </div>
+{#  <h1>{{ backupByTutor}}</h1>#}
+{#<h1> {{tutorInfo.firstname}}  {{tutorInfo.lastname}} Hours: {{tutorInfo.hours}} Subject1:{{tutorInfo.subject1}} Subject2:{{tutorInfo.subject2}}</h1>#}
 </body>
 </html>
