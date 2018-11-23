@@ -13,6 +13,26 @@ def tutorInfo(request, tutor_id):
 
     return render(request, 'tutor_info.html', {'tutorInfo': tutorInfo})
 
+#
+# def showSiBakcupbyTutor(request, tutor_name):
+#     # backupByTutors = SI_Session.objects.filter(day='Monday', tutor__firstname=tutor_name).order_by('sessionTime_from')
+#     backupByTutors = SI_Session.objects.filter(day= 'Monday', tutor__firstname__contains=tutor_name).order_by('sessionTime_from')
+#
+#     return render(request,'tutor_info.html', {'backupByTutors': backupByTutors})
+
+
+def showSiBakcupbyTutor(request):
+    # backupByTutors = SI_Session.objects.filter(day='Monday', tutor__firstname=tutor_name).order_by('sessionTime_from')
+
+        tutorName = request.POST.get('search','')
+        day = request.POST.get('search2', '')
+        if(tutorName==''):
+            backupByTutors = SI_Session.objects.filter(day= day).order_by('day','sessionTime_from')
+        elif (day==''):
+            backupByTutors = SI_Session.objects.filter(tutor__firstname__contains=tutorName).order_by('day','sessionTime_from')
+        else:
+            backupByTutors = SI_Session.objects.filter(tutor__firstname__contains=tutorName,day=day).order_by('sessionTime_from')
+        return render(request, 'tutor_info.html', {'backupByTutors': backupByTutors, 'day':day})
 
 
 def home(request):

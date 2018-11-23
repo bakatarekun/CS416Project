@@ -44,6 +44,20 @@
         });
     </script>
 
+<script>
+
+function setGetParameter(){
+    var search_word = $("#search").val();
+    $.ajax({
+      type: "POST",
+      url: {% url 'showSiBakcupbyTutor' %},
+      data: search_word,
+      success: function(result){
+        alert("Success");
+      }
+    });
+}
+</script>
 
     <style>
         .table{
@@ -75,9 +89,27 @@
 
 {% if user.is_authenticated %}
 
+{#    <ul>#}
+{#    {%  for tutor in backupByTutor %}#}
+{#    <li> {{ tutor.name }} {{ tutor.backup }}</li>#}
+{#    {%  endfor %}#}
+{#    </ul>#}
+{#<h2> {{ backupByTutor }}</h2>#}
 
     <h3 >Math SI Backup Plan</h3>
     <h4 >Monday</h4>
+
+ <div align=right>
+<form action="{% url 'showSiBakcupbyTutor' %}" method="post">
+{% csrf_token %}
+Name:<input id="search" name="search" type="text" class="query-search"
+ placeholder="Search...">
+ Day:   <input id="search" name="search2" type="text" class="query-search"
+ placeholder="Search...">
+<input class="btn btn-primary" type="submit" value="submit">
+</form>
+</div>
+    <br>
     <div class="table-responsive">
         <table align="center" >
             <tr >
@@ -209,6 +241,7 @@
         </table>
 
     </div>
+
 {% else %}
 
 
