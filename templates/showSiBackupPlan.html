@@ -44,20 +44,20 @@
         });
     </script>
 
-<script>
+    <script>
 
-function setGetParameter(){
-    var search_word = $("#search").val();
-    $.ajax({
-      type: "POST",
-      url: {% url 'showSiBakcupbyTutor' %},
-      data: search_word,
-      success: function(result){
-        alert("Success");
-      }
-    });
-}
-</script>
+        function setGetParameter(){
+            var search_word = $("#search").val();
+            $.ajax({
+                type: "POST",
+                url: {% url 'showSiBakcupbyTutor' %},
+                data: search_word,
+                success: function(result){
+                    alert("Success");
+                }
+            });
+        }
+    </script>
 
     <style>
         .table{
@@ -81,6 +81,10 @@ function setGetParameter(){
         }
         h3,h4{text-align:center;}
         h4{ font-size: large;font-weight: bold}
+        select{
+            width: auto !important;
+            display: inline-block !important;
+        }
     </style>
 </head>
 
@@ -89,26 +93,47 @@ function setGetParameter(){
 
 {% if user.is_authenticated %}
 
-{#    <ul>#}
-{#    {%  for tutor in backupByTutor %}#}
-{#    <li> {{ tutor.name }} {{ tutor.backup }}</li>#}
-{#    {%  endfor %}#}
-{#    </ul>#}
-{#<h2> {{ backupByTutor }}</h2>#}
 
     <h3 >Math SI Backup Plan</h3>
     <h4 >Monday</h4>
 
- <div align=right>
-<form action="{% url 'showSiBakcupbyTutor' %}" method="post">
-{% csrf_token %}
-Name:<input id="search" name="search" type="text" class="query-search"
- placeholder="Search...">
- Day:   <input id="search" name="search2" type="text" class="query-search"
- placeholder="Search...">
-<input class="btn btn-primary" type="submit" value="submit">
-</form>
-</div>
+    {# <div align=right>#}
+    {#<form action="{% url 'showSiBakcupbyTutor' %}" method="post">#}
+    {#{% csrf_token %}#}
+    {#Name:<input id="search" name="search" type="text" class="query-search"#}
+    {# placeholder="Search...">#}
+    {# Day:   <input id="search" name="search2" type="text" class="query-search"#}
+    {# placeholder="Search...">#}
+    {#<input class="btn btn-primary" type="submit" value="submit">#}
+    {#</form>#}
+    {#</div>#}
+    <div align=right style="padding-right: 10%">
+        <form action="{% url 'showSiBakcupbyTutor' %}" method="post">
+            {% csrf_token %}
+            Name:  <select class="form-control" name="search">
+            <option value="">---------</option>
+            {% for t in ti %}
+                <option name="search" value="{{ t.firstname }}" >{{ t.firstname}}</option>
+
+            {% endfor %}
+
+        </select>
+
+            Day: <select class="form-control" name="search2">
+            <option value="">---------</option>
+            <option  name="search2" value="Monday">Monday</option>
+            <option  name="search2" value="Tuesday">Tuesday</option>
+            <option  name="search2" value="Wednesday">Wednesday</option>
+            <option  name="search2" value="Thursday">Thursday</option>
+        </select>
+
+            <input class="btn btn-primary" type="submit" value="submit">
+        </form>
+        <h1>{{ tutorInfo }}</h1>
+    </div>
+
+
+
     <br>
     <div class="table-responsive">
         <table align="center" >
@@ -160,7 +185,7 @@ Name:<input id="search" name="search" type="text" class="query-search"
 
                 <tr>
 
-                       <td name="sileader"> <a   data-html="true" class="popup" href="#" data-toggle="popover" title="Tutor Info"
+                    <td name="sileader"> <a   data-html="true" class="popup" href="#" data-toggle="popover" title="Tutor Info"
                                               data-content="{{day.tutor.firstname}} {{day.tutor.lastname}}: {{day.tutor.type}}
                      <br>Subject1: {{day.tutor.subject1}}
                      <br>Subject2: {{day.tutor.subject2}}" >{{day.tutor.firstname}}</a> </td>
@@ -191,7 +216,7 @@ Name:<input id="search" name="search" type="text" class="query-search"
 
                 <tr>
 
-                     <td name="sileader"> <a   data-html="true" class="popup" href="#" data-toggle="popover" title="Tutor Info"
+                    <td name="sileader"> <a   data-html="true" class="popup" href="#" data-toggle="popover" title="Tutor Info"
                                               data-content="{{day.tutor.firstname}} {{day.tutor.lastname}}: {{day.tutor.type}}
                      <br>Subject1: {{day.tutor.subject1}}
                      <br>Subject2: {{day.tutor.subject2}}" >{{day.tutor.firstname}}</a> </td>
@@ -221,7 +246,7 @@ Name:<input id="search" name="search" type="text" class="query-search"
 
                 <tr>
 
-                      <td name="sileader"> <a   data-html="true" class="popup" href="#" data-toggle="popover" title="Tutor Info"
+                    <td name="sileader"> <a   data-html="true" class="popup" href="#" data-toggle="popover" title="Tutor Info"
                                               data-content="{{day.tutor.firstname}} {{day.tutor.lastname}}: {{day.tutor.type}}
                      <br>Subject1: {{day.tutor.subject1}}
                      <br>Subject2: {{day.tutor.subject2}}" >{{day.tutor.firstname}}</a> </td>
