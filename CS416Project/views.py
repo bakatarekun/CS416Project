@@ -1,7 +1,9 @@
+from django.core.serializers import json
 from django.shortcuts import render, get_object_or_404, redirect
-from django.http import  HttpResponse
+from django.http import HttpResponse, JsonResponse
 from .models import People, SI_Session, Tutor
 from django.contrib.auth import update_session_auth_hash
+from django.core import serializers
 # Create your views here.
 
 def login_redirect(request):
@@ -19,12 +21,17 @@ def AlltutorsInfo(request):
 
     return render(request, 'tutor_info.html', {'info': info})
 
-#
-# def showSiBakcupbyTutor(request, tutor_name):
-#     # backupByTutors = SI_Session.objects.filter(day='Monday', tutor__firstname=tutor_name).order_by('sessionTime_from')
-#     backupByTutors = SI_Session.objects.filter(day= 'Monday', tutor__firstname__contains=tutor_name).order_by('sessionTime_from')
-#
-#     return render(request,'tutor_info.html', {'backupByTutors': backupByTutors})
+def allTutorNames(request):
+    info = Tutor.objects.only("firstname")
+    #info = Tutor.objects.filter(lastname= "Yamanaka").order_by('firstname')
+    print(info)
+    info_jason = serializers.serialize('json', info)
+   #info={'info':"hello"}
+
+
+    #return JsonResponse(info, safe=False)
+    return HttpResponse(info_jason, content_type='application/json')
+
 
 
 def showSiBakcupbyTutor(request):

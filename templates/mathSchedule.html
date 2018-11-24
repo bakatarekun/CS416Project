@@ -2,113 +2,151 @@
 <html lang="en">
 <head>
 
-  <title>Second Website</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Second Website</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <link rel="myCss2.css">
-  <script src="myJs.js"></script>
+    <link rel="myCss2.css">
+    <script src="myJs.js"></script>
 
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-
-
-  <script type="text/javascript">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 
 
-   $(document).ready(function(){
-var counter=9;
-var content = " <table>" +"<tbody name='tb'>"
-for(i=0; i<10; i++){
-    content += '<tr>'
-    
-    for(s=8; s<33; s++){
-      if(i==0 && s>8)
-      {
-        if( s%2 ==0)
-        {
-          counter++;
-          content+= '<td style="width:50px">' + counter+': 00'+ '</td>'
+    <script type="text/javascript">
+
+        var tab = [] ;
+        var str;
+        $(document).ready(function(){
+            $.ajax({
+                type: "GET",
+                url: "/allTutorsNames/",
+                dataType: "json",
+                contentType: "application/json",
+                success: function (data) {
+
+                    str=data;
+                    str2=data.length;
+                    for(i=0;i<str2;i++)
+                    {
+                        tab[i]= data[i].fields.firstname;
+                        console.log(tab[i]);
+
+                    }
+
+                    makerows(tab);
+                },
+
+                error: function () {
+
+                    alert("wasn't succesful");
+
+                }
+            });
+
+
+        });
+
+
+        function makerows(tab1) {
+
+            var tab = tab1;
+            var counter = 9;
+            var rowcounter = 0;
+            var content = " <table>" + "<tbody name='tb'>"
+            content += '<div><tr>'
+            for (s = 8; s < 33; s++) {
+
+                if (s > 8) {
+                    if (s % 2 == 0) {
+                        counter++;
+                        content += '<th style="width:50px;">' + counter + ': 00' + '</th>'
+                    } else {
+                        content += '<th style="width:50px;">' + counter + ': 30' + '</th>'
+                    }
+                } else {
+                    content += '<th style="width:50px;">' + '&nbsp' + '</th>'
+                }
+            }
+
+            content += '</div></tr>';
+            for (i = 0; i < tab.length; i++) {
+                content += '<tr>'
+                for (s = 0; s < 25; s++) {
+
+                    if (s == 0) {
+                        content += '<td style="width:50px">' + tab[i] + '</td>'
+                        rowcounter++
+                    } else {
+                        content += '<td style="width:50px">' + '&nbsp' + '</td>'
+                    }
+
+                }
+                content += '</tr>';
+            }
+            content += "<tbody>" + "</table>"
+
+
+            $('#here_table').append(content);
+
+              $( function(){
+                $('td').click( function() {
+                    $(this).toggleClass("red-cell");
+                } );
+            });
+
+            (function () {
+                var isMouseDown = false;
+
+                $('[name=tb]')
+                    .on('mousedown', 'td', function() {
+                        isMouseDown = true;
+                        $(this).toggleClass("red-cell");
+                    })
+                    .on('mouseover', 'td', function() {
+                        if (isMouseDown)
+                            $(this).addClass("red-cell");
+                    })
+                    .on('mouseup', 'td', function() {
+                        isMouseDown = false;
+                    })
+                    .on('mouseleave', function() {
+                        isMouseDown = false;
+                    });
+
+                $('td').click( function() {
+                    if (isMouseDown==false)
+                        $(this).toggleClass("red-cell");
+                })
+            })();
         }
-        else
-        {
-        content+= '<td style="width:50px">' + counter+': 30'+ '</td>'
+
+    </script>
+
+
+    <style type="text/css">
+        table, th, td {
+            border: 1px solid black;
         }
-      }
-       else if(i>0&& s==8)
-      {
-          content+= '<td style="width:50px">' + 'Ken' + '</td>'
-      }
-      else
-      {
-        content+= '<td style="width:50px">' + '&nbsp' + '</td>'
-      }
-      
-    }
-    content+='</tr>';
-}
-content += "<tbody>"+"</table>"
+        .red-cell {
+            background: grey; /* Or some other color */
+        }
 
-$('#here_table').append(content);
-
-
-
-    $( function(){
-  $('td').click( function() {
-    $(this).toggleClass("red-cell");
-  } );
-});
-
-(function () {
-  var isMouseDown = false;
- 
-   $('[name=tb]')
-        .on('mousedown', 'td', function() {
-      isMouseDown = true;
-      $(this).toggleClass("red-cell");
-    })
-    .on('mouseover', 'td', function() {
-      if (isMouseDown)
-      $(this).addClass("red-cell");
-    })
-    .on('mouseup', 'td', function() {
-      isMouseDown = false;
-    })
-    .on('mouseleave', function() {
-      isMouseDown = false;
-    });
-
-     $('td').click( function() {
-      if (isMouseDown==false)
-     $(this).toggleClass("red-cell");
-    })
-})();
-
-});  
- </script>
- <style type="text/css">
- table, th, td {
-    border: 1px solid black;
-}
-   .red-cell {
-   background: grey; /* Or some other color */
-}
-
- </style>
+    </style>
 </head>
 
 <!-- body of the site -->
 <body id="top">
-  <br>
-  <br>
-  <div  style="text-align: center;">
-  <h1>Math Tutor Schedule</h1>
-  <h3>Monday</h3>
+<br>
+<br>
+<div  style="text-align: center;">
+    <h1>Math Tutor Schedule</h1>
+    <h3>Monday</h3>
 </div>
-  <br>
+<br>
 
 <div align='center' id="here_table"></div>
 </body>
