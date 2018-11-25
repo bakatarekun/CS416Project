@@ -35,7 +35,7 @@ class Tutor(models.Model):
     firstname = models.CharField(max_length=50,default='')
     lastname = models.CharField(max_length=50,default='')
     hours = models.IntegerField(default=0)
-    type = models.CharField(max_length=50, default='',choices=type_choices)
+    typeofstaff = models.CharField(max_length=50, default='',choices=type_choices)
     subject1 = models.CharField(max_length=50, default='', null=True, choices=subject_choices)
     subject2 = models.CharField(max_length=50, default='', null=True, choices=subject_choices)
 
