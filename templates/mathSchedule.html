@@ -54,15 +54,22 @@
             for (s = 8; s < 33; s++) {
 
                 if (s > 8) {
+
                     if (s % 2 == 0) {
-                        counter++;
+                         counter++;
+                        if(counter==13){
+                                counter=1;
+                        }
+
                         content += '<th class="thformat">' + counter + ': 00' + '</th>'
+
                     } else {
                         content += '<th class="thformat">' + counter + ': 30' + '</th>'
                     }
                 } else {
                     content += '<th class="thformat">' + '&nbsp' + '</th>'
                 }
+
             }
 
             content += '</div></tr>';
