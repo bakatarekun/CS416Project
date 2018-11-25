@@ -56,12 +56,12 @@
                 if (s > 8) {
                     if (s % 2 == 0) {
                         counter++;
-                        content += '<th style="width:50px;">' + counter + ': 00' + '</th>'
+                        content += '<th class="thformat">' + counter + ': 00' + '</th>'
                     } else {
-                        content += '<th style="width:50px;">' + counter + ': 30' + '</th>'
+                        content += '<th class="thformat">' + counter + ': 30' + '</th>'
                     }
                 } else {
-                    content += '<th style="width:50px;">' + '&nbsp' + '</th>'
+                    content += '<th class="thformat">' + '&nbsp' + '</th>'
                 }
             }
 
@@ -72,18 +72,18 @@
                 for (s = 0; s < 25; s++) {
 
                     if (s == 0) {
-                        content += '<td style="width:50px">' + setoftutors[i].fields.firstname + '</td>'
+                        content += '<td class="tdformat">' + setoftutors[i].fields.firstname + '</td>'
                         rowcounter++
                     } else {
                         if(setoftutors[i].fields.typeofstaff == 'EA')
-                        { content += '<td style="width:50px;" name="eacell" >' + '&nbsp' + '</td>'}
+                        { content += '<td class="tdformat" name="eacell" >' + '&nbsp' + '</td>'}
                         else if (setoftutors[i].fields.typeofstaff == 'SA')
                         {
-                            content += '<td style="width:50px;" name="sacell" >' + '&nbsp' + '</td>'
+                            content += '<td class="tdformat"  name="sacell" >' + '&nbsp' + '</td>'
                         }
                         else
                         {
-                            content += '<td style="width:50px;" name="workstudy" >' + '&nbsp' + '</td>'
+                            content += '<td class="tdformat"  name="workstudy" >' + '&nbsp' + '</td>'
                         }
                     }
 
@@ -104,8 +104,14 @@
 
 
     <style type="text/css">
-        table, th, td {
+        table {
             border: 1px solid black;
+
+        }
+        th, td {
+            border: 1px solid black;
+             width:60px;
+            text-align: center;
         }
         .eacellcolor {
             background: greenyellow;
