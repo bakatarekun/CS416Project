@@ -66,7 +66,8 @@
 
                 var isMouseDown = false;
 
-                $('[name=tb]')
+
+                 $('[name=tb]')
                     .on('mousedown', targetcell, function() {
                         isMouseDown = true;
                         if ($(this).hasClass(classname)) {
@@ -74,6 +75,9 @@
                              }
                              else
                             $(this).addClass(classname);
+                    })
+                     .on('mouseup', targetcell, function() {
+                        isMouseDown = false;
                     })
                     .on('mouseover', targetcell, function() {
                         if (isMouseDown)
@@ -93,9 +97,10 @@
                          }
                         isMouseDown = false;
                     })
-                    .on('mouseup', targetcell, function() {
-                        isMouseDown = false;
-                    });
+                   ;
 
 
             }
+
+
+
