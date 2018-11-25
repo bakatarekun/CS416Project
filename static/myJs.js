@@ -28,35 +28,36 @@
 
 
 
+ function togglecells2(that){
+     alert("function fired")
+ }
 
+  function togglecells(targetcell,classname) {
 
- function togglecell(){
-                $('td').click( function() {
-                    $(this).toggleClass("red-cell");
-                } );
-            }
-
-            function tobbleandhighlight() {
                 var isMouseDown = false;
 
                 $('[name=tb]')
-                    .on('mousedown', 'td', function() {
+                    .on('mousedown', targetcell, function() {
                         isMouseDown = true;
-                        $(this).toggleClass("red-cell");
+                        $(this).toggleClass(classname);
                     })
-                    .on('mouseover', 'td', function() {
+                    .on('mouseover', targetcell, function() {
                         if (isMouseDown)
-                            $(this).addClass("red-cell");
+                            $(this).addClass(classname);
                     })
-                    .on('mouseup', 'td', function() {
+                    .on('mouseup', targetcell, function() {
                         isMouseDown = false;
                     })
                     .on('mouseleave', function() {
                         isMouseDown = false;
                     });
 
-                $('td').click( function() {
+               $(targetcell).click( function() {
                     if (isMouseDown==false)
-                        $(this).toggleClass("red-cell");
+                        if($(this).hasClass(lightblue-cell))
+                        {      $(this).removeClass(classname);   }
+                        else {
+                             $(this).addClass(classname);
+                        }
                 })
-            };
+            }

@@ -127,10 +127,11 @@ LOGOUT_REDIRECT_URL = '/'
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
-    '/home/Bakatarekun2/bakatarekun2.pythonanywhere.com/static',
+    # uncomment when use on pythonanywhere
+    #'/home/Bakatarekun2/bakatarekun2.pythonanywhere.com/static',
     '/var/www/static/',
 ]
 
 MEDIA_URL = '/media/'
-# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
