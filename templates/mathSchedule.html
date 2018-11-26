@@ -14,7 +14,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 
-<script type="text/javascript">
+    <script type="text/javascript">
 
         $(document).ready(function(){
             $.ajax({
@@ -29,7 +29,7 @@
                          console.log(tutors[i]);
 
                      }*/
-                    console.log(data[0]);
+                    console.log(data);
                     makerows(data);
                 },
 
@@ -49,16 +49,16 @@
             var setoftutors = tutors;
             var counter = 9;
             var rowcounter = 0;
-            var content = " <table>" + "<tbody name='tb'>"
+            var content = " <table><tbody name='tb'>"
             content += '<div><tr>'
             for (s = 8; s < 33; s++) {
 
                 if (s > 8) {
 
                     if (s % 2 == 0) {
-                         counter++;
+                        counter++;
                         if(counter==13){
-                                counter=1;
+                            counter=1;
                         }
 
                         content += '<th class="thformat">' + counter + ': 00' + '</th>'
@@ -79,12 +79,15 @@
                 for (s = 0; s < 25; s++) {
 
                     if (s == 0) {
-                        content += '<td class="tdformat">' + setoftutors[i].fields.firstname + '</td>'
+                        {#var str = setoftutors[i].fields.tutor ;#}
+                        {#var partsOfStr = str.split(',');#}
+                        content += '<td class="tdformat">' + setoftutors[i].fields.tutor[0] + '</td>'
+                        {#content += '<td class="tdformat">' +partsOfStr + '</td>'#}
                         rowcounter++
                     } else {
-                        if(setoftutors[i].fields.typeofstaff == 'EA')
+                        if(setoftutors[i].fields.tutor[1] == 'EA')
                         { content += '<td class="tdformat" name="eacell" >' + '&nbsp' + '</td>'}
-                        else if (setoftutors[i].fields.typeofstaff == 'SA')
+                        else if (setoftutors[i].fields.tutor[1] == 'SA')
                         {
                             content += '<td class="tdformat"  name="sacell" >' + '&nbsp' + '</td>'
                         }
@@ -105,6 +108,19 @@
             togglecells( "td[name=sacell]","sacellcolor");
             togglecells( "td[name=workstudy]","wscellcolor");
 
+            var name;
+            var hours;
+            var listoftutors ='<ul>'
+            listoftutors += '<div>'
+            for (s = 0; s < setoftutors.length ; s++) {
+
+                name= setoftutors[s].fields.tutor[0];
+                hours = setoftutors[s].fields.tutor[2];
+                listoftutors += '<li>' + name + ' ' + hours + ' hours'+ '</li>'
+            }
+
+            listoftutors += '</div></ul>';
+            $('#listoftutors').append(listoftutors);
         }
 
     </script>
@@ -117,7 +133,7 @@
         }
         th, td {
             border: 1px solid black;
-             width:60px;
+            width:60px;
             text-align: center;
         }
         .eacellcolor {
@@ -135,7 +151,7 @@
             width:auto;
         }
         .thformat{
-              font-size: large;
+            font-size: large;
             height: auto;
 
         }
@@ -145,14 +161,17 @@
 
 <!-- body of the site -->
 <body id="top">
+
 <br>
 <br>
 <div  style="text-align: center;">
+    <div style="font-size: large" align='left' id="listoftutors"></div>
     <h1>Math Tutor Schedule</h1>
     <h3>Monday</h3>
 </div>
 <br>
 
 <div align='center' id="here_table"></div>
+<h1 id="hoursleft"></h1>
 </body>
 </html>

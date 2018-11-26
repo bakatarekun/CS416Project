@@ -65,13 +65,15 @@
  function togglecells(targetcell,classname) {
 
                 var isMouseDown = false;
-
-
+                var count =25;
+                   $('#hoursleft').text(count);
                  $('[name=tb]')
                     .on('mousedown', targetcell, function() {
                         isMouseDown = true;
+                         count=count-1;
                         if ($(this).hasClass(classname)) {
                                  $(this).removeClass(classname);
+
                              }
                              else
                             $(this).addClass(classname);
@@ -80,10 +82,13 @@
                         isMouseDown = false;
                     })
                     .on('mouseover', targetcell, function() {
+
                         if (isMouseDown)
                         {
                              if ($(this).hasClass(classname)) {
                                  $(this).removeClass(classname);
+                               //  $('#hoursleft').text(count);
+
                              }
                              else
                             $(this).addClass(classname);

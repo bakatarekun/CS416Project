@@ -1,7 +1,8 @@
+import simplejson as simplejson
 from django.core.serializers import json
 from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse, JsonResponse
-from .models import People, SI_Session, Tutor
+from .models import People, SI_Session, Tutor, Schedule
 from django.contrib.auth import update_session_auth_hash
 from django.core import serializers
 # Create your views here.
@@ -16,20 +17,36 @@ def tutorInfo(request, tutor_id):
     return render(request, 'tutor_info.html', {'tinfo': tinfo})
 
 def AlltutorsInfo(request):
-    info = Tutor.objectsjects.all()
+    info = Tutor.objects.all()
 
 
     return render(request, 'tutor_info.html', {'info': info})
 
 def allTutorNames(request):
-    info = Tutor.objects.only("firstname")
-    #info = Tutor.objects.filter(lastname= "Yamanaka").order_by('firstname')
-    print(info)
-    info_jason = serializers.serialize('json', info)
-   #info={'info':"hello"}
-
-
+    #info2 = Schedule.objects.only("tutor").filter(day= "Tuesday")
+    #info3 =  Tutor.objects.all()
+   # info2_list = list(info2)
+    #info = Schedule.objects.select_related()
+    #info = Schedule.objects.all()
+    #print(info2_list[1].tutor.firstname)
+    # for e in info:
+    #     print(e.tutor.firstname )
+    #     print(e.tutor.hours)
+   # info_all = list(info) + list(info3)
+    # info_jason = serializers.serialize('json', info, fields=('tutor.firstname'))
+   # print(info_jason)
+    #info={'info':"hello"}
+    # response_dict = {
+    #     'info': "Hello"
+    # }
+    # return HttpResponse(simplejson.dumps(response_dict),mimetype='application/json')
     #return JsonResponse(info, safe=False)
+    #info = Schedule.objects.prefetch_related(*joins).all().serialize(*joins)
+
+
+    info = Schedule.objects.filter(day="Tuesday").order_by('tutor__firstname')
+    info_jason = serializers.serialize('json', info,  use_natural_foreign_keys=True, )
+    print(info_jason)
     return HttpResponse(info_jason, content_type='application/json')
 
 
