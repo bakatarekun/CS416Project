@@ -16,7 +16,23 @@
 
     <script type="text/javascript">
 
+
+
         $(document).ready(function(){
+            /*
+                        $('.cell').hover(function(){
+
+
+                            var t2=0.0;
+                            t2=  parseInt($(this).index())/2;
+
+                            $('#sp1').text(t2);
+                        });
+
+
+            */
+
+
             $.ajax({
                 type: "GET",
                 url: "/allTutorsNames/",
@@ -39,6 +55,8 @@
 
                 }
             });
+
+
 
 
         });
@@ -116,11 +134,29 @@
 
                 name= setoftutors[s].fields.tutor[0];
                 hours = setoftutors[s].fields.tutor[2];
-                listoftutors += '<li>' + name + ' ' + hours + ' hours'+ '</li>'
+                {#listoftutors += '<li>' + name + ' ' + hours + ' hours'+ '</li>'#}
+                listoftutors += '<li>' + name + ' <span id='+ name + '></span> Hours Left</li>'
             }
 
             listoftutors += '</div></ul>';
             $('#listoftutors').append(listoftutors);
+
+
+
+            $('tr').mouseleave(function() {
+                var t = 12.0;
+                var t2 = 15.0;
+                var t3 =17;
+                t = t - $('.wscellcolor').length*.5;
+                t2= t2-  $('.sacellcolor').length*.5;
+                t3 = t3 - $('.eacellcolor').length*.5;
+                $('#Joe').text(t);
+                $('#Alisha').text(t2);
+                $('#Emma').text(t3);
+
+            });
+
+
         }
 
     </script>
@@ -156,6 +192,8 @@
 
         }
 
+
+
     </style>
 </head>
 
@@ -172,6 +210,10 @@
 <br>
 
 <div align='center' id="here_table"></div>
-<h1 id="hoursleft"></h1>
+
+
+
+
+
 </body>
 </html>
