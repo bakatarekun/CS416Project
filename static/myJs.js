@@ -32,45 +32,17 @@ function togglecells2(that){
     alert("function fired")
 }
 
-// function togglecells(targetcell,classname) {
-//
-//               var isMouseDown = false;
-//
-//               $('[name=tb]')
-//                   .on('mousedown', targetcell, function() {
-//                       isMouseDown = true;
-//                       $(this).toggleClass(classname);
-//                   })
-//                   .on('mouseover', targetcell, function() {
-//                       if (isMouseDown)
-//                           $(this).addClass(classname);
-//                   })
-//                   .on('mouseup', targetcell, function() {
-//                       isMouseDown = false;
-//                   })
-//                   .on('mouseleave', function() {
-//                       isMouseDown = false;
-//                   });
-//
-//              $(targetcell).click( function() {
-//                   if (isMouseDown==false)
-//                       if($(this).hasClass(classname))
-//                       {      $(this).removeClass(classname);   }
-//                       else {
-//                            $(this).addClass(classname);
-//                       }
-//               })
-//           }
+
 
 function togglecells(targetcell,classname,tutorname) {
 
     var isMouseDown = false;
-    var count =25;
-    $('#hoursleft').text(count);
+
+
     $('[name=tb]')
         .on('mousedown', targetcell, function() {
             isMouseDown = true;
-            count=count-1;
+
 
             if ($(this).hasClass(classname)) {
                 $(this).removeClass(classname);
@@ -78,7 +50,7 @@ function togglecells(targetcell,classname,tutorname) {
 
             }
             else
-            { this.innerText = tutorname;
+            {   this.innerText = tutorname;
                 $(this).addClass(classname);
 
             }
@@ -108,7 +80,7 @@ function togglecells(targetcell,classname,tutorname) {
             if (isMouseDown) {
 
                 $(this).removeClass(classname);
-                this.innerHTML = "";
+                this.innerText = "";
             }
 
         })

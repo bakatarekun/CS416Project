@@ -19,8 +19,6 @@
 
 
         $(document).ready(function(){
-
-
             $.ajax({
                 type: "GET",
                 url: "/allTutorsNames/",
@@ -37,9 +35,6 @@
 
                 }
             });
-
-
-
 
         });
 
@@ -81,10 +76,14 @@
                     if (s == 0) {
                         content += '<td class="tdformat">' + setoftutors[i].fields.tutor[0] + '</td>'
                         rowcounter++
-                    } else {
-
+                    }
+                    else
+                    {
+                        var name = setoftutors[i].fields.tutor[0];
                         if(setoftutors[i].fields.tutor[1] == 'EA')
-                        { content += '<td class="tdformat" name="eacell" >' + '&nbsp' + '</td>'}
+                        {
+                            content += '<td class="tdformat" name='+name + ' >' + '&nbsp' + '</td>'
+                        }
                         else if (setoftutors[i].fields.tutor[1] == 'SA')
                         {
                             content += '<td class="tdformat"  name="sacell" >' + '&nbsp' + '</td>'
@@ -103,28 +102,40 @@
             content += "<tbody>" + "</table>"
             $('#here_table').append(content);
 
-
-
-            var name;
             var hours;
-            var typeofemployee;
+            {#var typeofemployee;#}
             var listoftutors ='<ul>'
             listoftutors += '<div>'
             for (s = 0; s < setoftutors.length ; s++) {
-                typeofemployee =  setoftutors[s].fields.tutor[1];
-                name= setoftutors[s].fields.tutor[0];
+
+                var name= setoftutors[s].fields.tutor[0];
+
+                var typeofemployee =  setoftutors[s].fields.tutor[1];
                 hours = setoftutors[s].fields.tutor[2];
+
                 if(typeofemployee == 'EA')
                 {
-                    togglecells("td[name=eacell]","eacellcolor", name);
+                    togglecells("td[name="+name+"]","eacellcolor", name);
+                     console.log("ea name is "+ name);
+                     console.log("type is " + typeofemployee);
+
+
                 }
                 else if (typeofemployee == 'SA')
                 {
                     togglecells( "td[name=sacell]","sacellcolor",name);
+                     console.log("sa name is "+ name);
+                    console.log("type is " + typeofemployee);
+
+
                 }
                 else if (typeofemployee == 'Work Study')
                 {
                     togglecells( "td[name=workstudy]","wscellcolor",name);
+                     console.log("ws name is "+ name);
+                console.log("type is " + typeofemployee);
+
+
 
                 }
 
@@ -135,21 +146,21 @@
             $('#listoftutors').append(listoftutors);
 
 
-
+            var hours2=0.0;
             $('tr').mouseout(function() {
 
                 for (s = 0; s < setoftutors.length ; s++) {
 
                     var name1= setoftutors[s].fields.tutor[0];
                     var nameid = "#"+name1;
-                    var hours2 = setoftutors[s].fields.tutor[2];
+                    hours2 = setoftutors[s].fields.tutor[2];
                     var usedhours =  ($("td:contains("+name1+")").length-1)*.5;
                     hours2 = hours2 - usedhours;
                     $(nameid).text(hours2);
 
 
                 }
-
+                console.log(hours2 +" hours left");
 
             });
 

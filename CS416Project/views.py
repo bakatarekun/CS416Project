@@ -44,7 +44,7 @@ def allTutorNames(request):
     #info = Schedule.objects.prefetch_related(*joins).all().serialize(*joins)
 
 
-    info = Schedule.objects.filter(day="Tuesday").order_by('tutor__firstname')
+    info = Schedule.objects.filter(day="Wednesday").order_by('tutor__firstname')
     info_jason = serializers.serialize('json', info,  use_natural_foreign_keys=True, )
     print(info_jason)
     return HttpResponse(info_jason, content_type='application/json')
