@@ -19,18 +19,6 @@
 
 
         $(document).ready(function(){
-            /*
-                        $('.cell').hover(function(){
-
-
-                            var t2=0.0;
-                            t2=  parseInt($(this).index())/2;
-
-                            $('#sp1').text(t2);
-                        });
-
-
-            */
 
 
             $.ajax({
@@ -39,12 +27,6 @@
                 dataType: "json",
                 contentType: "application/json",
                 success: function (data) {
-                    /*for(i=0;i<data.length;i++)
-                     {
-                         tutors[i]= data[i].fields.firstname;
-                         console.log(tutors[i]);
-
-                     }*/
                     console.log(data);
                     makerows(data);
                 },
@@ -97,12 +79,10 @@
                 for (s = 0; s < 25; s++) {
 
                     if (s == 0) {
-                        {#var str = setoftutors[i].fields.tutor ;#}
-                        {#var partsOfStr = str.split(',');#}
                         content += '<td class="tdformat">' + setoftutors[i].fields.tutor[0] + '</td>'
-                        {#content += '<td class="tdformat">' +partsOfStr + '</td>'#}
                         rowcounter++
                     } else {
+
                         if(setoftutors[i].fields.tutor[1] == 'EA')
                         { content += '<td class="tdformat" name="eacell" >' + '&nbsp' + '</td>'}
                         else if (setoftutors[i].fields.tutor[1] == 'SA')
@@ -113,6 +93,7 @@
                         {
                             content += '<td class="tdformat"  name="workstudy" >' + '&nbsp' + '</td>'
                         }
+
                     }
 
                 }
@@ -122,19 +103,31 @@
             content += "<tbody>" + "</table>"
             $('#here_table').append(content);
 
-            togglecells("td[name=eacell]","eacellcolor");
-            togglecells( "td[name=sacell]","sacellcolor");
-            togglecells( "td[name=workstudy]","wscellcolor");
+
 
             var name;
             var hours;
+            var typeofemployee;
             var listoftutors ='<ul>'
             listoftutors += '<div>'
             for (s = 0; s < setoftutors.length ; s++) {
-
+                typeofemployee =  setoftutors[s].fields.tutor[1];
                 name= setoftutors[s].fields.tutor[0];
                 hours = setoftutors[s].fields.tutor[2];
-                {#listoftutors += '<li>' + name + ' ' + hours + ' hours'+ '</li>'#}
+                if(typeofemployee == 'EA')
+                {
+                    togglecells("td[name=eacell]","eacellcolor", name);
+                }
+                else if (typeofemployee == 'SA')
+                {
+                    togglecells( "td[name=sacell]","sacellcolor",name);
+                }
+                else if (typeofemployee == 'Work Study')
+                {
+                    togglecells( "td[name=workstudy]","wscellcolor",name);
+
+                }
+
                 listoftutors += '<li>' + name + ' <span id='+ name + '></span> Hours Left</li>'
             }
 
@@ -143,18 +136,24 @@
 
 
 
-            $('tr').mouseleave(function() {
-                var t = 12.0;
-                var t2 = 15.0;
-                var t3 =17;
-                t = t - $('.wscellcolor').length*.5;
-                t2= t2-  $('.sacellcolor').length*.5;
-                t3 = t3 - $('.eacellcolor').length*.5;
-                $('#Joe').text(t);
-                $('#Alisha').text(t2);
-                $('#Emma').text(t3);
+            $('tr').mouseout(function() {
+
+                for (s = 0; s < setoftutors.length ; s++) {
+
+                    var name1= setoftutors[s].fields.tutor[0];
+                    var nameid = "#"+name1;
+                    var hours2 = setoftutors[s].fields.tutor[2];
+                    var usedhours =  ($("td:contains("+name1+")").length-1)*.5;
+                    hours2 = hours2 - usedhours;
+                    $(nameid).text(hours2);
+
+
+                }
+
 
             });
+
+
 
 
         }

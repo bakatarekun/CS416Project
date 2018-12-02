@@ -62,7 +62,7 @@ function togglecells2(that){
 //               })
 //           }
 
-function togglecells(targetcell,classname) {
+function togglecells(targetcell,classname,tutorname) {
 
     var isMouseDown = false;
     var count =25;
@@ -74,10 +74,11 @@ function togglecells(targetcell,classname) {
 
             if ($(this).hasClass(classname)) {
                 $(this).removeClass(classname);
+                this.innerText = "";
 
             }
             else
-            {
+            { this.innerText = tutorname;
                 $(this).addClass(classname);
 
             }
@@ -92,20 +93,24 @@ function togglecells(targetcell,classname) {
 
                 if ($(this).hasClass(classname)) {
                     $(this).removeClass(classname);
+                    this.innerText = "";
                 }
                 else
                 {
+                    this.innerText = tutorname;
                     $(this).addClass(classname);
+
                 }
             }
         })
         .on('mouseleave', function() {
+            isMouseDown = false;
             if (isMouseDown) {
 
                 $(this).removeClass(classname);
-
+                this.innerHTML = "";
             }
-            isMouseDown = false;
+
         })
     ;
 
