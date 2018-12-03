@@ -27,6 +27,7 @@
                 success: function (data) {
                     console.log(data);
                     makerows(data);
+
                 },
 
                 error: function () {
@@ -116,24 +117,20 @@
                 if(typeofemployee == 'EA')
                 {
                     togglecells("td[name="+name+"]","eacellcolor", name);
-                     console.log("ea name is "+ name);
-                     console.log("type is " + typeofemployee);
+
 
 
                 }
                 else if (typeofemployee == 'SA')
                 {
                     togglecells( "td[name=sacell]","sacellcolor",name);
-                     console.log("sa name is "+ name);
-                    console.log("type is " + typeofemployee);
+
 
 
                 }
                 else if (typeofemployee == 'Work Study')
                 {
                     togglecells( "td[name=workstudy]","wscellcolor",name);
-                     console.log("ws name is "+ name);
-                console.log("type is " + typeofemployee);
 
 
 
@@ -145,28 +142,50 @@
             listoftutors += '</div></ul>';
             $('#listoftutors').append(listoftutors);
 
-
-            var hours2=0.0;
+            {#var usedhours=0.0;#}
+            {#var hours2=0.0;#}
             $('tr').mouseout(function() {
 
                 for (s = 0; s < setoftutors.length ; s++) {
 
                     var name1= setoftutors[s].fields.tutor[0];
                     var nameid = "#"+name1;
-                    hours2 = setoftutors[s].fields.tutor[2];
+                    var hours2 = setoftutors[s].fields.tutor[2];
+                    var usedhoursfromDB = parseFloat(setoftutors[s].fields.tutor[3]);
+
                     var usedhours =  ($("td:contains("+name1+")").length-1)*.5;
+                    usedhours = usedhours+usedhoursfromDB;
                     hours2 = hours2 - usedhours;
                     $(nameid).text(hours2);
-
+                           console.log("used hours from DB " + usedhoursfromDB + 'usedhours ' + usedhours);
 
                 }
-                console.log(hours2 +" hours left");
 
             });
 
+                 {#saveUsedHours(name1,usedhours);#}
 
+        }
 
+        function saveUsedHours(name,usedhours) {
 
+             $.ajax({
+                type: "POST",
+                url: "/saveUsedHours/",
+                dataType: "json",
+                 data: {"name":name, "usedhours":usedhours},
+                contentType: "application/json",
+                success: function (data) {
+                    console.log(data);
+                  alert("data saved");
+                },
+
+                error: function () {
+
+                    alert("wasn't succesful");
+
+                }
+            });
         }
 
     </script>
@@ -220,10 +239,10 @@
 <br>
 
 <div align='center' id="here_table"></div>
-
-
-
-
+{#{% for s in usedhours %}#}
+{#    <li> {{s.tutor.firstname}}  {{s.usedhours}} </li>#}
+{##}
+{#{% endfor %}#}
 
 </body>
 </html>

@@ -73,8 +73,10 @@ def home(request):
     return render(request, 'home.html')
 
 def schedule(request):
-
-    return render(request, 'mathSchedule.html')
+    usedhours = Schedule.objects.all().filter(day='Wednesday')
+    # print(usedhours)
+    # print("test")
+    return render(request, 'mathSchedule.html',{'usedhours': usedhours})
 
 
 
@@ -86,5 +88,13 @@ def showSiBackupPlan(request):
     wednesday = SI_Session.objects.filter(day='Wednesday')
     thursday = SI_Session.objects.filter(day='Thursday')
     singleday = SI_Session.objects.filter(day='Monday').first()
+    print(monday)
     return render(request, 'showSiBackupPlan.html', {'monday': monday,'tuesday':tuesday,'wednesday': wednesday,'thursday':thursday, 'singleday':singleday, 'ti':ti})
 
+def saveUsedHours(request):
+     usedhours = request.POST.get('usedhours', 0.0)
+     Name = request.POST.get('name', "")
+     tutorusedhours = get_object_or_404(Tutor, firstname =Name)
+     tutorusedhours.usedhours = usedhours
+     tutorusedhours.save(update_fields=["usedhours"])
+     return HttpResponse('successfuly saved the hours')

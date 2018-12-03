@@ -122,9 +122,10 @@ class Tutor(models.Model):
     typeofstaff = models.CharField(max_length=50, default='',choices=type_choices)
     subject1 = models.CharField(max_length=50, default='', null=True, choices=subject_choices)
     subject2 = models.CharField(max_length=50, default='', null=True, choices=subject_choices)
+    usedhours = models.DecimalField(decimal_places=1, max_digits=3, default=0)
 
     def natural_key(self):
-        return (self.firstname, self.typeofstaff, self.hours)
+        return (self.firstname, self.typeofstaff, self.hours,self.usedhours)
 
 
     def __str__(self):
@@ -230,9 +231,10 @@ class Schedule(models.Model):
     To1 = models.CharField(max_length=50, default='', choices=time_choices)
     From2 = models.CharField(max_length=50, default='',blank=True,choices=time_choices)
     To2 = models.CharField(max_length=50, default='',blank=True,choices=time_choices)
+    usedhours = models.DecimalField(decimal_places=1, max_digits=3,default=0)
 
     def __str__(self):
-        return self.tutor.firstname + ' '+ self.tutor.lastname + ' '+ self.day
+        return self.tutor.firstname + ' '+ self.tutor.lastname + ' '+ self.day + ' ' + str(self.usedhours)
 
     class Meta:  # order by desc
         ordering = ['day', 'tutor__firstname']
