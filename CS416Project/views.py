@@ -83,11 +83,11 @@ def schedule2(request):
     return render(request, 'mathSchedule.html',{})
 
 
-def schedule(request, dayofshift):
+def schedule(request, day):
 #def schedule(request):
     #usedhours = Schedule.objects.all().filter(day='Tuesday')
-    usedhours = Schedule.objects.all().filter(day=dayofshift)
-    return render(request, 'mathSchedule.html',{'usedhours': usedhours})
+    usedhours = Schedule.objects.all().filter(day=day)
+    return render(request, 'mathSchedule.html',{'usedhours': usedhours,'day':day})
 
 def showSiBackupPlan(request):
 

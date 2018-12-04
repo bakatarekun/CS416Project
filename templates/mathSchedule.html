@@ -18,6 +18,11 @@
 
         $(document).ready(function(){
 
+            var day =  $('#dayinputhidden').val();
+              $('#daylbl').text(day);
+              if(day !='')
+              {showScheduleByDay(day);}
+
       /*
                 $.ajax({
                 type: "GET",
@@ -40,10 +45,9 @@
 
 
                  $('input[name="daybtn"]').on('click',function (){
-                var day = $(this).val();
-                 $('#daylbl').text(day);
-                showScheduleByDay(day);
-               // alert(day);
+                    var day1=  $(this).val();
+                     day1 = "/schedule/" + day1;
+                    window.location.href= day1;
 
             });
 
@@ -252,7 +256,7 @@
 <!-- body of the site -->
 <body id="top">
 {% include "header.html" %}
-
+<input type="hidden" id="dayinputhidden" value="{{ day }}" />
 {% if user.is_authenticated %}
     <br>
 <div align="center">
@@ -268,7 +272,7 @@
     <div  style="text-align: center;">
         <div style="font-size: large" align='left' id="listoftutors"></div>
         <h1>Math Tutor Schedule</h1>
-        <h3 id="daylbl"></h3>
+        <h2 id="daylbl"></h2>
     </div>
     <br>
 
