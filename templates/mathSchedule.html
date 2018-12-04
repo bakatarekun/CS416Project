@@ -18,7 +18,7 @@
 
         $(document).ready(function(){
 
-
+      /*
                 $.ajax({
                 type: "GET",
                 //use URL path to pass a parameter "days" to backend
@@ -36,16 +36,13 @@
 
                 }
             });
+            */
 
-         /*   $('input[name="daybtn"]').onclick(function () {
-                var day = $(this).val();
-                //showScheduleByDay(day);
-                alert(day);
 
-            });*/
                  $('input[name="daybtn"]').on('click',function (){
                 var day = $(this).val();
-                //showScheduleByDay(day);
+
+                showScheduleByDay(day);
                // alert(day);
 
             });
@@ -169,7 +166,8 @@
                 listoftutors += '<li>' + name + ' <span id='+ name + '></span> Hours Left--' + '<span>Avaialbe From:'+ timefrom1 + ' To:'+ timeto1 +'</span></li>'
             }
 
-            listoftutors += '</div></ul>';
+            listoftutors += '</div></ul><br>';
+             //$('#listoftutors').remove();
             $('#listoftutors').append(listoftutors);
 
             {#var usedhours=0.0;#}
