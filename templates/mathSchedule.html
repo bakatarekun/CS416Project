@@ -1,4 +1,5 @@
 {% load staticfiles %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,10 +14,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-
     <script type="text/javascript">
-
-
 
         $(document).ready(function(){
             $.ajax({
@@ -46,6 +44,7 @@
             var counter = 9;
             var rowcounter = 0;
             var content = " <table><tbody name='tb'>"
+
             content += '<div><tr>'
             for (s = 8; s < 33; s++) {
 
@@ -104,9 +103,9 @@
             $('#here_table').append(content);
 
             var hours;
-            {#var typeofemployee;#}
             var listoftutors ='<ul>'
             listoftutors += '<div>'
+
             for (s = 0; s < setoftutors.length ; s++) {
 
                 var name= setoftutors[s].fields.tutor[0];
@@ -117,23 +116,14 @@
                 if(typeofemployee == 'EA')
                 {
                     togglecells("td[name="+name+"]","eacellcolor", name);
-
-
-
                 }
                 else if (typeofemployee == 'SA')
                 {
                     togglecells( "td[name=sacell]","sacellcolor",name);
-
-
-
                 }
                 else if (typeofemployee == 'Work Study')
                 {
                     togglecells( "td[name=workstudy]","wscellcolor",name);
-
-
-
                 }
 
                 listoftutors += '<li>' + name + ' <span id='+ name + '></span> Hours Left</li>'
@@ -152,32 +142,31 @@
                     var nameid = "#"+name1;
                     var hours2 = setoftutors[s].fields.tutor[2];
                     var usedhoursfromDB = parseFloat(setoftutors[s].fields.tutor[3]);
-
                     var usedhours =  ($("td:contains("+name1+")").length-1)*.5;
+
                     usedhours = usedhours+usedhoursfromDB;
                     hours2 = hours2 - usedhours;
                     $(nameid).text(hours2);
-                           console.log("used hours from DB " + usedhoursfromDB + 'usedhours ' + usedhours);
+                    console.log("used hours from DB " + usedhoursfromDB + 'usedhours ' + usedhours);
 
                 }
 
             });
 
-                 {#saveUsedHours(name1,usedhours);#}
-
+            {#saveUsedHours(name1,usedhours);#}
         }
 
         function saveUsedHours(name,usedhours) {
 
-             $.ajax({
+            $.ajax({
                 type: "POST",
                 url: "/saveUsedHours/",
                 dataType: "json",
-                 data: {"name":name, "usedhours":usedhours},
+                data: {"name":name, "usedhours":usedhours},
                 contentType: "application/json",
                 success: function (data) {
                     console.log(data);
-                  alert("data saved");
+                    alert("data saved");
                 },
 
                 error: function () {
@@ -187,7 +176,6 @@
                 }
             });
         }
-
     </script>
 
 
@@ -220,25 +208,40 @@
             height: auto;
 
         }
-
-
-
     </style>
 </head>
 
 <!-- body of the site -->
 <body id="top">
 
-<br>
-<br>
-<div  style="text-align: center;">
-    <div style="font-size: large" align='left' id="listoftutors"></div>
-    <h1>Math Tutor Schedule</h1>
-    <h3>Monday</h3>
-</div>
-<br>
+{% include "header.html" %}
 
-<div align='center' id="here_table"></div>
+
+{% if user.is_authenticated %}
+    <br>
+    <br>
+    <div  style="text-align: center;">
+        <div style="font-size: large" align='left' id="listoftutors"></div>
+        <h1>Math Tutor Schedule</h1>
+        <h3>Monday</h3>
+    </div>
+    <br>
+
+    <div align='center' id="here_table"></div>
+
+{% else %}
+    <br>
+    <br>
+
+    <h2 class="tr" style="text-align: center">You are now logged out</h2>
+    <br>
+    <div class="container" style="text-align: center">
+
+        <a class="btn btn-primary" href="{% url 'login' %}" role="button">Login</a>
+    </div>
+{% endif %}
+
+
 {#{% for s in usedhours %}#}
 {#    <li> {{s.tutor.firstname}}  {{s.usedhours}} </li>#}
 {##}

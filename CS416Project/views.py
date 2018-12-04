@@ -72,6 +72,10 @@ def home(request):
 
     return render(request, 'home.html')
 
+def location(request):
+
+    return render(request, 'location.html')
+
 def schedule(request):
     usedhours = Schedule.objects.all().filter(day='Wednesday')
     # print(usedhours)
