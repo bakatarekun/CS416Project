@@ -22,19 +22,20 @@ def AlltutorsInfo(request):
 
     return render(request, 'tutor_info.html', {'info': info})
 
+# def allTutorNames(request, dayofshift):
 def allTutorNames(request):
     #info2 = Schedule.objects.only("tutor").filter(day= "Tuesday")
     #info3 =  Tutor.objects.all()
-   # info2_list = list(info2)
+    # info2_list = list(info2)
     #info = Schedule.objects.select_related()
     #info = Schedule.objects.all()
     #print(info2_list[1].tutor.firstname)
     # for e in info:
     #     print(e.tutor.firstname )
     #     print(e.tutor.hours)
-   # info_all = list(info) + list(info3)
+    # info_all = list(info) + list(info3)
     # info_jason = serializers.serialize('json', info, fields=('tutor.firstname'))
-   # print(info_jason)
+    # print(info_jason)
     #info={'info':"hello"}
     # response_dict = {
     #     'info': "Hello"
@@ -44,7 +45,8 @@ def allTutorNames(request):
     #info = Schedule.objects.prefetch_related(*joins).all().serialize(*joins)
 
 
-    info = Schedule.objects.filter(day="Wednesday").order_by('tutor__firstname')
+    info = Schedule.objects.filter(day="Tuesday").order_by('tutor__firstname')
+    # info = Schedule.objects.filter(day=dayofshift).order_by('tutor__firstname')
     info_jason = serializers.serialize('json', info,  use_natural_foreign_keys=True, )
     print(info_jason)
     return HttpResponse(info_jason, content_type='application/json')
@@ -58,11 +60,11 @@ def showSiBakcupbyTutor(request):
     day = request.POST.get('search2', '')
 
     if tutorName=='':
-            backupByTutors = SI_Session.objects.filter(day= day).order_by('day','sessionTime_from')
+        backupByTutors = SI_Session.objects.filter(day= day).order_by('day','sessionTime_from')
     elif  day=='':
-            backupByTutors = SI_Session.objects.filter(tutor__firstname__contains=tutorName).order_by('day','sessionTime_from')
+        backupByTutors = SI_Session.objects.filter(tutor__firstname__contains=tutorName).order_by('day','sessionTime_from')
     else:
-            backupByTutors = SI_Session.objects.filter( day=day,tutor__firstname__contains=tutorName,).order_by('sessionTime_from')
+        backupByTutors = SI_Session.objects.filter( day=day,tutor__firstname__contains=tutorName,).order_by('sessionTime_from')
 
 
     return render(request, 'tutor_info.html', {'backupByTutors': backupByTutors, 'ti': thisset})
@@ -76,10 +78,10 @@ def location(request):
 
     return render(request, 'location.html')
 
+#def schedule(request, dayofshift):
 def schedule(request):
-    usedhours = Schedule.objects.all().filter(day='Wednesday')
-    # print(usedhours)
-    # print("test")
+    usedhours = Schedule.objects.all().filter(day='Tuesday')
+    #usedhours = Schedule.objects.all().filter(day=dayofshift)
     return render(request, 'mathSchedule.html',{'usedhours': usedhours})
 
 
@@ -96,9 +98,9 @@ def showSiBackupPlan(request):
     return render(request, 'showSiBackupPlan.html', {'monday': monday,'tuesday':tuesday,'wednesday': wednesday,'thursday':thursday, 'singleday':singleday, 'ti':ti})
 
 def saveUsedHours(request):
-     usedhours = request.POST.get('usedhours', 0.0)
-     Name = request.POST.get('name', "")
-     tutorusedhours = get_object_or_404(Tutor, firstname =Name)
-     tutorusedhours.usedhours = usedhours
-     tutorusedhours.save(update_fields=["usedhours"])
-     return HttpResponse('successfuly saved the hours')
+    usedhours = request.POST.get('usedhours', 0.0)
+    Name = request.POST.get('name', "")
+    tutorusedhours = get_object_or_404(Tutor, firstname =Name)
+    tutorusedhours.usedhours = usedhours
+    tutorusedhours.save(update_fields=["usedhours"])
+    return HttpResponse('successfuly saved the hours')

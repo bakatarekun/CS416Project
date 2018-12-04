@@ -29,6 +29,8 @@ urlpatterns = [
     url(r'^login/$', auth_views.LoginView.as_view(), name='login'),
     url(r'^home$', views.home),
     url(r'^schedule$', views.schedule, name="schedule"),
+    #add url path and pass "day" variable to backend
+    # path('schedule/<day>/', views.schedule, name="schedule"),
     url(r'^location$', views.location, name="location"),
     url(r'^saveUsedHours$', views.saveUsedHours, name="saveUsedHours"),
     url(r'^showSiBackupPlanByTutor$', views.showSiBakcupbyTutor, name="showSiBakcupbyTutor"),

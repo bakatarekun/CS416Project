@@ -17,9 +17,48 @@
     <script type="text/javascript">
 
         $(document).ready(function(){
-            $.ajax({
+
+
+                $.ajax({
                 type: "GET",
+                //use URL path to pass a parameter "days" to backend
                 url: "/allTutorsNames/",
+                dataType: "json",
+                contentType: "application/json",
+                success: function (data) {
+                    console.log(data);
+                    makerows(data);
+                },
+
+                error: function () {
+
+                    alert("wasn't succesful");
+
+                }
+            });
+
+         /*   $('input[name="daybtn"]').onclick(function () {
+                var day = $(this).val();
+                //showScheduleByDay(day);
+                alert(day);
+
+            });*/
+                 $('input[name="daybtn"]').on('click',function (){
+                var day = $(this).val();
+                //showScheduleByDay(day);
+               // alert(day);
+
+            });
+
+        });
+
+        function showScheduleByDay(dayofshift) {
+               var URL="/allTutorsNames/";
+               URL = URL+ dayofshift ;
+               $.ajax({
+                type: "GET",
+                //use URL path to pass a parameter "days" to backend
+                url: URL,
                 dataType: "json",
                 contentType: "application/json",
                 success: function (data) {
@@ -35,8 +74,8 @@
                 }
             });
 
-        });
 
+        }
 
         function makerows(tutors) {
 
@@ -109,7 +148,8 @@
             for (s = 0; s < setoftutors.length ; s++) {
 
                 var name= setoftutors[s].fields.tutor[0];
-
+                var timefrom1= setoftutors[s].fields.From1;
+                var timeto1= setoftutors[s].fields.To1;
                 var typeofemployee =  setoftutors[s].fields.tutor[1];
                 hours = setoftutors[s].fields.tutor[2];
 
@@ -126,7 +166,7 @@
                     togglecells( "td[name=workstudy]","wscellcolor",name);
                 }
 
-                listoftutors += '<li>' + name + ' <span id='+ name + '></span> Hours Left</li>'
+                listoftutors += '<li>' + name + ' <span id='+ name + '></span> Hours Left--' + '<span>Avaialbe From:'+ timefrom1 + ' To:'+ timeto1 +'</span></li>'
             }
 
             listoftutors += '</div></ul>';
@@ -213,13 +253,20 @@
 
 <!-- body of the site -->
 <body id="top">
-
 {% include "header.html" %}
-
 
 {% if user.is_authenticated %}
     <br>
-    <br>
+<div align="center">
+    <input id="Mondaybtn" name="daybtn" type="button" value="Monday"/>
+    <input id="Tuesdaybtn" name="daybtn" type="button" value="Tuesday"/>
+    <input id="Wednesdaybtn"name="daybtn" type="button" value="Wednesday"/>
+    <input id="Thursdaybtn" name="daybtn" type="button" value="Thursday"/>
+    <input id="Fridaybtn" name="daybtn" type="button" value="Friday"/>
+    <input id="Saturdaybtn" name="daybtn" type="button" value="Saturday"/>
+    <input id="Sundaybtn" name="daybtn" type="button" value="Sunday"/>
+</div>
+     <br>
     <div  style="text-align: center;">
         <div style="font-size: large" align='left' id="listoftutors"></div>
         <h1>Math Tutor Schedule</h1>
