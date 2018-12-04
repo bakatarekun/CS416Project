@@ -41,7 +41,7 @@
 
                  $('input[name="daybtn"]').on('click',function (){
                 var day = $(this).val();
-
+                 $('#daylbl').text(day);
                 showScheduleByDay(day);
                // alert(day);
 
@@ -268,7 +268,7 @@
     <div  style="text-align: center;">
         <div style="font-size: large" align='left' id="listoftutors"></div>
         <h1>Math Tutor Schedule</h1>
-        <h3>Monday</h3>
+        <h3 id="daylbl"></h3>
     </div>
     <br>
 
