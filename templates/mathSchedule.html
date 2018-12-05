@@ -147,11 +147,9 @@
                 }
 
                 listoftutors += '<li><span name="spanname">'+ name + '</span><span name="spanhours" id='+ name + '></span> Hours Left--' + '<span>Avaialbe From:'+ timefrom1 + ' To:'+ timeto1 +'</span></li>'
-                {#listoftutors += '<form  type="GET" action="/saveUsedHours" ><li>' + name + '<input name="usedhours" type=hidden value="Alisha" ><input name='+ name +' type=text id='+ name + '> Hours Left--' + '<span>Avaialbe From:'+ timefrom1 + ' To:'+ timeto1 +'</span></li><input type="submit" value="submit"/></form>'#}
             }
 
             listoftutors += '</div></ul><br>';
-            //$('#listoftutors').remove();
             $('#listoftutors').append(listoftutors);
 
 
@@ -168,15 +166,9 @@
                     usedhours = usedhours+usedhoursfromDB;
                     hours2 = hours2 - usedhours;
                     $(nameid).text(hours2);
-                    {#console.log("used hours from DB " + usedhoursfromDB + 'usedhours ' + usedhours);#}
 
                 }
-
-
             });
-
-            {#    saveUsedHours(name1,usedhours);#}
-
 
         }
 
@@ -280,10 +272,6 @@
 {% endif %}
 
 <button id="ajaxbtn" onclick="" value="click here">Click here Ajax</button>
-{#{% for s in usedhours %}#}
-{#    <li> {{s.tutor.firstname}}  {{s.usedhours}} </li>#}
-{##}
-{#{% endfor %}#}
 
 </body>
 </html>

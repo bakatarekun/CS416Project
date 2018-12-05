@@ -94,9 +94,6 @@ class Timetable(models.Model):
     def __str__(self):
         return self.day
 
-
-
-
 # Create your models here.
 class People(models.Model):
     first_name = models.CharField(max_length=50)
@@ -139,9 +136,6 @@ class Tutor(models.Model):
 
 class SI_Session(models.Model):
 
-
-    # room_choices = [(str(i),rooms[i]) for i in range(0, 2)]
-    # day_choices = [(str(i),calendar.day_name[i]) for i in range(0, 7)]
     day_choices = (
         ('', '--------'),
         ('Monday', 'Monday'),
@@ -220,8 +214,7 @@ class SI_Session(models.Model):
         return 'CRN:' + self.crn +' ' + self.day + self.sessionTime_from + '-' + self.sessionTime_to + " " + self.tutor.firstname
 
     class Meta: #order by desc
-         # ordering = ['sessionTime_from']
-         ordering = ['day','sessionTime_from']
+                 ordering = ['day','sessionTime_from']
 
 
 class Schedule(models.Model):

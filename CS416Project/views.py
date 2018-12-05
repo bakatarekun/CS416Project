@@ -5,7 +5,6 @@ from django.http import HttpResponse, JsonResponse
 from django.views.decorators.csrf import csrf_protect
 
 from .models import People, SI_Session, Tutor, Schedule
-from django.contrib.auth import update_session_auth_hash
 from django.core import serializers
 # Create your views here.
 
@@ -21,33 +20,10 @@ def tutorInfo(request, tutor_id):
 def AlltutorsInfo(request):
     info = Tutor.objects.all()
 
-
     return render(request, 'tutor_info.html', {'info': info})
 
 def allTutorNames(request, day_of_shift):
-#def allTutorNames(request):
-    #info2 = Schedule.objects.only("tutor").filter(day= "Tuesday")
-    #info3 =  Tutor.objects.all()
-    # info2_list = list(info2)
-    #info = Schedule.objects.select_related()
-    #info = Schedule.objects.all()
-    #print(info2_list[1].tutor.firstname)
-    # for e in info:
-    #     print(e.tutor.firstname )
-    #     print(e.tutor.hours)
-    # info_all = list(info) + list(info3)
-    # info_jason = serializers.serialize('json', info, fields=('tutor.firstname'))
-    # print(info_jason)
-    #info={'info':"hello"}
-    # response_dict = {
-    #     'info': "Hello"
-    # }
-    # return HttpResponse(simplejson.dumps(response_dict),mimetype='application/json')
-    #return JsonResponse(info, safe=False)
-    #info = Schedule.objects.prefetch_related(*joins).all().serialize(*joins)
 
-
-    #info = Schedule.objects.filter(day="Tuesday").order_by('tutor__firstname')
     info = Schedule.objects.filter(day=day_of_shift).order_by('tutor__firstname')
     info_jason = serializers.serialize('json', info,  use_natural_foreign_keys=True, )
     print(info_jason)
@@ -86,8 +62,6 @@ def schedule2(request):
 
 
 def schedule(request, day):
-#def schedule(request):
-    #usedhours = Schedule.objects.all().filter(day='Tuesday')
     usedhours = Schedule.objects.all().filter(day=day)
     return render(request, 'mathSchedule.html',{'usedhours': usedhours,'day':day})
 
@@ -106,8 +80,6 @@ def showSiBackupPlan(request):
 def saveUsedHours(request):
     usedhours = request.GET.get('usedhours', 0.0)
     Name = request.GET.get('name', "")
-    # usedhours = request.GET.get('name', 0.0)
-    # Name = request.GET.get('usedhours', "")
     tutorusedhours = get_object_or_404(Tutor, firstname =Name)
     print(tutorusedhours)
     tutorusedhours.usedhours = usedhours
