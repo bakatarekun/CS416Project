@@ -23,26 +23,6 @@
             if(day !='')
             {showScheduleByDay(day);}
 
-            /*
-                      $.ajax({
-                      type: "GET",
-                      //use URL path to pass a parameter "days" to backend
-                      url: "/allTutorsNames/",
-                      dataType: "json",
-                      contentType: "application/json",
-                      success: function (data) {
-                          console.log(data);
-                          makerows(data);
-                      },
-
-                      error: function () {
-
-                          alert("wasn't succesful");
-
-                      }
-                  });
-                  */
-
 
             $('input[name="daybtn"]').on('click',function (){
                 var day1=  $(this).val();
