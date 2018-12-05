@@ -145,7 +145,7 @@
                     togglecells( "td[name=workstudy]","wscellcolor",name);
                 }
                 name= name+" ";
-                listoftutors += '<li><span name="spanname">'+ name + '</span><span name="spanhours" id='+ name + '></span> Hours Left--' + '<span>Avaialbe From:'+ timefrom1 + ' To:'+ timeto1 +'</span></li>'
+                listoftutors += '<li style="font-size: x-large"><span name="spanname">'+ name + '</span><span name="spanhours" id='+ name + '></span> Hours Left--' + '<span>Avaialbe From:'+ timefrom1 + ' To:'+ timeto1 +'</span></li>'
             }
 
             listoftutors += '</div></ul><br>';
@@ -164,16 +164,16 @@
                     usedhours =  ($("td:contains("+name1+")").length-1)*.5;
                     usedhours = usedhours+usedhoursfromDB;
                     hours2 = hours2 - usedhours;
-
-                }
-                  /*  if(hours2<=0)
+                    if(hours2<=0)
                     {
                         $(nameid).css({"color":"red"});
                     }
                     else {
                          $(nameid).css({"color":"black"});
-                    }*/
+                    }
                 $(nameid).text(hours2);
+
+                }
 
 
             });
