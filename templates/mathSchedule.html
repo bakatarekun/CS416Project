@@ -164,9 +164,18 @@
                     usedhours =  ($("td:contains("+name1+")").length-1)*.5;
                     usedhours = usedhours+usedhoursfromDB;
                     hours2 = hours2 - usedhours;
-                    $(nameid).text(hours2);
 
                 }
+                  /*  if(hours2<=0)
+                    {
+                        $(nameid).css({"color":"red"});
+                    }
+                    else {
+                         $(nameid).css({"color":"black"});
+                    }*/
+                $(nameid).text(hours2);
+
+
             });
 
         }
