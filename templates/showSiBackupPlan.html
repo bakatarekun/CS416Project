@@ -41,7 +41,7 @@
             var search_word = $("#search").val();
             $.ajax({
                 type: "POST",
-                url: {% url 'showSiBakcupbyTutor' %},
+                url: {% url 'showSiBackupbyTutor' %},
                 data: search_word,
                 success: function(result){
                     alert("Success");
@@ -86,7 +86,7 @@
     <h3 >Math SI Backup Plan</h3>
 
     <div align=right style="padding-right: 10%">
-        <form action="{% url 'showSiBakcupbyTutor' %}" method="post">
+        <form action="{% url 'showSiBackupbyTutor' %}" method="post">
             {% csrf_token %}
             Name:  <select class="form-control" name="search">
             <option value="">---------</option>
@@ -133,7 +133,6 @@
                                               data-content="{{day.tutor.firstname}} {{day.tutor.lastname}}: {{day.tutor.type}}
                      <br>Subject1: {{day.tutor.subject1}}
                      <br>Subject2: {{day.tutor.subject2}}" >{{day.tutor.firstname}}</a> </td>
-                    {#              <td name="sileader"> <a href="/{{ day.tutor.id }}/tutor" data-toggle="tooltip" title="{{day.tutor.subject1}} Tutor">{{day.tutor.firstname}}</a>  </td>#}
                     <td name="backup"> {{day.backup}}  </td>
                     <td> {{day.room}}  </td>
                     <td> {{day.sessionTime_from}} </td>

@@ -30,7 +30,7 @@ urlpatterns = [
     path('allTutorsNames/<day_of_shift>', views.allTutorNames, name='allTutorNames'),
     url(r'^location$', views.location, name="location"),
     url(r'^saveUsedHours$', views.saveUsedHours, name="saveUsedHours"),
-    url(r'^showSiBackupPlanByTutor$', views.showSiBakcupbyTutor, name="showSiBakcupbyTutor"),
+    url(r'^showSiBackupPlanByTutor$', views.showSiBackupbyTutor, name="showSiBackupbyTutor"),
     url(r'^(?P<tutor_id>[0-9]+)/tutor$', views.tutorInfo, name="tutor"),
     url(r'^tutors/$', auth_views.LoginView.as_view(), name='tutors'),
     path('CS416Project/', include('django.contrib.auth.urls')),

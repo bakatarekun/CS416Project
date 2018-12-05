@@ -31,9 +31,8 @@ def allTutorNames(request, day_of_shift):
 
 
 
-def showSiBakcupbyTutor(request):
+def showSiBackupbyTutor(request):
 
-    thisset = {"apple", "banana", "cherry"}
     tutorName = request.POST.get('search','')
     day = request.POST.get('search2', '')
 
@@ -45,7 +44,7 @@ def showSiBakcupbyTutor(request):
         backupByTutors = SI_Session.objects.filter( day=day,tutor__firstname__contains=tutorName,).order_by('sessionTime_from')
 
 
-    return render(request, 'tutor_info.html', {'backupByTutors': backupByTutors, 'ti': thisset})
+    return render(request, 'tutor_info.html', {'backupByTutors': backupByTutors,'tutorName': tutorName})
 
 
 def home(request):

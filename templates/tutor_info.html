@@ -60,6 +60,7 @@
 <br>
 <div class="table-responsive">
     <table align="center" >
+     {% if backupByTutors %}
         <tr >
 
             <td>SI Leader</td>
@@ -74,24 +75,29 @@
             <td>Floor</td>
 
         </tr>
-        {% for backupByTutor in backupByTutors %}
 
-            <tr>
-                <td name="sileader"> <a   data-html="true" class="popup" href="#" data-toggle="popover" title="Tutor Info"
-                                          data-content="{{backupByTutor.tutor.firstname}} {{backupByTutor.tutor.lastname}}: {{backupByTutor.tutor.type}}
+            {% for backupByTutor in backupByTutors %}
+
+                <tr>
+                    <td name="sileader"> <a   data-html="true" class="popup" href="#" data-toggle="popover" title="Tutor Info"
+                                              data-content="{{backupByTutor.tutor.firstname}} {{backupByTutor.tutor.lastname}}: {{backupByTutor.tutor.type}}
                      <br>Subject1: {{backupByTutor.tutor.subject1}}
                      <br>Subject2: {{backupByTutor.tutor.subject2}}" >{{backupByTutor.tutor.firstname}}</a> </td>
-                <td name="backup"> {{backupByTutor.backup}}  </td>
-                <td> {{backupByTutor.day}}  </td>
-                <td> {{backupByTutor.room}}  </td>
-                <td> {{backupByTutor.sessionTime_from}} </td>
-                <td> {{backupByTutor.sessionTime_to}} </td>
-                <td> {{backupByTutor.professor}} </td>
-                <td> {{backupByTutor.crn}} </td>
-                <td> {{backupByTutor.notes}} </td>
-                <td> {{backupByTutor.floor}} </td>
-            </tr>
-        {%  endfor %}
+                    <td name="backup"> {{backupByTutor.backup}}  </td>
+                    <td> {{backupByTutor.day}}  </td>
+                    <td> {{backupByTutor.room}}  </td>
+                    <td> {{backupByTutor.sessionTime_from}} </td>
+                    <td> {{backupByTutor.sessionTime_to}} </td>
+                    <td> {{backupByTutor.professor}} </td>
+                    <td> {{backupByTutor.crn}} </td>
+                    <td> {{backupByTutor.notes}} </td>
+                    <td> {{backupByTutor.floor}} </td>
+                </tr>
+            {%  endfor %}
+
+        {% else %}
+            <h1 style="text-align: center">{{ tutorName }} doesn't work on this day</h1>
+        {% endif %}
 
     </table>
 </div>
