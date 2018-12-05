@@ -61,7 +61,7 @@
             var setoftutors = tutors;
             var counter = 9;
             var rowcounter = 0;
-            var content = " <table><tbody name='tb'>"
+            var content = "<div class='table-responsive'><table id='tbl' class='table table-bordered'><tbody name='tb'>"
 
             content += '<div><tr>'
             for (s = 8; s < 33; s++) {
@@ -117,12 +117,12 @@
                 content += '</tr>';
             }
 
-            content += "<tbody>" + "</table>"
+            content += "<tbody>" + "</table></div>"
             $('#here_table').append(content);
 
             var hours;
             var listoftutors ='<ul>'
-            listoftutors += '<div>'
+            listoftutors += '<div style="position: sticky;"><h3>Tutor\'s Hours and Availabilities</h3>'
 
             for (s = 0; s < setoftutors.length ; s++) {
 
@@ -144,7 +144,7 @@
                 {
                     togglecells( "td[name=workstudy]","wscellcolor",name);
                 }
-
+                name= name+" ";
                 listoftutors += '<li><span name="spanname">'+ name + '</span><span name="spanhours" id='+ name + '></span> Hours Left--' + '<span>Avaialbe From:'+ timefrom1 + ' To:'+ timeto1 +'</span></li>'
             }
 
@@ -239,18 +239,24 @@
 <input type="hidden" id="dayinputhidden" value="{{ day }}" />
 {% if user.is_authenticated %}
     <br>
-    <div align="center">
-        <input id="Mondaybtn" name="daybtn" type="button" value="Monday"/>
-        <input id="Tuesdaybtn" name="daybtn" type="button" value="Tuesday"/>
-        <input id="Wednesdaybtn"name="daybtn" type="button" value="Wednesday"/>
-        <input id="Thursdaybtn" name="daybtn" type="button" value="Thursday"/>
-        <input id="Fridaybtn" name="daybtn" type="button" value="Friday"/>
-        <input id="Saturdaybtn" name="daybtn" type="button" value="Saturday"/>
-        <input id="Sundaybtn" name="daybtn" type="button" value="Sunday"/>
+    <div class="row">
+
+        <div class="col-sm-5" id="listoftutors"></div>
+        <div  class="col-sm-7" id="daybtns" align="right" >
+
+            <input class="btn btn-primary" id="Mondaybtn" name="daybtn" type="button" value="Monday"/>
+            <input class="btn btn-primary" id="Tuesdaybtn" name="daybtn" type="button" value="Tuesday"/>
+            <input class="btn btn-primary" id="Wednesdaybtn"name="daybtn" type="button" value="Wednesday"/>
+            <input class="btn btn-primary" id="Thursdaybtn" name="daybtn" type="button" value="Thursday"/>
+            <input class="btn btn-primary" id="Fridaybtn" name="daybtn" type="button" value="Friday"/>
+            <input class="btn btn-primary" id="Saturdaybtn" name="daybtn" type="button" value="Saturday"/>
+            <input class="btn btn-primary" id="Sundaybtn" name="daybtn" type="button" value="Sunday"/>
+        </div>
+
     </div>
-    <br>
+
+
     <div  style="text-align: center;">
-        <div style="font-size: large" align='left' id="listoftutors"></div>
         <h1>Math Tutor Schedule</h1>
         <h2 id="daylbl"></h2>
     </div>
