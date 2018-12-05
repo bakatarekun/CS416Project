@@ -2,6 +2,8 @@ import simplejson as simplejson
 from django.core.serializers import json
 from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse, JsonResponse
+from django.views.decorators.csrf import csrf_protect
+
 from .models import People, SI_Session, Tutor, Schedule
 from django.contrib.auth import update_session_auth_hash
 from django.core import serializers
@@ -100,10 +102,14 @@ def showSiBackupPlan(request):
     print(monday)
     return render(request, 'showSiBackupPlan.html', {'monday': monday,'tuesday':tuesday,'wednesday': wednesday,'thursday':thursday, 'singleday':singleday, 'ti':ti})
 
+@csrf_protect
 def saveUsedHours(request):
-    usedhours = request.POST.get('usedhours', 0.0)
-    Name = request.POST.get('name', "")
+    usedhours = request.GET.get('usedhours', 0.0)
+    Name = request.GET.get('name', "")
+    # usedhours = request.GET.get('name', 0.0)
+    # Name = request.GET.get('usedhours', "")
     tutorusedhours = get_object_or_404(Tutor, firstname =Name)
+    print(tutorusedhours)
     tutorusedhours.usedhours = usedhours
     tutorusedhours.save(update_fields=["usedhours"])
     return HttpResponse('successfuly saved the hours')
