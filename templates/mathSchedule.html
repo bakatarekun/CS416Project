@@ -117,7 +117,7 @@
                 content += '</tr>';
             }
 
-            content += "<tbody>" + "</table></div>"
+            content += "<tbody></table></div><br><input   style=\"margin-left:30px !important;\" class=\"btn btn-primary col-sm-2\" type=\"button\" onclick=\"getUsedHoursAndName()\" value=\"Save\">"
             $('#here_table').append(content);
 
             var hours;
@@ -144,8 +144,8 @@
                 {
                     togglecells( "td[name=workstudy]","wscellcolor",name);
                 }
-                name= name+" ";
-                listoftutors += '<li style="font-size: x-large"><span name="spanname">'+ name + '</span><span name="spanhours" id='+ name + '></span> Hours Left--' + '<span>Avaialbe From:'+ timefrom1 + ' To:'+ timeto1 +'</span></li>'
+
+                listoftutors += '<li style="font-size: x-large"><input type="hidden" name="usedHours" id=' + name+'input'+'><span name="spanname">'+ name + '</span><span style="padding-left:5px" name="spanhours" id='+ name + '></span> Hours Left--' + '<span>Avaialbe From:'+ timefrom1 + ' To:'+ timeto1 +'</span></li>'
             }
 
             listoftutors += '</div></ul><br>';
@@ -154,11 +154,13 @@
 
             $('tr').mouseleave(function() {
                 var name1;
+
                 var usedhours;
                 for (s = 0; s < setoftutors.length ; s++) {
 
                     name1 = setoftutors[s].fields.tutor[0];
                     var  nameid = "#"+name1;
+                    var nameinput="#"+name1+"input";
                     var hours2 = setoftutors[s].fields.tutor[2];
                     var usedhoursfromDB = parseFloat(setoftutors[s].fields.tutor[3]);
                     usedhours =  ($("td:contains("+name1+")").length-1)*.5;
@@ -172,7 +174,7 @@
                          $(nameid).css({"color":"black"});
                     }
                 $(nameid).text(hours2);
-
+                $(nameinput).val(usedhours);
                 }
 
 
@@ -181,31 +183,43 @@
         }
 
         function saveUsedHours(name,usedhours) {
-
+           var result=true;
             $.ajax({
                 type: "GET",
                 url: "/saveUsedHours",
                 dataType: "text",
                 data: {"name":name, "usedhours":usedhours},
                 contentType: "application/json",
-                success: function (data) {
-                    console.log(data);
-                    alert("data saved");
+                success: function () {
+
+
                 },
 
                 error: function () {
 
                     alert("wasn't succesful");
+                    result =false;
 
                 }
             });
+            return result;
         }
 
         function getUsedHoursAndName() {
-
-            var hourslist=  $('[name="spanhours"]').text();
-            var namelist = $('[name="spanname"]').text();
-
+            var usedHours =[];
+            var result;
+           $("input[name='usedHours']").each(function (index)
+           {
+               usedHours[index] = $(this).val();
+           });
+            var namelist = $('span[name="spanname"]');
+            for(i =0;i<namelist.length;i++) {
+               var n = namelist[i].innerHTML;
+               var h = usedHours[i];
+              result = saveUsedHours(n,h);
+            }
+            if(result)
+            {alert("hours saved");}
         }
     </script>
 
@@ -251,7 +265,7 @@
     <div class="row">
 
         <div class="col-sm-5" id="listoftutors"></div>
-        <div  class="col-sm-7" id="daybtns" align="right" >
+        <div  class="col-sm-7" id="daybtns" align="right">
 
             <input class="btn btn-primary" id="Mondaybtn" name="daybtn" type="button" value="Monday"/>
             <input class="btn btn-primary" id="Tuesdaybtn" name="daybtn" type="button" value="Tuesday"/>
@@ -265,13 +279,16 @@
     </div>
 
 
+
     <div  style="text-align: center;">
         <h1>Math Tutor Schedule</h1>
         <h2 id="daylbl"></h2>
     </div>
     <br>
 
-    <div align='center' id="here_table"></div>
+    <div align='center' id="here_table"> </div>
+
+
 
 {% else %}
     <br>

@@ -46,11 +46,11 @@ function togglecells(targetcell,classname,tutorname) {
 
             if ($(this).hasClass(classname)) {
                 $(this).removeClass(classname);
-                this.innerText = "";
+                this.innerHTML = "";
 
             }
             else
-            {   this.innerText = tutorname;
+            {   this.innerHTML = tutorname;
                 $(this).addClass(classname);
 
             }
@@ -65,11 +65,11 @@ function togglecells(targetcell,classname,tutorname) {
 
                 if ($(this).hasClass(classname)) {
                     $(this).removeClass(classname);
-                    this.innerText = "";
+                    this.innerHTML = "";
                 }
                 else
                 {
-                    this.innerText = tutorname;
+                    this.innerHTML = tutorname;
                     $(this).addClass(classname);
 
                 }
@@ -80,7 +80,7 @@ function togglecells(targetcell,classname,tutorname) {
             if (isMouseDown) {
 
                 $(this).removeClass(classname);
-                this.innerText = "";
+                this.innerHTML = "";
             }
 
         })

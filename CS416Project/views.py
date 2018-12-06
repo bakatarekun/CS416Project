@@ -79,6 +79,7 @@ def showSiBackupPlan(request):
 def saveUsedHours(request):
     usedhours = request.GET.get('usedhours', 0.0)
     Name = request.GET.get('name', "")
+    Name = Name.strip()
     tutorusedhours = get_object_or_404(Tutor, firstname =Name)
     print(tutorusedhours)
     tutorusedhours.usedhours = usedhours
