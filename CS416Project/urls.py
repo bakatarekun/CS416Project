@@ -35,5 +35,5 @@ urlpatterns = [
     url(r'^(?P<tutor_id>[0-9]+)/tutor$', views.tutorInfo, name="tutor"),
     url(r'^tutors/$', auth_views.LoginView.as_view(), name='tutors'),
     path('CS416Project/', include('django.contrib.auth.urls')),
-    url(r'^showSiBackupPlan/$', views.showSiBackupPlan, name='showSiBackupPlan'),
+    # url(r'^showSiBackupPlan/$', views.showSiBackupPlan, name='showSiBackupPlan'),
 ]
