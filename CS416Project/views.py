@@ -64,16 +64,20 @@ def schedule(request, day):
     usedhours = Schedule.objects.all().filter(day=day)
     return render(request, 'mathSchedule.html',{'usedhours': usedhours,'day':day})
 
-def showSiBackupPlan(request):
+def showSiBackupPlan(request, day):
 
     ti = Tutor.objects.all()
-    monday = SI_Session.objects.filter(day='Monday')
-    tuesday = SI_Session.objects.filter(day='Tuesday')
-    wednesday = SI_Session.objects.filter(day='Wednesday')
-    thursday = SI_Session.objects.filter(day='Thursday')
-    singleday = SI_Session.objects.filter(day='Monday').first()
-    print(monday)
-    return render(request, 'showSiBackupPlan.html', {'monday': monday,'tuesday':tuesday,'wednesday': wednesday,'thursday':thursday, 'singleday':singleday, 'ti':ti})
+    if day == 'alldays':
+        backupPlans = SI_Session.objects.all().order_by('day','sessionTime_from')
+    else:
+        backupPlans = SI_Session.objects.filter(day=day)
+    # tuesday = SI_Session.objects.filter(day='Tuesday')
+    # wednesday = SI_Session.objects.filter(day='Wednesday')
+    # thursday = SI_Session.objects.filter(day='Thursday')
+    # singleday = SI_Session.objects.filter(day='Monday').first()
+    # print(monday)
+    # return render(request, 'showSiBackupPlan.html', {'monday': monday,'tuesday':tuesday,'wednesday': wednesday,'thursday':thursday, 'singleday':singleday, 'ti':ti})
+    return render(request, 'showSiBackupPlan.html', {'backupPlans': backupPlans,'ti':ti})
 
 @csrf_protect
 def saveUsedHours(request):
