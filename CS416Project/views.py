@@ -71,12 +71,6 @@ def showSiBackupPlan(request, day):
         backupPlans = SI_Session.objects.all().order_by('day','sessionTime_from')
     else:
         backupPlans = SI_Session.objects.filter(day=day)
-    # tuesday = SI_Session.objects.filter(day='Tuesday')
-    # wednesday = SI_Session.objects.filter(day='Wednesday')
-    # thursday = SI_Session.objects.filter(day='Thursday')
-    # singleday = SI_Session.objects.filter(day='Monday').first()
-    # print(monday)
-    # return render(request, 'showSiBackupPlan.html', {'monday': monday,'tuesday':tuesday,'wednesday': wednesday,'thursday':thursday, 'singleday':singleday, 'ti':ti})
     return render(request, 'showSiBackupPlan.html', {'backupPlans': backupPlans,'ti':ti})
 
 @csrf_protect
