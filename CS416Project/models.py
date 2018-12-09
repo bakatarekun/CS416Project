@@ -118,7 +118,7 @@ class Tutor(models.Model):
     hours = models.IntegerField(default=0)
     typeofstaff = models.CharField(max_length=50, default='',choices=type_choices)
     subject1 = models.CharField(max_length=50, default='', null=True, choices=subject_choices)
-    subject2 = models.CharField(max_length=50, default='', null=True, choices=subject_choices)
+    subject2 = models.CharField(max_length=50, default='', null=True, blank=True,choices=subject_choices)
     usedhours = models.DecimalField(decimal_places=1, max_digits=3, default=0)
 
     def natural_key(self):

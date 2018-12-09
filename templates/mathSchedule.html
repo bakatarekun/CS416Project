@@ -98,18 +98,7 @@
                     else
                     {
                         var name = setoftutors[i].fields.tutor[0];
-                        if(setoftutors[i].fields.tutor[1] == 'EA')
-                        {
-                            content += '<td class="tdformat" name='+name + ' >' + '&nbsp' + '</td>'
-                        }
-                        else if (setoftutors[i].fields.tutor[1] == 'SA')
-                        {
-                            content += '<td class="tdformat"  name="sacell" >' + '&nbsp' + '</td>'
-                        }
-                        else
-                        {
-                            content += '<td class="tdformat"  name="workstudy" >' + '&nbsp' + '</td>'
-                        }
+                        content += '<td class="tdformat" name='+name + ' >' + '&nbsp' + '</td>'
 
                     }
 
@@ -138,11 +127,15 @@
                 }
                 else if (typeofemployee == 'SA')
                 {
-                    togglecells( "td[name=sacell]","sacellcolor",name);
+                    togglecells("td[name="+name+"]","sacellcolor",name);
                 }
                 else if (typeofemployee == 'Work Study')
                 {
-                    togglecells( "td[name=workstudy]","wscellcolor",name);
+                    togglecells("td[name="+name+"]","wscellcolor",name);
+                }
+                else
+                {
+                    togglecells("td[name="+name+"]","vtcellcolor",name);
                 }
 
                 listoftutors += '<li style="font-size: x-large"><input type="hidden" name="usedHours" id=' + name+'input'+'><span name="spanname">'+ name + '</span><span style="padding-left:5px" name="spanhours" id='+ name + '></span> Hours Left--' + '<span>Avaialbe From:'+ timefrom1 + ' To:'+ timeto1 +'</span></li>'
@@ -171,10 +164,10 @@
                         $(nameid).css({"color":"red"});
                     }
                     else {
-                         $(nameid).css({"color":"black"});
+                        $(nameid).css({"color":"black"});
                     }
-                $(nameid).text(hours2);
-                $(nameinput).val(usedhours);
+                    $(nameid).text(hours2);
+                    $(nameinput).val(usedhours);
                 }
 
 
@@ -183,7 +176,7 @@
         }
 
         function saveUsedHours(name,usedhours) {
-           var result=true;
+            var result=true;
             $.ajax({
                 type: "GET",
                 url: "/saveUsedHours",
@@ -208,15 +201,15 @@
         function getUsedHoursAndName() {
             var usedHours =[];
             var result;
-           $("input[name='usedHours']").each(function (index)
-           {
-               usedHours[index] = $(this).val();
-           });
+            $("input[name='usedHours']").each(function (index)
+            {
+                usedHours[index] = $(this).val();
+            });
             var namelist = $('span[name="spanname"]');
             for(i =0;i<namelist.length;i++) {
-               var n = namelist[i].innerHTML;
-               var h = usedHours[i];
-              result = saveUsedHours(n,h);
+                var n = namelist[i].innerHTML;
+                var h = usedHours[i];
+                result = saveUsedHours(n,h);
             }
             if(result)
             {alert("hours saved");}
@@ -242,6 +235,9 @@
         }
         .wscellcolor {
             background: yellow;
+        }
+        .vtcellcolor {
+            background: #fd25ff;
         }
         .tdformat{
             font-size: x-large;
