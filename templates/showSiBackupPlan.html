@@ -64,7 +64,6 @@
             width :auto;
             height:auto;
             font-size: large;
-        {#padding:5px;#}
             text-align: center;
         }
         .popup{
@@ -105,15 +104,14 @@
             <option  name="search2" value="Thursday">Thursday</option>
         </select>
 
-            <input class="btn btn-primary" type="submit" value="submit">
+            <input class="btn btn-primary" type="submit" value="Search">
         </form>
         <h1>{{ tutorInfo }}</h1>
     </div>
 
-    <br>
-    <div class="table-responsive">
-       <br>
+  <br>
 
+    <div class="table-responsive">
         <table align="center" >
             <tr >
                 <td>SI Leader</td>
@@ -136,7 +134,7 @@
                      <br>Subject1: {{day.tutor.subject1}}
                      <br>Subject2: {{day.tutor.subject2}}" >{{day.tutor.firstname}}</a> </td>
                     <td name="backup"> {{day.backup}}  </td>
-                        <td> {{day.day}}  </td>
+                    <td> {{day.day}}  </td>
                     <td> {{day.room}}  </td>
                     <td> {{day.sessionTime_from}} </td>
                     <td> {{day.sessionTime_to}} </td>
@@ -148,8 +146,8 @@
             {% endfor %}
 
 
-         </table>
-  </div>
+        </table>
+    </div>
 
 
 {% else %}

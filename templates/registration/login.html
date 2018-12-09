@@ -1,4 +1,7 @@
 {% extends 'base.html' %}
+{% block head %}
+    <title>Login</title>
+{% endblock %}
 
 {% block body %}
     {% load static %}
@@ -9,16 +12,20 @@
             <h2 style="color: black">Hi {{ user.username }}!</h2>
             <h1>You're now logged in</h1>
             <br>
-            <h2> <a href="/showSiBackupPlan/">View SI Backup Plan</a></h2>
+            <div align="center">
+                <ul style="text-align: left;width:max-content">
+                    <li><a  href="/showSiBackupPlan/alldays">View SI Backup Plan</a></li>
+                    <li><a  href="/schedule2">Tutor Shcedule</a></li>
+                </ul>
+            </div>
         </div>
     {% else %}
 
         <div style="text-align: center;">
             <h1  class="tr">Welcome! You can login here</h1>
-
         </div>
-        <div class="container">
 
+        <div class="container">
             <div class="container" style=" text-align: center ">
 
                 <form method="post">
@@ -27,7 +34,6 @@
                     {{ form.as_p }}
                     <button type="submit" class="btn btn-primary" >Submit</button>
                 </form>
-
 
             </div>
         </div>
