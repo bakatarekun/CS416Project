@@ -218,19 +218,19 @@
             {alert("hours saved");}
         }
 
-        function saveSchedule(tutorname) {
+        function saveSchedule(tutorname,day) {
             var schedule = [];
             var tutorname2 = tutorname
             $("td[name="+ tutorname2+ "]").each(function (index)
             {
                 schedule[index] = $(this).text();
             });
-            alert(schedule);
+
             $.ajax({
                 type: "GET",
                 url: "/saveSchedule",
                 dataType: "text",
-                data: {"schedule":schedule,"tutorname": tutorname2},
+                data: {"schedule":schedule,"tutorname": tutorname2, "day":day},
                 contentType: "application/json",
                 success: function () {
 
@@ -246,9 +246,12 @@
         }
 
          function saveAllSchedule() {
-          saveSchedule('Ken');
-          saveSchedule('Joe');
-          saveSchedule('Mary');
+            var day =  $('#dayinputhidden').val();
+          saveSchedule('Ken',day);
+          saveSchedule('Joe',day);
+          saveSchedule('Mary',day);
+          saveSchedule('Alisha',day);
+          // saveSchedule('Sean');
 
          }
     </script>

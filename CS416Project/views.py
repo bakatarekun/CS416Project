@@ -26,7 +26,7 @@ def allTutorNames(request, day_of_shift):
 
     info = Schedule.objects.filter(day=day_of_shift).order_by('tutor__firstname')
     info_jason = serializers.serialize('json', info,  use_natural_foreign_keys=True, )
-    print(info_jason)
+    # print(info_jason)
     return HttpResponse(info_jason, content_type='application/json')
 
 
@@ -62,9 +62,24 @@ def schedule2(request):
 
 def schedule(request, day):
     usedhours = Schedule.objects.all().filter(day=day)
-    schedule = Timetable.objects.all()
-    print("Hello")
-    print(schedule)
+    # for t in usedhours:
+    #     timetable = Timetable(tutor_id=t.tutor_id, day=t.day, t0930=t.tutor.firstname)
+    #     timetable.save()
+
+    for t in usedhours:
+        # existingtimetable= get_object_or_404(Timetable, tutor_id=t.tutor_id)
+        existingtimetable = Timetable.objects.filter(day=day)
+        # existingtimetable = existingtimetable.objects.filter(tutor_id=t.tutor_id)
+        existingtimetable = get_object_or_404(existingtimetable, tutor_id=t.tutor_id)
+        # if len(existingtimetable) == 0:
+        if existingtimetable is None:
+            timetable = Timetable(tutor_id=t.tutor_id, day=t.day, t0930=t.tutor.firstname)
+            timetable.save()
+    # timetable= Timetable(tutor_id =usedhours[0].tutor_id, day= usedhours[0].day,t0930=usedhours[0].tutor.firstname)
+    # timetable.save()
+    schedule = Timetable.objects.all().filter(day=day)
+    print(usedhours[0].From1)
+    # print(schedule)
     return render(request, 'mathSchedule.html',{'usedhours': usedhours,'day':day, 'schedule': schedule})
 
 def showSiBackupPlan(request, day):
@@ -91,8 +106,9 @@ def saveUsedHours(request):
 def saveSchedule(request):
     schedule = request.GET.getlist('schedule[]')
     tutorname = request.GET.get('tutorname', "")
+    day = request.GET.get('day', "")
     tutorname = tutorname.strip()
-    timetable = get_object_or_404(Timetable, tutor__firstname =tutorname)
+    timetable = get_object_or_404(Timetable, tutor__firstname =tutorname, day=day)
     print(timetable)
     print(schedule)
     timetable.t0930 = schedule[0]
