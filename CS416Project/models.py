@@ -63,48 +63,6 @@ time_choices = (
 
 )
 
-class Timetable(models.Model):
-
-
-    day = models.CharField(max_length=50, default='',choices=day_choices)
-    t0930 = models.BooleanField(null=True)
-    t1000 = models.BooleanField(null=True)
-    t1030 = models.BooleanField(null=True)
-    t1100 = models.BooleanField(null=True)
-    t1130 = models.BooleanField(null=True)
-    t1200 = models.BooleanField(null=True)
-    t1300 = models.BooleanField(null=True)
-    t1330 = models.BooleanField(null=True)
-    t1400 = models.BooleanField(null=True)
-    t1430 = models.BooleanField(null=True)
-    t1500 = models.BooleanField(null=True)
-    t1530 = models.BooleanField(null=True)
-    t1600 = models.BooleanField(null=True)
-    t1630 = models.BooleanField(null=True)
-    t1700 = models.BooleanField(null=True)
-    t1730 = models.BooleanField(null=True)
-    t1800 = models.BooleanField(null=True)
-    t1830 = models.BooleanField(null=True)
-    t1900 = models.BooleanField(null=True)
-    t1930 = models.BooleanField(null=True)
-    t2000 = models.BooleanField(null=True)
-    t2030 = models.BooleanField(null=True)
-    t2100 = models.BooleanField(null=True)
-
-    def __str__(self):
-        return self.day
-
-# Create your models here.
-class People(models.Model):
-    first_name = models.CharField(max_length=50)
-    last_name = models.CharField(max_length=50)
-
-    age = models.IntegerField()
-
-    def __str__(self):
-        return "{self.first_name}"
-
-
 class TutorManager(models.Manager):
     def get_by_natural_key(self, firstname, lastname):
         return self.get(firstname=firstname, lastname=lastname)
@@ -131,6 +89,52 @@ class Tutor(models.Model):
     class Meta: #order by desc
          ordering = ['firstname']
          unique_together = (('firstname', 'lastname'),)
+
+
+class Timetable(models.Model):
+
+    tutor = models.ForeignKey(Tutor, on_delete=models.SET_NULL, null=True)
+    day = models.CharField(max_length=50, default='',choices=day_choices)
+    t0930 = models.CharField(max_length=10, blank=True, default='', null=True)
+    t1000 =models.CharField(max_length=10, blank=True, default='', null=True )
+    t1030 = models.CharField(max_length=10, blank=True, default='', null=True)
+    t1100 = models.CharField(max_length=10, blank=True, default='', null=True)
+    t1130 = models.CharField(max_length=10, blank=True, default='', null=True)
+    t1200 = models.CharField(max_length=10, blank=True, default='', null=True)
+    t1230 = models.CharField(max_length=10, blank=True, default='', null=True)
+    t1300 = models.CharField(max_length=10, blank=True, default='', null=True)
+    t1330 = models.CharField(max_length=10, blank=True, default='', null=True)
+    t1400 =models.CharField(max_length=10, blank=True, default='', null=True)
+    t1430 =models.CharField(max_length=10, blank=True, default='', null=True)
+    t1500 = models.CharField(max_length=10, blank=True, default='', null=True)
+    t1530 =models.CharField(max_length=10, blank=True, default='', null=True)
+    t1600 = models.CharField(max_length=10, blank=True, default='', null=True)
+    t1630 = models.CharField(max_length=10, blank=True, default='', null=True)
+    t1700 = models.CharField(max_length=10, blank=True, default='', null=True)
+    t1730 = models.CharField(max_length=10, blank=True, default='', null=True)
+    t1800 =models.CharField(max_length=10, blank=True, default='', null=True)
+    t1830 = models.CharField(max_length=10, blank=True, default='', null=True)
+    t1900 = models.CharField(max_length=10, blank=True, default='', null=True)
+    t1930 =models.CharField(max_length=10, blank=True, default='', null=True)
+    t2000 =models.CharField(max_length=10, blank=True, default='', null=True)
+    t2030 =models.CharField(max_length=10, blank=True, default='', null=True)
+    t2100 =models.CharField(max_length=10, blank=True, default='', null=True)
+
+    def __str__(self):
+        return self.day
+
+# Create your models here.
+class People(models.Model):
+    first_name = models.CharField(max_length=50)
+    last_name = models.CharField(max_length=50)
+
+    age = models.IntegerField()
+
+    def __str__(self):
+        return "{self.first_name}"
+
+
+
 
 
 

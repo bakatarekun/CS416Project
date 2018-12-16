@@ -18,6 +18,8 @@
 
         $(document).ready(function(){
 
+            togglecells("td[name='ken']","wscellcolor",'ken');
+            //toggleinputs("input[name='ken']","wscellcolor",'ken');
             var day =  $('#dayinputhidden').val();
             $('#daylbl').text(day);
             if(day !='')
@@ -98,6 +100,7 @@
                     else
                     {
                         var name = setoftutors[i].fields.tutor[0];
+                        {#content += '<td class="tdformat" name='+name + ' >' + '&nbsp' + '</td>'#}
                         content += '<td class="tdformat" name='+name + ' >' + '&nbsp' + '</td>'
 
                     }
@@ -214,6 +217,40 @@
             if(result)
             {alert("hours saved");}
         }
+
+        function saveSchedule(tutorname) {
+            var schedule = [];
+            var tutorname2 = tutorname
+            $("td[name="+ tutorname2+ "]").each(function (index)
+            {
+                schedule[index] = $(this).text();
+            });
+            alert(schedule);
+            $.ajax({
+                type: "GET",
+                url: "/saveSchedule",
+                dataType: "text",
+                data: {"schedule":schedule,"tutorname": tutorname2},
+                contentType: "application/json",
+                success: function () {
+
+
+                },
+
+                error: function () {
+
+                    alert("wasn't succesful");
+
+                }
+            });
+        }
+
+         function saveAllSchedule() {
+          saveSchedule('Ken');
+          saveSchedule('Joe');
+          saveSchedule('Mary');
+
+         }
     </script>
 
 
@@ -249,6 +286,12 @@
             height: auto;
 
         }
+        .inputwidth
+        {
+            border: 1px solid black !important;
+            width:60px;
+            text-align: center;
+        }
     </style>
 </head>
 
@@ -282,10 +325,64 @@
     </div>
     <br>
 
-    <div align='center' id="here_table"> </div>
+    {#    <div align='center' id="here_table"> </div>#}
+    <br>
+    <br>
+    <table align="center">
+        <tbody name='tb'>
+        <tr >
+            <td>9:30</td>
+            <td>10:00</td>
+            <td>10:30</td>
+            <td>11:00</td>
+            <td>11:30</td>
+            <td>12:00</td>
+            <td>12:30</td>
+            <td>1:00</td>
+            <td>1:30</td>
+            <td>2:00</td>
+            <td>2:30</td>
+            <td>3:00</td>
+            <td>3:30</td>
+            <td>4:00</td>
+        </tr>
 
+        {% for s in schedule %}
 
+            <tr>
+                {#                <td><input name='ken' class="inputwidth" type="text" value="{{ s.t0930 }}">  </td>#}
+                {#                <td><input name='ken' class="inputwidth" type="text" value="{{ s.t1000 }}">  </td>#}
+                {#                <td><input name='ken' class="inputwidth" type="text" value="{{ s.t1030 }}">  </td>#}
+                {#                <td><input name='ken' class="inputwidth" type="text" value="{{ s.t1100 }}">  </td>#}
+                {#                <td><input name='ken' class="inputwidth" type="text" value="{{ s.t1130 }}">  </td>#}
+                {#                <td><input name='ken' class="inputwidth" type="text" value="{{ s.t1200 }}">  </td>#}
+                {#                <td><input name='ken' class="inputwidth" type="text" value="{{ s.t1230 }}">  </td>#}
+                {#                <td><input name='ken' class="inputwidth" type="text" value="{{ s.t1300 }}">  </td>#}
+                {#                <td><input name='ken' class="inputwidth" type="text" value="{{ s.t1330 }}">  </td>#}
+                {#                <td><input name='ken' class="inputwidth" type="text" value="{{ s.t1400 }}">  </td>#}
+                {#                <td><input name='ken' class="inputwidth" type="text" value="{{ s.t1430 }}">  </td>#}
+                {#                         togglecells("td[name='ken']","wscellcolor",'ken');#}
+                <td name={{ s.tutor.firstname }} class="inputwidth"> {{ s.t0930 }}</td>
+                <td name={{ s.tutor.firstname }} class="inputwidth">{{ s.t1000 }}</td>
+                <td name={{ s.tutor.firstname }} class="inputwidth">{{ s.t1030 }}</td>
+                <td name={{ s.tutor.firstname }} class="inputwidth">{{ s.t1100 }}</td>
+                <td name={{ s.tutor.firstname }} class="inputwidth">{{ s.t1130 }}</td>
+                <td name={{ s.tutor.firstname }} class="inputwidth">{{ s.t1200 }}</td>
+                <td name={{ s.tutor.firstname }} class="inputwidth">{{ s.t1230 }}</td>
+                <td name={{ s.tutor.firstname }} class="inputwidth">{{ s.t1300 }}</td>
+                <td name={{ s.tutor.firstname }} class="inputwidth">{{ s.t1330 }}</td>
+                <td name={{ s.tutor.firstname }} class="inputwidth">{{ s.t1400 }}</td>
+                <td name={{ s.tutor.firstname }} class="inputwidth">{{ s.t1430 }}</td>
+                <td name={{ s.tutor.firstname }} class="inputwidth">{{ s.t1500 }}</td>
+                <td name={{ s.tutor.firstname }} class="inputwidth">{{ s.t1530 }}</td>
+                <td name={{ s.tutor.firstname }} class="inputwidth">{{ s.t1600 }}</td>
+            </tr>
+            <br>
 
+        {% endfor %}
+        </tbody>
+    </table>
+    <input type="button" value="save schedule" onclick="saveAllSchedule()">
 {% else %}
     <br>
     <br>

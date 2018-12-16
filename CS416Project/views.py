@@ -4,7 +4,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse, JsonResponse
 from django.views.decorators.csrf import csrf_protect
 
-from .models import People, SI_Session, Tutor, Schedule
+from .models import People, SI_Session, Tutor, Schedule, Timetable
 from django.core import serializers
 # Create your views here.
 
@@ -62,7 +62,10 @@ def schedule2(request):
 
 def schedule(request, day):
     usedhours = Schedule.objects.all().filter(day=day)
-    return render(request, 'mathSchedule.html',{'usedhours': usedhours,'day':day})
+    schedule = Timetable.objects.all()
+    print("Hello")
+    print(schedule)
+    return render(request, 'mathSchedule.html',{'usedhours': usedhours,'day':day, 'schedule': schedule})
 
 def showSiBackupPlan(request, day):
 
@@ -82,4 +85,34 @@ def saveUsedHours(request):
     print(tutorusedhours)
     tutorusedhours.usedhours = usedhours
     tutorusedhours.save(update_fields=["usedhours"])
+    return HttpResponse('successfuly saved the hours')
+
+@csrf_protect
+def saveSchedule(request):
+    schedule = request.GET.getlist('schedule[]')
+    tutorname = request.GET.get('tutorname', "")
+    tutorname = tutorname.strip()
+    timetable = get_object_or_404(Timetable, tutor__firstname =tutorname)
+    print(timetable)
+    print(schedule)
+    timetable.t0930 = schedule[0]
+    timetable.t1000 = schedule[1]
+    timetable.t1030 = schedule[2]
+    timetable.t1100 = schedule[3]
+    timetable.t1130 = schedule[4]
+    timetable.t1200 = schedule[5]
+    timetable.t1230 = schedule[6]
+    timetable.t1300 = schedule[7]
+    timetable.t1330 = schedule[8]
+    timetable.t1400 = schedule[9]
+    timetable.t1430 = schedule[10]
+    timetable.t1500 = schedule[11]
+    timetable.t1530 = schedule[12]
+    timetable.t1600 = schedule[13]
+
+    # for s in schedule:
+    #
+    # tutorusedhours.usedhours = usedhours
+    # tutorusedhours.save(update_fields=["usedhours"])
+    timetable.save(update_fields=['t0930','t1000','t1030','t1100','t1130','t1200','t1230','t1300','t1330','t1400','t1430','t1500','t1530','t1600'])
     return HttpResponse('successfuly saved the hours')

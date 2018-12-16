@@ -46,7 +46,7 @@ function togglecells(targetcell,classname,tutorname) {
 
             if ($(this).hasClass(classname)) {
                 $(this).removeClass(classname);
-                this.innerHTML = "";
+                this.innerHTML  = '';
 
             }
             else
@@ -65,7 +65,7 @@ function togglecells(targetcell,classname,tutorname) {
 
                 if ($(this).hasClass(classname)) {
                     $(this).removeClass(classname);
-                    this.innerHTML = "";
+                                 this.innerHTML  = '';
                 }
                 else
                 {
@@ -80,7 +80,7 @@ function togglecells(targetcell,classname,tutorname) {
             if (isMouseDown) {
 
                 $(this).removeClass(classname);
-                this.innerHTML = "";
+                this.innerHTML  = '';
             }
 
         })
@@ -89,5 +89,114 @@ function togglecells(targetcell,classname,tutorname) {
 
 }
 
+// function togglecells(targetcell,classname,tutorname) {
+//
+//     var isMouseDown = false;
+//
+//
+//     $('[name=tb]')
+//         .on('mousedown', targetcell, function() {
+//             isMouseDown = true;
+//
+//
+//             if ($(this).hasClass(classname)) {
+//                 $(this).removeClass(classname);
+//                 this.innerHTML = "";
+//
+//             }
+//             else
+//             {   this.innerHTML = tutorname;
+//                 $(this).addClass(classname);
+//
+//             }
+//         })
+//         .on('mouseup', targetcell, function() {
+//             isMouseDown = false;
+//         })
+//         .on('mouseover', targetcell, function() {
+//
+//             if (isMouseDown)
+//             {
+//
+//                 if ($(this).hasClass(classname)) {
+//                     $(this).removeClass(classname);
+//                     this.innerHTML = "";
+//                 }
+//                 else
+//                 {
+//                     this.innerHTML = tutorname;
+//                     $(this).addClass(classname);
+//
+//                 }
+//             }
+//         })
+//         .on('mouseleave', function() {
+//             isMouseDown = false;
+//             if (isMouseDown) {
+//
+//                 $(this).removeClass(classname);
+//                 this.innerHTML = "";
+//             }
+//
+//         })
+//     ;
+//
+//
+// }
 
+
+function toggleinputs(targetcell,classname,tutorname) {
+
+    var isMouseDown = false;
+
+
+    $('[name=tb]')
+        .on('mousedown', targetcell, function() {
+            isMouseDown = true;
+
+
+            if ($(this).hasClass(classname)) {
+                $(this).removeClass(classname);
+                $(this).value ("");
+
+            }
+            else
+            {   this.value = tutorname;
+                $(this).addClass(classname);
+
+            }
+        })
+        .on('mouseup', targetcell, function() {
+            isMouseDown = false;
+        })
+        .on('mouseover', targetcell, function() {
+
+            if (isMouseDown)
+            {
+
+                if ($(this).hasClass(classname)) {
+                    $(this).removeClass(classname);
+                     $(this).value ("");
+                }
+                else
+                {
+                     $(this).value (tutorname);
+                    $(this).addClass(classname);
+
+                }
+            }
+        })
+        .on('mouseleave', function() {
+            isMouseDown = false;
+            if (isMouseDown) {
+
+                $(this).removeClass(classname);
+                $(this).value ("");
+            }
+
+        })
+    ;
+
+
+}
 

@@ -30,6 +30,7 @@ urlpatterns = [
     path('allTutorsNames/<day_of_shift>', views.allTutorNames, name='allTutorNames'),
     url(r'^location$', views.location, name="location"),
     url(r'^saveUsedHours$', views.saveUsedHours, name="saveUsedHours"),
+    url(r'^saveSchedule$', views.saveSchedule, name="saveSchedule"),
     url(r'^showSiBackupPlanByTutor$', views.showSiBackupbyTutor, name="showSiBackupbyTutor"),
     path('showSiBackupPlan/<day>', views.showSiBackupPlan, name="showSiBackupPlan"),
     url(r'^(?P<tutor_id>[0-9]+)/tutor$', views.tutorInfo, name="tutor"),
