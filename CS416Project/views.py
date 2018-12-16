@@ -62,25 +62,48 @@ def schedule2(request):
 
 def schedule(request, day):
     usedhours = Schedule.objects.all().filter(day=day)
-    # for t in usedhours:
-    #     timetable = Timetable(tutor_id=t.tutor_id, day=t.day, t0930=t.tutor.firstname)
-    #     timetable.save()
+    timetable = Timetable.objects.all().filter(day=day)
+    check = True
+    for u in usedhours:
 
-    for t in usedhours:
-        # existingtimetable= get_object_or_404(Timetable, tutor_id=t.tutor_id)
-        existingtimetable = Timetable.objects.filter(day=day)
-        # existingtimetable = existingtimetable.objects.filter(tutor_id=t.tutor_id)
-        existingtimetable = get_object_or_404(existingtimetable, tutor_id=t.tutor_id)
-        # if len(existingtimetable) == 0:
-        if existingtimetable is None:
-            timetable = Timetable(tutor_id=t.tutor_id, day=t.day, t0930=t.tutor.firstname)
-            timetable.save()
-    # timetable= Timetable(tutor_id =usedhours[0].tutor_id, day= usedhours[0].day,t0930=usedhours[0].tutor.firstname)
-    # timetable.save()
+            for t in timetable:
+        # existingtimetable = get_object_or_404(Timetable, tutor_id=t.tutor_id,day=day)
+        # if not existingtimetable:
+                if u.tutor_id == t.tutor_id:
+                    check = False
+                    break
+
+                else:
+                    check=True
+    if check:
+        timetable = Timetable(tutor_id=u.tutor_id, day=u.day, t0930=u.tutor.firstname)
+        timetable.save()
+
     schedule = Timetable.objects.all().filter(day=day)
-    print(usedhours[0].From1)
-    # print(schedule)
+
     return render(request, 'mathSchedule.html',{'usedhours': usedhours,'day':day, 'schedule': schedule})
+
+# def schedule(request, day):
+#     usedhours = Schedule.objects.all().filter(day=day)
+#     # for t in usedhours:
+#     #     timetable = Timetable(tutor_id=t.tutor_id, day=t.day, t0930=t.tutor.firstname)
+#     #     timetable.save()
+#
+#     for t in usedhours:
+#         # existingtimetable= get_object_or_404(Timetable, tutor_id=t.tutor_id)
+#         existingtimetable = Timetable.objects.filter(day=day)
+#         # existingtimetable = existingtimetable.objects.filter(tutor_id=t.tutor_id)
+#         existingtimetable = get_object_or_404(existingtimetable, tutor_id=t.tutor_id)
+#         # if len(existingtimetable) == 0:
+#         if existingtimetable is None:
+#             timetable = Timetable(tutor_id=t.tutor_id, day=t.day, t0930=t.tutor.firstname)
+#             timetable.save()
+#     # timetable= Timetable(tutor_id =usedhours[0].tutor_id, day= usedhours[0].day,t0930=usedhours[0].tutor.firstname)
+#     # timetable.save()
+#     schedule = Timetable.objects.all().filter(day=day)
+#     print(usedhours[0].From1)
+#     # print(schedule)
+#     return render(request, 'mathSchedule.html',{'usedhours': usedhours,'day':day, 'schedule': schedule})
 
 def showSiBackupPlan(request, day):
 
@@ -109,8 +132,8 @@ def saveSchedule(request):
     day = request.GET.get('day', "")
     tutorname = tutorname.strip()
     timetable = get_object_or_404(Timetable, tutor__firstname =tutorname, day=day)
-    print(timetable)
-    print(schedule)
+    # print(timetable)
+    # print(schedule)
     timetable.t0930 = schedule[0]
     timetable.t1000 = schedule[1]
     timetable.t1030 = schedule[2]
