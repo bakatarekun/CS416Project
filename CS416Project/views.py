@@ -8,6 +8,10 @@ from .models import People, SI_Session, Tutor, Schedule, Timetable
 from django.core import serializers
 # Create your views here.
 
+from django import template
+
+
+
 def login_redirect(request):
     return redirect('/login')
 

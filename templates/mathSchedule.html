@@ -18,8 +18,28 @@
 
         $(document).ready(function(){
 
+            $("td").not("td:empty").each(function(){
+
+                if($(this).hasClass("EA"))
+                {
+                    $(this).addClass("eacellcolor");
+                }
+                else if ($(this).hasClass("SA"))
+                {
+                    $(this).addClass("eacellcolor");
+                }
+                else if ($(this).hasClass("Work"))
+                {
+                    $(this).addClass("wscellcolor");
+                }
+                else if ($(this).hasClass("Volunteer"))
+                {
+                    $(this).addClass("vtcellcolor");
+                }
+            });
+
             togglecells("td[name='ken']","wscellcolor",'ken');
-            //toggleinputs("input[name='ken']","wscellcolor",'ken');
+
             var day =  $('#dayinputhidden').val();
             $('#daylbl').text(day);
             if(day !='')
@@ -253,7 +273,7 @@
                 var n = namelist[i].innerHTML;
                 saveSchedule(n,day);
             }
-               alert("scheduel saved succesfully");
+            alert("scheduel saved succesfully");
         }
     </script>
 
@@ -365,20 +385,124 @@
                 {#                <td><input name='ken' class="inputwidth" type="text" value="{{ s.t1400 }}">  </td>#}
                 {#                <td><input name='ken' class="inputwidth" type="text" value="{{ s.t1430 }}">  </td>#}
                 {#                         togglecells("td[name='ken']","wscellcolor",'ken');#}
-                <td name={{ s.tutor.firstname }} class="inputwidth"> {{ s.t0930 }}</td>
-                <td name={{ s.tutor.firstname }} class="inputwidth">{{ s.t1000 }}</td>
-                <td name={{ s.tutor.firstname }} class="inputwidth">{{ s.t1030 }}</td>
-                <td name={{ s.tutor.firstname }} class="inputwidth">{{ s.t1100 }}</td>
-                <td name={{ s.tutor.firstname }} class="inputwidth">{{ s.t1130 }}</td>
-                <td name={{ s.tutor.firstname }} class="inputwidth">{{ s.t1200 }}</td>
-                <td name={{ s.tutor.firstname }} class="inputwidth">{{ s.t1230 }}</td>
-                <td name={{ s.tutor.firstname }} class="inputwidth">{{ s.t1300 }}</td>
-                <td name={{ s.tutor.firstname }} class="inputwidth">{{ s.t1330 }}</td>
-                <td name={{ s.tutor.firstname }} class="inputwidth">{{ s.t1400 }}</td>
-                <td name={{ s.tutor.firstname }} class="inputwidth">{{ s.t1430 }}</td>
-                <td name={{ s.tutor.firstname }} class="inputwidth">{{ s.t1500 }}</td>
-                <td name={{ s.tutor.firstname }} class="inputwidth">{{ s.t1530 }}</td>
-                <td name={{ s.tutor.firstname }} class="inputwidth">{{ s.t1600 }}</td>
+
+
+
+
+                <td  name={{ s.tutor.firstname }} class="{{ s.tutor.typeofstaff }}"> {{ s.t0930 }}</td>
+                <td  name={{ s.tutor.firstname }} class={{ s.tutor.typeofstaff }}>{{ s.t1000 }}</td>
+                <td  name={{ s.tutor.firstname }} class={{ s.tutor.typeofstaff }}>{{ s.t1030 }}</td>
+                <td  name={{ s.tutor.firstname }} class={{ s.tutor.typeofstaff }}>{{ s.t1100 }}</td>
+                <td  name={{ s.tutor.firstname }} class={{ s.tutor.typeofstaff }}>{{ s.t1130 }}</td>
+                <td  name={{ s.tutor.firstname }} class={{ s.tutor.typeofstaff }}>{{ s.t1200 }}</td>
+                <td  name={{ s.tutor.firstname }} class={{ s.tutor.typeofstaff }}>{{ s.t1230 }}</td>
+                <td name={{ s.tutor.firstname }} class={{ s.tutor.typeofstaff }}>{{ s.t1300 }}</td>
+                <td name={{ s.tutor.firstname }} class={{ s.tutor.typeofstaff }}>{{ s.t1330 }}</td>
+                <td name={{ s.tutor.firstname }} class={{ s.tutor.typeofstaff }}>{{ s.t1400 }}</td>
+                <td name={{ s.tutor.firstname }} class={{ s.tutor.typeofstaff }}>{{ s.t1430 }}</td>
+                <td name={{ s.tutor.firstname }} class={{ s.tutor.typeofstaff }}>{{ s.t1500 }}</td>
+                <td name={{ s.tutor.firstname }} class={{ s.tutor.typeofstaff }}>{{ s.t1530 }}</td>
+                <td name={{ s.tutor.firstname }} class={{ s.tutor.typeofstaff }}>{{ s.t1600 }}</td>
+
+
+
+
+                {#                                        <td  name={{ s.tutor.firstname }} class="inputwidth"> {{ s.t0930 }}</td>#}
+                {#                                        <td  name={{ s.tutor.firstname }} class="inputwidth">{{ s.t1000 }}</td>#}
+                {#                                        <td  name={{ s.tutor.firstname }} class="inputwidth">{{ s.t1030 }}</td>#}
+                {#                                        <td  name={{ s.tutor.firstname }} class="inputwidth">{{ s.t1100 }}</td>#}
+                {#                                        <td  name={{ s.tutor.firstname }} class="inputwidth">{{ s.t1130 }}</td>#}
+                {#                                        <td  name={{ s.tutor.firstname }} class="inputwidth">{{ s.t1200 }}</td>#}
+                {#                                        <td  name={{ s.tutor.firstname }} class="inputwidth">{{ s.t1230 }}</td>#}
+                {#                                        <td name={{ s.tutor.firstname }} class="inputwidth">{{ s.t1300 }}</td>#}
+                {#                                        <td name={{ s.tutor.firstname }} class="inputwidth">{{ s.t1330 }}</td>#}
+                {#                                        <td name={{ s.tutor.firstname }} class="inputwidth">{{ s.t1400 }}</td>#}
+                {#                                        <td name={{ s.tutor.firstname }} class="inputwidth">{{ s.t1430 }}</td>#}
+                {#                                        <td name={{ s.tutor.firstname }} class="inputwidth">{{ s.t1500 }}</td>#}
+                {#                                        <td name={{ s.tutor.firstname }} class="inputwidth">{{ s.t1530 }}</td>#}
+                {#                                        <td name={{ s.tutor.firstname }} class="inputwidth">{{ s.t1600 }}</td>#}
+
+
+                {#                                {% if s.tutor.typeofstaff == 'EA' %}#}
+                {#                                    {%  with "eacellcolor" as cname  %}#}
+                {##}
+                {#                                        <td class="{{cname}}" name={{ s.tutor.firstname }} class="inputwidth"> {{ s.t0930 }}</td>#}
+                {#                                        <td  class="{{cname}}"name={{ s.tutor.firstname }} class="inputwidth">{{ s.t1000 }}</td>#}
+                {#                                        <td class="{{cname}}" name={{ s.tutor.firstname }} class="inputwidth">{{ s.t1030 }}</td>#}
+                {#                                        <td class="{{cname}}" name={{ s.tutor.firstname }} class="inputwidth">{{ s.t1100 }}</td>#}
+                {#                                        <td class="{{cname}}" name={{ s.tutor.firstname }} class="inputwidth">{{ s.t1130 }}</td>#}
+                {#                                        <td class="{{cname}}" name={{ s.tutor.firstname }} class="inputwidth">{{ s.t1200 }}</td>#}
+                {#                                        <td class="{{cname}}" name={{ s.tutor.firstname }} class="inputwidth">{{ s.t1230 }}</td>#}
+                {#                                        <td class="{{cname}}" name={{ s.tutor.firstname }} class="inputwidth">{{ s.t1300 }}</td>#}
+                {#                                        <td class="{{cname}}" name={{ s.tutor.firstname }} class="inputwidth">{{ s.t1330 }}</td>#}
+                {#                                        <td class="{{cname}}" name={{ s.tutor.firstname }} class="inputwidth">{{ s.t1400 }}</td>#}
+                {#                                        <td class="{{cname}}" name={{ s.tutor.firstname }} class="inputwidth">{{ s.t1430 }}</td>#}
+                {#                                        <td class="{{cname}}" name={{ s.tutor.firstname }} class="inputwidth">{{ s.t1500 }}</td>#}
+                {#                                        <td class="{{cname}}" name={{ s.tutor.firstname }} class="inputwidth">{{ s.t1530 }}</td>#}
+                {#                                        <td class="{{cname}}" name={{ s.tutor.firstname }} class="inputwidth">{{ s.t1600 }}</td>#}
+                {#                                    {% endwith %}#}
+                {##}
+                {#                                {% elif s.tutor.typeofstaff == 'Volunteer' %}#}
+                {##}
+                {#                                    {%  with "vtcellcolor" as cname  %}#}
+                {#                                        <td class="{{cname}}" name={{ s.tutor.firstname }} class="inputwidth"> {{ s.t0930 }}</td>#}
+                {#                                        <td  class="{{cname}}"name={{ s.tutor.firstname }} class="inputwidth">{{ s.t1000 }}</td>#}
+                {#                                        <td class="{{cname}}" name={{ s.tutor.firstname }} class="inputwidth">{{ s.t1030 }}</td>#}
+                {#                                        <td class="{{cname}}" name={{ s.tutor.firstname }} class="inputwidth">{{ s.t1100 }}</td>#}
+                {#                                        <td class="{{cname}}" name={{ s.tutor.firstname }} class="inputwidth">{{ s.t1130 }}</td>#}
+                {#                                        <td class="{{cname}}" name={{ s.tutor.firstname }} class="inputwidth">{{ s.t1200 }}</td>#}
+                {#                                        <td class="{{cname}}" name={{ s.tutor.firstname }} class="inputwidth">{{ s.t1230 }}</td>#}
+                {#                                        <td class="{{cname}}" name={{ s.tutor.firstname }} class="inputwidth">{{ s.t1300 }}</td>#}
+                {#                                        <td class="{{cname}}" name={{ s.tutor.firstname }} class="inputwidth">{{ s.t1330 }}</td>#}
+                {#                                        <td class="{{cname}}" name={{ s.tutor.firstname }} class="inputwidth">{{ s.t1400 }}</td>#}
+                {#                                        <td class="{{cname}}" name={{ s.tutor.firstname }} class="inputwidth">{{ s.t1430 }}</td>#}
+                {#                                        <td class="{{cname}}" name={{ s.tutor.firstname }} class="inputwidth">{{ s.t1500 }}</td>#}
+                {#                                        <td class="{{cname}}" name={{ s.tutor.firstname }} class="inputwidth">{{ s.t1530 }}</td>#}
+                {#                                        <td class="{{cname}}" name={{ s.tutor.firstname }} class="inputwidth">{{ s.t1600 }}</td>#}
+                {#                                    {% endwith %}#}
+                {##}
+                {#                                {% elif s.tutor.typeofstaff == 'Work Study' %}#}
+                {##}
+                {#                                    {%  with "wscellcolor" as cname  %}#}
+                {#                                        <td class="{{cname}}" name={{ s.tutor.firstname }} class="inputwidth"> {{ s.t0930 }}</td>#}
+                {#                                        <td  class="{{cname}}"name={{ s.tutor.firstname }} class="inputwidth">{{ s.t1000 }}</td>#}
+                {#                                        <td class="{{cname}}" name={{ s.tutor.firstname }} class="inputwidth">{{ s.t1030 }}</td>#}
+                {#                                        <td class="{{cname}}" name={{ s.tutor.firstname }} class="inputwidth">{{ s.t1100 }}</td>#}
+                {#                                        <td class="{{cname}}" name={{ s.tutor.firstname }} class="inputwidth">{{ s.t1130 }}</td>#}
+                {#                                        <td class="{{cname}}" name={{ s.tutor.firstname }} class="inputwidth">{{ s.t1200 }}</td>#}
+                {#                                        <td class="{{cname}}" name={{ s.tutor.firstname }} class="inputwidth">{{ s.t1230 }}</td>#}
+                {#                                        <td class="{{cname}}" name={{ s.tutor.firstname }} class="inputwidth">{{ s.t1300 }}</td>#}
+                {#                                        <td class="{{cname}}" name={{ s.tutor.firstname }} class="inputwidth">{{ s.t1330 }}</td>#}
+                {#                                        <td class="{{cname}}" name={{ s.tutor.firstname }} class="inputwidth">{{ s.t1400 }}</td>#}
+                {#                                        <td class="{{cname}}" name={{ s.tutor.firstname }} class="inputwidth">{{ s.t1430 }}</td>#}
+                {#                                        <td class="{{cname}}" name={{ s.tutor.firstname }} class="inputwidth">{{ s.t1500 }}</td>#}
+                {#                                        <td class="{{cname}}" name={{ s.tutor.firstname }} class="inputwidth">{{ s.t1530 }}</td>#}
+                {#                                        <td class="{{cname}}" name={{ s.tutor.firstname }} class="inputwidth">{{ s.t1600 }}</td>#}
+                {#                                    {% endwith %}#}
+                {##}
+                {#                                {% elif s.tutor.typeofstaff == 'SA' %}#}
+                {##}
+                {#                                    {%  with "sacellcolor" as cname  %}#}
+                {##}
+                {#                                        <td class="{{cname}}" name={{ s.tutor.firstname }} class="inputwidth"> {{ s.t0930 }}</td>#}
+                {#                                        <td  class="{{cname}}"name={{ s.tutor.firstname }} class="inputwidth">{{ s.t1000 }}</td>#}
+                {#                                        <td class="{{cname}}" name={{ s.tutor.firstname }} class="inputwidth">{{ s.t1030 }}</td>#}
+                {#                                        <td class="{{cname}}" name={{ s.tutor.firstname }} class="inputwidth">{{ s.t1100 }}</td>#}
+                {#                                        <td class="{{cname}}" name={{ s.tutor.firstname }} class="inputwidth">{{ s.t1130 }}</td>#}
+                {#                                        <td class="{{cname}}" name={{ s.tutor.firstname }} class="inputwidth">{{ s.t1200 }}</td>#}
+                {#                                        <td class="{{cname}}" name={{ s.tutor.firstname }} class="inputwidth">{{ s.t1230 }}</td>#}
+                {#                                        <td class="{{cname}}" name={{ s.tutor.firstname }} class="inputwidth">{{ s.t1300 }}</td>#}
+                {#                                        <td class="{{cname}}" name={{ s.tutor.firstname }} class="inputwidth">{{ s.t1330 }}</td>#}
+                {#                                        <td class="{{cname}}" name={{ s.tutor.firstname }} class="inputwidth">{{ s.t1400 }}</td>#}
+                {#                                        <td class="{{cname}}" name={{ s.tutor.firstname }} class="inputwidth">{{ s.t1430 }}</td>#}
+                {#                                        <td class="{{cname}}" name={{ s.tutor.firstname }} class="inputwidth">{{ s.t1500 }}</td>#}
+                {#                                        <td class="{{cname}}" name={{ s.tutor.firstname }} class="inputwidth">{{ s.t1530 }}</td>#}
+                {#                                        <td class="{{cname}}" name={{ s.tutor.firstname }} class="inputwidth">{{ s.t1600 }}</td>#}
+                {#                                    {% endwith %}#}
+                {#                                {% endif %}#}
+
+
+
             </tr>
             <br>
 

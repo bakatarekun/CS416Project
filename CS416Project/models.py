@@ -221,6 +221,7 @@ class SI_Session(models.Model):
                  ordering = ['day','sessionTime_from']
 
 
+
 class Schedule(models.Model):
     tutor = models.ForeignKey(Tutor, on_delete=models.SET_NULL, null=True)
     day = models.CharField(max_length=50, default='',choices=day_choices)
@@ -230,8 +231,30 @@ class Schedule(models.Model):
     To2 = models.CharField(max_length=50, default='',blank=True,choices=time_choices)
     usedhours = models.DecimalField(decimal_places=1, max_digits=3,default=0)
 
+
+
     def __str__(self):
         return self.tutor.firstname + ' '+ self.tutor.lastname + ' '+ self.day + ' ' + str(self.usedhours)
 
     class Meta:  # order by desc
         ordering = ['day', 'tutor__firstname']
+
+
+ # from django import template
+ #    register = template.Library()
+ #
+ #    @register.filter
+ #    def state_css_class(value):
+ #        """returns appropriate bootstrap label class for states"""
+ #        statemap = {
+ #            'Ken': 'eacellcolor',
+ #            'Alisha': 'sacellcolor',
+ #            'Mary': 'wscellcolor',
+ #            'Sean': 'eacellcolor',
+ #            'Joe': 'wacellcolor',
+ #
+ #        }
+ #        try:
+ #            return statemap[value]
+ #        except KeyError:
+ #            return ' '
