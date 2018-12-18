@@ -72,7 +72,7 @@ def schedule(request, day):
         count = Timetable.objects.filter(day=day).filter(tutor__firstname = u.tutor.firstname).count()
         print('count is ' + str(count))
         if count ==  0:
-            timetable = Timetable(tutor_id=u.tutor_id, day=u.day, t0930=u.tutor.firstname)
+            timetable = Timetable(tutor_id=u.tutor_id, day=u.day, fname=u.tutor.firstname)
             timetable.save()
 
     schedule = Timetable.objects.all().filter(day=day)

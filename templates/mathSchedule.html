@@ -354,6 +354,7 @@
     <table align="center">
         <tbody name='tb'>
         <tr >
+            <td>Name</td>
             <td>9:30</td>
             <td>10:00</td>
             <td>10:30</td>
@@ -373,23 +374,11 @@
         {% for s in schedule %}
 
             <tr>
-                {#                <td><input name='ken' class="inputwidth" type="text" value="{{ s.t0930 }}">  </td>#}
-                {#                <td><input name='ken' class="inputwidth" type="text" value="{{ s.t1000 }}">  </td>#}
-                {#                <td><input name='ken' class="inputwidth" type="text" value="{{ s.t1030 }}">  </td>#}
-                {#                <td><input name='ken' class="inputwidth" type="text" value="{{ s.t1100 }}">  </td>#}
-                {#                <td><input name='ken' class="inputwidth" type="text" value="{{ s.t1130 }}">  </td>#}
-                {#                <td><input name='ken' class="inputwidth" type="text" value="{{ s.t1200 }}">  </td>#}
-                {#                <td><input name='ken' class="inputwidth" type="text" value="{{ s.t1230 }}">  </td>#}
-                {#                <td><input name='ken' class="inputwidth" type="text" value="{{ s.t1300 }}">  </td>#}
-                {#                <td><input name='ken' class="inputwidth" type="text" value="{{ s.t1330 }}">  </td>#}
-                {#                <td><input name='ken' class="inputwidth" type="text" value="{{ s.t1400 }}">  </td>#}
-                {#                <td><input name='ken' class="inputwidth" type="text" value="{{ s.t1430 }}">  </td>#}
-                {#                         togglecells("td[name='ken']","wscellcolor",'ken');#}
 
 
 
-
-                <td  name={{ s.tutor.firstname }} class="{{ s.tutor.typeofstaff }}"> {{ s.t0930 }}</td>
+                 <td> {{ s.fname }}</td>
+                <td  name={{ s.tutor.firstname }} class={{ s.tutor.typeofstaff }}> {{ s.t0930 }}</td>
                 <td  name={{ s.tutor.firstname }} class={{ s.tutor.typeofstaff }}>{{ s.t1000 }}</td>
                 <td  name={{ s.tutor.firstname }} class={{ s.tutor.typeofstaff }}>{{ s.t1030 }}</td>
                 <td  name={{ s.tutor.firstname }} class={{ s.tutor.typeofstaff }}>{{ s.t1100 }}</td>
