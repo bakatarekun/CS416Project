@@ -95,6 +95,7 @@ class Timetable(models.Model):
 
     tutor = models.ForeignKey(Tutor, on_delete=models.SET_NULL, null=True)
     day = models.CharField(max_length=50, default='',choices=day_choices)
+    fname = models.CharField(max_length=10, blank=True, default='', null=True)
     t0930 = models.CharField(max_length=10, blank=True, default='', null=True)
     t1000 =models.CharField(max_length=10, blank=True, default='', null=True )
     t1030 = models.CharField(max_length=10, blank=True, default='', null=True)
