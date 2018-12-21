@@ -92,8 +92,8 @@
 
                     if (s % 2 == 0) {
                         counter++;
-                        if(counter==13){
-                            counter=1;
+                        if (counter == 13) {
+                            counter = 1;
                         }
 
                         content += '<th class="thformat">' + counter + ': 00' + '</th>'
@@ -116,12 +116,10 @@
                     if (s == 0) {
                         content += '<td class="tdformat">' + setoftutors[i].fields.tutor[0] + '</td>'
                         rowcounter++
-                    }
-                    else
-                    {
+                    } else {
                         var name = setoftutors[i].fields.tutor[0];
                         {#content += '<td class="tdformat" name='+name + ' >' + '&nbsp' + '</td>'#}
-                        content += '<td class="tdformat" name='+name + ' >' + '&nbsp' + '</td>'
+                        content += '<td class="tdformat" name=' + name + ' >' + '&nbsp' + '</td>'
 
                     }
 
@@ -133,42 +131,79 @@
             $('#here_table').append(content);
 
             var hours;
-            var listoftutors ='<ul>'
+            var listoftutors = '<ul>'
             listoftutors += '<div style="position: sticky;"><h3>Tutor\'s Hours and Availabilities</h3>'
 
-            for (s = 0; s < setoftutors.length ; s++) {
+            for (s = 0; s < setoftutors.length; s++) {
 
-                var name= setoftutors[s].fields.tutor[0];
-                var timefrom1= setoftutors[s].fields.From1;
-                var timeto1= setoftutors[s].fields.To1;
-                var typeofemployee =  setoftutors[s].fields.tutor[1];
+                var name = setoftutors[s].fields.tutor[0];
+                var timefrom1 = setoftutors[s].fields.From1;
+                var timeto1 = setoftutors[s].fields.To1;
+                var typeofemployee = setoftutors[s].fields.tutor[1];
                 hours = setoftutors[s].fields.tutor[2];
 
-                if(typeofemployee == 'EA')
-                {
-                    togglecells("td[name="+name+"]","eacellcolor", name);
-                }
-                else if (typeofemployee == 'SA')
-                {
-                    togglecells("td[name="+name+"]","sacellcolor",name);
-                }
-                else if (typeofemployee == 'Work Study')
-                {
-                    togglecells("td[name="+name+"]","wscellcolor",name);
-                }
-                else
-                {
-                    togglecells("td[name="+name+"]","vtcellcolor",name);
+                if (typeofemployee == 'EA') {
+                    togglecells("td[name=" + name + "]", "eacellcolor", name);
+                } else if (typeofemployee == 'SA') {
+                    togglecells("td[name=" + name + "]", "sacellcolor", name);
+                } else if (typeofemployee == 'Work Study') {
+                    togglecells("td[name=" + name + "]", "wscellcolor", name);
+                } else {
+                    togglecells("td[name=" + name + "]", "vtcellcolor", name);
                 }
 
-                listoftutors += '<li style="font-size: x-large"><input type="hidden" name="usedHours" id=' + name+'input'+'><span name="spanname">'+ name + '</span><span style="padding-left:5px" name="spanhours" id='+ name + '></span> Hours Left--' + '<span>Avaialbe From:'+ timefrom1 + ' To:'+ timeto1 +'</span></li>'
+                listoftutors += '<li style="font-size: x-large"><input type="hidden" name="usedHours" id=' + name + 'input' + '><span name="spanname">' + name + '</span><span style="padding-left:5px" name="spanhours" id=' + name + '></span> Hours Left--' + '<span>Avaialbe From:' + timefrom1 + ' To:' + timeto1 + '</span></li>'
             }
 
             listoftutors += '</div></ul><br>';
             $('#listoftutors').append(listoftutors);
 
+            displayHours(setoftutors);
+              var orghours = $('#Alisha').text();
+              $("#Orghours").text(orghours);
 
-            $('tr').mouseleave(function() {
+            $('tr').mouseleave(function () {
+
+
+                displayHours(setoftutors);
+
+
+            });
+        }
+
+            function displayHours(setoftutors) {
+                var name1;
+
+                var usedhours;
+                for (s = 0; s < setoftutors.length; s++) {
+
+                    name1 = setoftutors[s].fields.tutor[0];
+                    var nameid = "#" + name1;
+                    var nameinput = "#" + name1 + "input";
+                    var hours2 = setoftutors[s].fields.tutor[2];
+                    var usedhoursfromDB = parseFloat(setoftutors[s].fields.tutor[3]);
+                    usedhours = ($("td:contains(" + name1 + ")").length - 1) * .5;
+
+                    //usedhours = usedhours+usedhoursfromDB;
+
+                    hours2 = hours2 - usedhours;
+
+
+                    if (hours2 <= 0) {
+
+                        $(nameid).css({"color": "red"});
+                    } else {
+                        $(nameid).css({"color": "black"});
+                    }
+                    {#$(nameid).text(hours2);#}
+                    $(nameid).text(usedhours);
+                    $(nameinput).val(usedhours);
+
+
+                }
+            }
+                /*
+         $('tr').mouseleave(function() {
                 var name1;
 
                 var usedhours;
@@ -181,40 +216,45 @@
                     var usedhoursfromDB = parseFloat(setoftutors[s].fields.tutor[3]);
                     usedhours =  ($("td:contains("+name1+")").length-1)*.5;
                     usedhours = usedhours+usedhoursfromDB;
-                    hours2 = hours2 - usedhours;
-                    if(hours2<=0)
-                    {
-                        $(nameid).css({"color":"red"});
-                    }
-                    else {
-                        $(nameid).css({"color":"black"});
-                    }
+                      if(hours2-usedhoursfromDB>0)
+                      {
+                          if (hours2 - usedhours >= 0)
+                          {
+                              hours2 = hours2 - usedhours;
+                               if(hours2==0)
+                                {
+                                    $(nameid).css({"color":"red"});
+                                }
+                          }
+
+                      }
+
                     $(nameid).text(hours2);
                     $(nameinput).val(usedhours);
                 }
 
 
-            });
-
-        }
-
-        function saveUsedHours(name,usedhours) {
-            var result=true;
-            $.ajax({
-                type: "GET",
-                url: "/saveUsedHours",
-                dataType: "text",
-                data: {"name":name, "usedhours":usedhours},
-                contentType: "application/json",
-                success: function () {
+            });*/
 
 
-                },
 
-                error: function () {
+            function saveUsedHours(name, usedhours) {
+                var result = true;
+                $.ajax({
+                    type: "GET",
+                    url: "/saveUsedHours",
+                    dataType: "text",
+                    data: {"name": name, "usedhours": usedhours},
+                    contentType: "application/json",
+                    success: function () {
 
-                    alert("wasn't succesful");
-                    result =false;
+
+                    },
+
+                    error: function () {
+
+                        alert("wasn't succesful");
+                        result = false;
 
                 }
             });
@@ -238,43 +278,45 @@
             {alert("hours saved");}
         }
 
-        function saveSchedule(tutorname,day) {
-            var schedule = [];
-            var tutorname2 = tutorname
-            $("td[name="+ tutorname2+ "]").each(function (index)
-            {
-                schedule[index] = $(this).text();
-            });
 
-            $.ajax({
-                type: "GET",
-                url: "/saveSchedule",
-                dataType: "text",
-                data: {"schedule":schedule,"tutorname": tutorname2, "day":day},
-                contentType: "application/json",
-                success: function () {
+            function saveSchedule(tutorname, day) {
+                var schedule = [];
+                var tutorname2 = tutorname
+                $("td[name=" + tutorname2 + "]").each(function (index) {
+                    schedule[index] = $(this).text();
+                });
+
+                $.ajax({
+                    type: "GET",
+                    url: "/saveSchedule",
+                    dataType: "text",
+                    data: {"schedule": schedule, "tutorname": tutorname2, "day": day},
+                    contentType: "application/json",
+                    success: function () {
 
 
-                },
+                    },
 
-                error: function () {
+                    error: function () {
 
-                    alert("wasn't succesful");
+                        alert("wasn't succesful");
 
-                }
-            });
-        }
-
-        function saveAllSchedule() {
-            var day =  $('#dayinputhidden').val();
-            var namelist = $('span[name="spanname"]');
-
-            for(i =0;i<namelist.length;i++) {
-                var n = namelist[i].innerHTML;
-                saveSchedule(n,day);
+                    }
+                });
             }
-            alert("scheduel saved succesfully");
-        }
+
+            function saveAllSchedule() {
+                getUsedHoursAndName();
+                var day = $('#dayinputhidden').val();
+                var namelist = $('span[name="spanname"]');
+
+                for (i = 0; i < namelist.length; i++) {
+                    var n = namelist[i].innerHTML;
+                    saveSchedule(n, day);
+                }
+                alert("scheduel saved succesfully");
+            }
+
     </script>
 
 
@@ -349,7 +391,7 @@
     </div>
 
 
-    {#    <div align='center' id="here_table"> </div>#}
+{#        <div align='center' id="here_table"> </div>#}
 
     <table align="center">
         <tbody name='tb'>
@@ -421,6 +463,7 @@
             <input type="button" value="save schedule" onclick="saveAllSchedule()">
         </div>
     </div>
+    <h2 id="Orghours"></h2>
 
 {% else %}
 
