@@ -30,7 +30,7 @@ day_choices = (
     ('Wednesday', 'Wednesday'),
     ('Thursday', 'Thursday'),
     ('Friday', 'Friday'),
-    ('Sarturday', 'Satruday'),
+    ('Satrurday', 'Saturday'),
     ('Sunday', 'Sunday'),
 
 )

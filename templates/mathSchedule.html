@@ -398,6 +398,7 @@
 <input type="hidden" id="dayinputhidden" value="{{ day }}" />
 {% if user.is_authenticated %}
     <br>
+
     <div class="row">
 
         <div class="col-sm-5" id="listoftutors"></div>
@@ -429,77 +430,208 @@
 
     {#        <div align='center' id="here_table"> </div>#}
 
-    <table align="center">
-        <tbody name='tb'>
-        <tr >
-            <td>Name</td>
-            <td>9:30</td>
-            <td>10:00</td>
-            <td>10:30</td>
-            <td>11:00</td>
-            <td>11:30</td>
-            <td>12:00</td>
-            <td>12:30</td>
-            <td>1:00</td>
-            <td>1:30</td>
-            <td>2:00</td>
-            <td>2:30</td>
-            <td>3:00</td>
-            <td>3:30</td>
-            <td>4:00</td>
-            <td>4:30</td>
-            <td>5:00</td>
-            <td>5:30</td>
-            <td>6:00</td>
-            <td>6:30</td>
-            <td>7:00</td>
-            <td>7:30</td>
-            <td>8:00</td>
-            <td>8:30</td>
-            <td>9:00</td>
-        </tr>
-
-        {% for s in schedule %}
-
-            <tr>
 
 
+    {% if day == "Friday"  %}
+        <table align="center">
+            <tbody name='tb'>
+            <tr >
+                <td>Name</td>
+                <td>9:30</td>
+                <td>10:00</td>
+                <td>10:30</td>
+                <td>11:00</td>
+                <td>11:30</td>
+                <td>12:00</td>
+                <td>12:30</td>
+                <td>1:00</td>
+                <td>1:30</td>
+                <td>2:00</td>
+                <td>2:30</td>
+                <td>3:00</td>
+                <td>3:30</td>
+                <td>4:00</td>
 
-                <td> {{ s.fname }}</td>
-                <td  name={{ s.tutor.firstname }} class={{ s.tutor.typeofstaff }}> {{ s.t0930 }}</td>
-                <td  name={{ s.tutor.firstname }} class={{ s.tutor.typeofstaff }}>{{ s.t1000 }}</td>
-                <td  name={{ s.tutor.firstname }} class={{ s.tutor.typeofstaff }}>{{ s.t1030 }}</td>
-                <td  name={{ s.tutor.firstname }} class={{ s.tutor.typeofstaff }}>{{ s.t1100 }}</td>
-                <td  name={{ s.tutor.firstname }} class={{ s.tutor.typeofstaff }}>{{ s.t1130 }}</td>
-                <td  name={{ s.tutor.firstname }} class={{ s.tutor.typeofstaff }}>{{ s.t1200 }}</td>
-                <td  name={{ s.tutor.firstname }} class={{ s.tutor.typeofstaff }}>{{ s.t1230 }}</td>
-                <td name={{ s.tutor.firstname }} class={{ s.tutor.typeofstaff }}>{{ s.t1300 }}</td>
-                <td name={{ s.tutor.firstname }} class={{ s.tutor.typeofstaff }}>{{ s.t1330 }}</td>
-                <td name={{ s.tutor.firstname }} class={{ s.tutor.typeofstaff }}>{{ s.t1400 }}</td>
-                <td name={{ s.tutor.firstname }} class={{ s.tutor.typeofstaff }}>{{ s.t1430 }}</td>
-                <td name={{ s.tutor.firstname }} class={{ s.tutor.typeofstaff }}>{{ s.t1500 }}</td>
-                <td name={{ s.tutor.firstname }} class={{ s.tutor.typeofstaff }}>{{ s.t1530 }}</td>
-                <td name={{ s.tutor.firstname }} class={{ s.tutor.typeofstaff }}>{{ s.t1600 }}</td>
-                <td  name={{ s.tutor.firstname }} class={{ s.tutor.typeofstaff }}>{{ s.t1630 }}</td>
-                <td name={{ s.tutor.firstname }} class={{ s.tutor.typeofstaff }}>{{ s.t1700 }}</td>
-                <td name={{ s.tutor.firstname }} class={{ s.tutor.typeofstaff }}>{{ s.t1730 }}</td>
-                <td name={{ s.tutor.firstname }} class={{ s.tutor.typeofstaff }}>{{ s.t1800 }}</td>
-                <td name={{ s.tutor.firstname }} class={{ s.tutor.typeofstaff }}>{{ s.t1830 }}</td>
-                <td name={{ s.tutor.firstname }} class={{ s.tutor.typeofstaff }}>{{ s.t1900 }}</td>
-                <td name={{ s.tutor.firstname }} class={{ s.tutor.typeofstaff }}>{{ s.t1930 }}</td>
-                <td name={{ s.tutor.firstname }} class={{ s.tutor.typeofstaff }}>{{ s.t2000 }}</td>
-                <td name={{ s.tutor.firstname }} class={{ s.tutor.typeofstaff }}>{{ s.t2030 }}</td>
-                <td name={{ s.tutor.firstname }} class={{ s.tutor.typeofstaff }}>{{ s.t2100 }}</td>
+            </tr>
+            {% for s in schedule %}
+                <tr>
 
+                    <td> {{ s.fname }}</td>
+                    <td  name={{ s.tutor.firstname }} class={{ s.tutor.typeofstaff }}> {{ s.t0930 }}</td>
+                    <td  name={{ s.tutor.firstname }} class={{ s.tutor.typeofstaff }}>{{ s.t1000 }}</td>
+                    <td  name={{ s.tutor.firstname }} class={{ s.tutor.typeofstaff }}>{{ s.t1030 }}</td>
+                    <td  name={{ s.tutor.firstname }} class={{ s.tutor.typeofstaff }}>{{ s.t1100 }}</td>
+                    <td  name={{ s.tutor.firstname }} class={{ s.tutor.typeofstaff }}>{{ s.t1130 }}</td>
+                    <td  name={{ s.tutor.firstname }} class={{ s.tutor.typeofstaff }}>{{ s.t1200 }}</td>
+                    <td  name={{ s.tutor.firstname }} class={{ s.tutor.typeofstaff }}>{{ s.t1230 }}</td>
+                    <td name={{ s.tutor.firstname }} class={{ s.tutor.typeofstaff }}>{{ s.t1300 }}</td>
+                    <td name={{ s.tutor.firstname }} class={{ s.tutor.typeofstaff }}>{{ s.t1330 }}</td>
+                    <td name={{ s.tutor.firstname }} class={{ s.tutor.typeofstaff }}>{{ s.t1400 }}</td>
+                    <td name={{ s.tutor.firstname }} class={{ s.tutor.typeofstaff }}>{{ s.t1430 }}</td>
+                    <td name={{ s.tutor.firstname }} class={{ s.tutor.typeofstaff }}>{{ s.t1500 }}</td>
+                    <td name={{ s.tutor.firstname }} class={{ s.tutor.typeofstaff }}>{{ s.t1530 }}</td>
+                    <td name={{ s.tutor.firstname }} class={{ s.tutor.typeofstaff }}>{{ s.t1600 }}</td>
+
+                </tr>
+                <br>
+            {% endfor %}
+            </tbody>
+        </table>
+
+    {% elif day == "Saturday"  %}
+        <table align="center">
+            <tbody name='tb'>
+            <tr >
+                <td>Name</td>
+
+                <td>10:00</td>
+                <td>10:30</td>
+                <td>11:00</td>
+                <td>11:30</td>
+                <td>12:00</td>
+                <td>12:30</td>
+                <td>1:00</td>
+                <td>1:30</td>
+                <td>2:00</td>
+                <td>2:30</td>
+                <td>3:00</td>
 
 
             </tr>
-            <br>
+            {% for s in schedule %}
+                <tr>
 
-        {% endfor %}
-        </tbody>
-    </table>
+                    <td> {{ s.fname }}</td>
+
+                    <td  name={{ s.tutor.firstname }} class={{ s.tutor.typeofstaff }}>{{ s.t1000 }}</td>
+                    <td  name={{ s.tutor.firstname }} class={{ s.tutor.typeofstaff }}>{{ s.t1030 }}</td>
+                    <td  name={{ s.tutor.firstname }} class={{ s.tutor.typeofstaff }}>{{ s.t1100 }}</td>
+                    <td  name={{ s.tutor.firstname }} class={{ s.tutor.typeofstaff }}>{{ s.t1130 }}</td>
+                    <td  name={{ s.tutor.firstname }} class={{ s.tutor.typeofstaff }}>{{ s.t1200 }}</td>
+                    <td  name={{ s.tutor.firstname }} class={{ s.tutor.typeofstaff }}>{{ s.t1230 }}</td>
+                    <td name={{ s.tutor.firstname }} class={{ s.tutor.typeofstaff }}>{{ s.t1300 }}</td>
+                    <td name={{ s.tutor.firstname }} class={{ s.tutor.typeofstaff }}>{{ s.t1330 }}</td>
+                    <td name={{ s.tutor.firstname }} class={{ s.tutor.typeofstaff }}>{{ s.t1400 }}</td>
+                    <td name={{ s.tutor.firstname }} class={{ s.tutor.typeofstaff }}>{{ s.t1430 }}</td>
+                    <td name={{ s.tutor.firstname }} class={{ s.tutor.typeofstaff }}>{{ s.t1500 }}</td>
+
+
+                </tr>
+                <br>
+            {% endfor %}
+            </tbody>
+        </table>
+
+    {% elif day == "Sunday"  %}
+        <table align="center">
+            <tbody name='tb'>
+            <tr >
+                <td>Name</td>
+
+
+                <td>12:00</td>
+                <td>12:30</td>
+                <td>1:00</td>
+                <td>1:30</td>
+                <td>2:00</td>
+                <td>2:30</td>
+                <td>3:00</td>
+                <td>3:30</td>
+                <td>4:00</td>
+
+
+            </tr>
+            {% for s in schedule %}
+                <tr>
+
+                    <td> {{ s.fname }}</td>
+
+
+                    <td  name={{ s.tutor.firstname }} class={{ s.tutor.typeofstaff }}>{{ s.t1200 }}</td>
+                    <td  name={{ s.tutor.firstname }} class={{ s.tutor.typeofstaff }}>{{ s.t1230 }}</td>
+                    <td name={{ s.tutor.firstname }} class={{ s.tutor.typeofstaff }}>{{ s.t1300 }}</td>
+                    <td name={{ s.tutor.firstname }} class={{ s.tutor.typeofstaff }}>{{ s.t1330 }}</td>a
+                    <td name={{ s.tutor.firstname }} class={{ s.tutor.typeofstaff }}>{{ s.t1400 }}</td>
+                    <td name={{ s.tutor.firstname }} class={{ s.tutor.typeofstaff }}>{{ s.t1430 }}</td>
+                    <td name={{ s.tutor.firstname }} class={{ s.tutor.typeofstaff }}>{{ s.t1500 }}</td>
+                    <td name={{ s.tutor.firstname }} class={{ s.tutor.typeofstaff }}>{{ s.t1530 }}</td>
+                    <td name={{ s.tutor.firstname }} class={{ s.tutor.typeofstaff }}>{{ s.t1600 }}</td>
+
+
+                </tr>
+                <br>
+            {% endfor %}
+            </tbody>
+        </table>
+
+    {% else %}
+        <table align="center">
+            <tbody name='tb'>
+            <tr >
+                <td>Name</td>
+                <td>9:30</td>
+                <td>10:00</td>
+                <td>10:30</td>
+                <td>11:00</td>
+                <td>11:30</td>
+                <td>12:00</td>
+                <td>12:30</td>
+                <td>1:00</td>
+                <td>1:30</td>
+                <td>2:00</td>
+                <td>2:30</td>
+                <td>3:00</td>
+                <td>3:30</td>
+                <td>4:00</td>
+                <td>4:30</td>
+                <td>5:00</td>
+                <td>5:30</td>
+                <td>6:00</td>
+                <td>6:30</td>
+                <td>7:00</td>
+                <td>7:30</td>
+                <td>8:00</td>
+                <td>8:30</td>
+                <td>9:00</td>
+            </tr>
+
+            {% for s in schedule %}
+                <tr>
+
+                    <td> {{ s.fname }}</td>
+                    <td  name={{ s.tutor.firstname }} class={{ s.tutor.typeofstaff }}> {{ s.t0930 }}</td>
+                    <td  name={{ s.tutor.firstname }} class={{ s.tutor.typeofstaff }}>{{ s.t1000 }}</td>
+                    <td  name={{ s.tutor.firstname }} class={{ s.tutor.typeofstaff }}>{{ s.t1030 }}</td>
+                    <td  name={{ s.tutor.firstname }} class={{ s.tutor.typeofstaff }}>{{ s.t1100 }}</td>
+                    <td  name={{ s.tutor.firstname }} class={{ s.tutor.typeofstaff }}>{{ s.t1130 }}</td>
+                    <td  name={{ s.tutor.firstname }} class={{ s.tutor.typeofstaff }}>{{ s.t1200 }}</td>
+                    <td  name={{ s.tutor.firstname }} class={{ s.tutor.typeofstaff }}>{{ s.t1230 }}</td>
+                    <td name={{ s.tutor.firstname }} class={{ s.tutor.typeofstaff }}>{{ s.t1300 }}</td>
+                    <td name={{ s.tutor.firstname }} class={{ s.tutor.typeofstaff }}>{{ s.t1330 }}</td>
+                    <td name={{ s.tutor.firstname }} class={{ s.tutor.typeofstaff }}>{{ s.t1400 }}</td>
+                    <td name={{ s.tutor.firstname }} class={{ s.tutor.typeofstaff }}>{{ s.t1430 }}</td>
+                    <td name={{ s.tutor.firstname }} class={{ s.tutor.typeofstaff }}>{{ s.t1500 }}</td>
+                    <td name={{ s.tutor.firstname }} class={{ s.tutor.typeofstaff }}>{{ s.t1530 }}</td>
+                    <td name={{ s.tutor.firstname }} class={{ s.tutor.typeofstaff }}>{{ s.t1600 }}</td>
+                    <td  name={{ s.tutor.firstname }} class={{ s.tutor.typeofstaff }}>{{ s.t1630 }}</td>
+                    <td name={{ s.tutor.firstname }} class={{ s.tutor.typeofstaff }}>{{ s.t1700 }}</td>
+                    <td name={{ s.tutor.firstname }} class={{ s.tutor.typeofstaff }}>{{ s.t1730 }}</td>
+                    <td name={{ s.tutor.firstname }} class={{ s.tutor.typeofstaff }}>{{ s.t1800 }}</td>
+                    <td name={{ s.tutor.firstname }} class={{ s.tutor.typeofstaff }}>{{ s.t1830 }}</td>
+                    <td name={{ s.tutor.firstname }} class={{ s.tutor.typeofstaff }}>{{ s.t1900 }}</td>
+                    <td name={{ s.tutor.firstname }} class={{ s.tutor.typeofstaff }}>{{ s.t1930 }}</td>
+                    <td name={{ s.tutor.firstname }} class={{ s.tutor.typeofstaff }}>{{ s.t2000 }}</td>
+                    <td name={{ s.tutor.firstname }} class={{ s.tutor.typeofstaff }}>{{ s.t2030 }}</td>
+                    <td name={{ s.tutor.firstname }} class={{ s.tutor.typeofstaff }}>{{ s.t2100 }}</td>
+
+                </tr>
+                <br>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
     <br>
+
     <div class="row justify-content-start">
         <div class="col-2">
         </div>
@@ -508,6 +640,7 @@
         </div>
     </div>
     <h2 id="Orghours"></h2>
+
 
 {% else %}
 
