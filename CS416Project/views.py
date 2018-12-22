@@ -126,10 +126,19 @@ def saveSchedule(request):
     timetable.t1500 = schedule[11]
     timetable.t1530 = schedule[12]
     timetable.t1600 = schedule[13]
-
+    timetable.t1630 = schedule[14]
+    timetable.t1700 = schedule[15]
+    timetable.t1730 = schedule[16]
+    timetable.t1800 = schedule[17]
+    timetable.t1830 = schedule[18]
+    timetable.t1900 = schedule[19]
+    timetable.t1930 = schedule[20]
+    timetable.t2000 = schedule[21]
+    timetable.t2030 = schedule[22]
+    timetable.t2100 = schedule[23]
     # for s in schedule:
     #
     # tutorusedhours.usedhours = usedhours
     # tutorusedhours.save(update_fields=["usedhours"])
-    timetable.save(update_fields=['t0930','t1000','t1030','t1100','t1130','t1200','t1230','t1300','t1330','t1400','t1430','t1500','t1530','t1600'])
+    timetable.save(update_fields=['t0930','t1000','t1030','t1100','t1130','t1200','t1230','t1300','t1330','t1400','t1430','t1500','t1530','t1600','t1630','t1700','t1730','t1800','t1830','t1900','t1930','t2000','t2030','t2100'])
     return HttpResponse('successfuly saved the hours')
