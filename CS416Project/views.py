@@ -60,8 +60,18 @@ def location(request):
     return render(request, 'location.html')
 
 def schedule2(request):
+    Monday = Timetable.objects.all().filter(day="Monday").order_by('tutor__firstname')
+    Tuesday = Timetable.objects.all().filter(day="Tuesday").order_by('tutor__firstname')
+    Wednesday = Timetable.objects.all().filter(day="Wednesday").order_by('tutor__firstname')
+    Thursday = Timetable.objects.all().filter(day="Thursday").order_by('tutor__firstname')
+    Friday = Timetable.objects.all().filter(day="Friday").order_by('tutor__firstname')
+    Saturday = Timetable.objects.all().filter(day="Saturday").order_by('tutor__firstname')
+    Sunday = Timetable.objects.all().filter(day="Sunday").order_by('tutor__firstname')
 
-    return render(request, 'mathSchedule.html',{})
+
+    return render(request, 'viewAllSchedule.html', {'Monday': Monday, 'Tuesday': Tuesday, 'Wednesday': Wednesday,'Thursday': Thursday, 'Friday': Friday, 'Saturday': Saturday, 'Sunday': Sunday})
+
+
 
 def schedule(request, day):
 
@@ -70,12 +80,12 @@ def schedule(request, day):
     for u in usedhours:
         print(str(u.tutor_id) +' '+ u.tutor.firstname)
         count = Timetable.objects.filter(day=day).filter(tutor__firstname = u.tutor.firstname).count()
-        print('count is ' + str(count))
+        # print('count is ' + str(count))
         if count ==  0:
             timetable = Timetable(tutor_id=u.tutor_id, day=u.day, fname=u.tutor.firstname)
             timetable.save()
 
-    schedule = Timetable.objects.all().filter(day=day)
+    schedule = Timetable.objects.all().filter(day=day).order_by('tutor__firstname')
 
     return render(request, 'mathSchedule.html',{'usedhours': usedhours,'day':day, 'schedule': schedule})
 
