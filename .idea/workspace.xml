@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e3d30188-4b21-4f4f-8d5f-3826003903ce" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/mathSchedule.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/mathSchedule.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -75,11 +76,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/templates/mathSchedule.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="890">
-              <caret line="246" column="17" selection-start-line="246" selection-start-column="17" selection-end-line="246" selection-end-column="17" />
+            <state relative-caret-position="170">
+              <caret line="156" column="263" selection-start-line="156" selection-start-column="263" selection-end-line="156" selection-end-column="263" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
@@ -87,7 +88,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="das://30fe883f-0638-481f-bdac-6faeb4805729/schema/main/table/CS416Project_timetable">
           <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
             <state>
@@ -221,7 +222,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="2124" />
     <option name="y" value="27" />
     <option name="width" value="990" />
@@ -372,7 +373,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="289640000" />
+    <option name="totallyTimeSpent" value="291633000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -638,6 +639,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="das://30fe883f-0638-481f-bdac-6faeb4805729/schema/main/table/CS416Project_timetable">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
     <entry file="das://30fe883f-0638-481f-bdac-6faeb4805729/schema/main/table/CS416Project_tutor">
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state>
@@ -647,18 +655,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/mathSchedule.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="890">
-          <caret line="246" column="17" selection-start-line="246" selection-start-column="17" selection-end-line="246" selection-end-column="17" />
+        <state relative-caret-position="170">
+          <caret line="156" column="263" selection-start-line="156" selection-start-column="263" selection-end-line="156" selection-end-column="263" />
           <folding>
             <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://30fe883f-0638-481f-bdac-6faeb4805729/schema/main/table/CS416Project_timetable">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
         </state>
       </provider>
     </entry>
