@@ -403,9 +403,14 @@
 
     <div class="row">
 
-        <div class="col-sm-5" id="listoftutors"></div>
-        <div  class="col-sm-7" id="daybtns" align="left">
+        <div class="col-sm-4" id="listoftutors"></div>
 
+         <div class="col-sm-4" style="text-align: center">
+                <h1>Math Tutor Schedule</h1>
+                <h2 id="daylbl"></h2>
+         </div>
+
+        <div  class="col-sm-4" id="daybtns" >
             <input class="btn btn-primary" id="Mondaybtn" name="daybtn" type="button" value="Monday"/>
             <input class="btn btn-primary" id="Tuesdaybtn" name="daybtn" type="button" value="Tuesday"/>
             <input class="btn btn-primary" id="Wednesdaybtn"name="daybtn" type="button" value="Wednesday"/>
@@ -414,20 +419,8 @@
             <input class="btn btn-primary" id="Saturdaybtn" name="daybtn" type="button" value="Saturday"/>
             <input class="btn btn-primary" id="Sundaybtn" name="daybtn" type="button" value="Sunday"/>
 
-            <div  align="left" style="text-align: center;">
-                <h1>Math Tutor Schedule</h1>
-                <h2 id="daylbl"></h2>
-            </div>
         </div>
-
-    </div>
-
-
-
-    {#    <div  style="text-align: center;">#}
-    {#        <h1>Math Tutor Schedule</h1>#}
-    {#        <h2 id="daylbl"></h2>#}
-    {#    </div>#}
+   </div>
 
 
     {#        <div align='center' id="here_table"> </div>#}
@@ -508,7 +501,7 @@
 
 
             </tr>
-             {% for s, t in zip %}
+            {% for s, t in zip %}
                 <tr>
 
                     <td> {{ s.fname }}</td>
