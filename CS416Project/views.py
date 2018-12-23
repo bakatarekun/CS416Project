@@ -1,3 +1,5 @@
+import decimal
+
 import simplejson as simplejson
 from django.core.serializers import json
 from django.shortcuts import render, get_object_or_404, redirect
@@ -121,21 +123,14 @@ def deleteRow(request):
     tutorId = request.GET.get('tutorId', 0)
     scheduleId = request.GET.get('scheduleId', 0)
     timeTableId = request.GET.get('timeTableId', 0)
-    usedHrs = float(request.GET.get('usedHrs', ""))
-
+    usedHrs = decimal.Decimal(request.GET.get('usedHrs', ""))
     day = request.GET.get('day', "")
-
     deletedSchedule = get_object_or_404(Schedule, pk =scheduleId)
     deletedTimetable = get_object_or_404(Timetable, pk=timeTableId)
     deletedSchedule.delete()
     deletedTimetable.delete()
-    # print(tutorusedhours)
     tutorToEditHrs = get_object_or_404(Tutor, pk=tutorId)
-    temHrs = 0.0
-    temHrs=tutorToEditHrs.usedhours
-    print(str(temHrs))
-    print(str(usedHrs))
-    tutorToEditHrs.usedhours  = temHrs - usedHrs
+    tutorToEditHrs.usedhours  = tutorToEditHrs.usedhours - usedHrs
     tutorToEditHrs.save(update_fields=["usedhours"])
     url = '/schedule/' + day+'/'
     return redirect(url)
