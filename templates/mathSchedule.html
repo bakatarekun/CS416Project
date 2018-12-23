@@ -164,7 +164,7 @@
             saveAccumulatedHours(setoftutors,accumulatedHours);
             displayHours2(setoftutors);
 
-            $('tr').mouseleave(function () {
+            $('tr td[name!="delRow"]').mouseleave(function () {
 
                 displayHours2(setoftutors);
                 saveAccumulatedHours(setoftutors,accumulatedHours);
@@ -181,6 +181,7 @@
             for (s = 0; s < setoftutors.length; s++) {
 
                 name1 = setoftutors[s].fields.tutor[0];
+
                 nameid = "#" + name1;
                 nameinput = "#" + name1 + "input";
                 usedhoursfromDB = parseFloat(setoftutors[s].fields.tutor[3]);
@@ -188,6 +189,7 @@
 
                 $(nameid).text(usedhours);
                 $(nameinput).val(usedhours);
+                $('input[id ='+name1+']').val(usedhours);
             }
 
 
@@ -210,7 +212,7 @@
                 usedhours = ($("td:contains(" + name1 + ")").length - 1) * .5;
                 spantotalHours = "#" + name1 + "total";
                 $(nameid).text(usedhours);
-
+                $('input[id ='+name1+']').val(usedhours);
 
             }
 
@@ -453,7 +455,7 @@
                 <td>4:00</td>
 
             </tr>
-            {% for s in schedule %}
+            {% for s, t in zip %}
                 <tr>
 
                     <td> {{ s.fname }}</td>
@@ -471,8 +473,16 @@
                     <td name={{ s.tutor.firstname }} class={{ s.tutor.typeofstaff }}>{{ s.t1500 }}</td>
                     <td name={{ s.tutor.firstname }} class={{ s.tutor.typeofstaff }}>{{ s.t1530 }}</td>
                     <td name={{ s.tutor.firstname }} class={{ s.tutor.typeofstaff }}>{{ s.t1600 }}</td>
-
+                    <td name="delRow"><form action="/deleteRow" method="GET">
+                        <input type="text" value="{{ t.tutor.id }}" name="tutorId" size="1"/>
+                        <input type="text" value="{{ t.id }}" name="scheduleId" size="1"/>
+                        <input type="text" value="{{ s.id }}" name="timeTableId" size="1"/>
+                        <input type="text" value="{{ s.day }}" name="day" size="1"/>
+                        <input type="text" id="{{ s.tutor.firstname }}" name="usedHrs" value=""  size="1"/>
+                        <input type="submit" class="btn" value="Delete" name="delbtn">
+                    </form></td>
                 </tr>
+
                 <br>
             {% endfor %}
             </tbody>

@@ -26,6 +26,7 @@ urlpatterns = [
     url(r'^login/$', auth_views.LoginView.as_view(), name='login'),
     url(r'^home$', views.home),
     url(r'^schedule2$', views.schedule2, name="schedule2"),
+    url(r'^deleteRow$', views.deleteRow, name="deleteRow"),
     path('schedule/<day>/', views.schedule, name="schedule"),
     path('allTutorsNames/<day_of_shift>', views.allTutorNames, name='allTutorNames'),
     url(r'^location$', views.location, name="location"),

@@ -85,9 +85,13 @@ def schedule(request, day):
             timetable = Timetable(tutor_id=u.tutor_id, day=u.day, fname=u.tutor.firstname)
             timetable.save()
 
-    schedule = Timetable.objects.all().filter(day=day).order_by('tutor__firstname')
+    tTable = Timetable.objects.all().filter(day=day).order_by('tutor__firstname')
+    # print(tTable)
+    # print(usedhours)
+    zipdata = zip(tTable,usedhours)
+    print(zipdata)
 
-    return render(request, 'mathSchedule.html',{'usedhours': usedhours,'day':day, 'schedule': schedule})
+    return render(request, 'mathSchedule.html',{'usedhours': usedhours,'day':day, 'schedule': tTable,'zip':zipdata})
 
 
 
@@ -112,6 +116,29 @@ def saveUsedHours(request):
     tutorusedhours.usedhours = usedhours
     tutorusedhours.save(update_fields=["usedhours"])
     return HttpResponse('successfuly saved the hours')
+
+def deleteRow(request):
+    tutorId = request.GET.get('tutorId', 0)
+    scheduleId = request.GET.get('scheduleId', 0)
+    timeTableId = request.GET.get('timeTableId', 0)
+    usedHrs = float(request.GET.get('usedHrs', ""))
+
+    day = request.GET.get('day', "")
+
+    deletedSchedule = get_object_or_404(Schedule, pk =scheduleId)
+    deletedTimetable = get_object_or_404(Timetable, pk=timeTableId)
+    deletedSchedule.delete()
+    deletedTimetable.delete()
+    # print(tutorusedhours)
+    tutorToEditHrs = get_object_or_404(Tutor, pk=tutorId)
+    temHrs = 0.0
+    temHrs=tutorToEditHrs.usedhours
+    print(str(temHrs))
+    print(str(usedHrs))
+    tutorToEditHrs.usedhours  = temHrs - usedHrs
+    tutorToEditHrs.save(update_fields=["usedhours"])
+    url = '/schedule/' + day+'/'
+    return redirect(url)
 
 @csrf_protect
 def saveSchedule(request):
