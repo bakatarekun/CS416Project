@@ -133,7 +133,7 @@
 
             var hours;
             var listoftutors = '<ul>'
-            listoftutors += '<div style="position: sticky;width:800px;"><h3>Tutor\'s Hours and Availabilities</h3>'
+            listoftutors += '<h3>Tutor\'s Hours and Availabilities</h3>'
 
             for (s = 0; s < setoftutors.length; s++) {
 
@@ -157,7 +157,7 @@
                 listoftutors += '<li style="font-size: x-large"><input type="hidden" name="usedHours" id=' + name + 'input' + '><span name="spanname">' + name + '</span><span style="padding-left:5px" name="spanhours" id=' + name + '></span> Hrs --' + '<span> Left<span style="padding-left:5px" name="spanhourstotal" id=' + name +'total'+' \'>' + usedHours+'</span> Hrs: From ' + timefrom1 + ' To ' + timeto1 + '</span></li>'
             }
 
-            listoftutors += '</div></ul><br>';
+            listoftutors += '</ul><br>';
             $('#listoftutors').append(listoftutors);
 
             displayHours(setoftutors);
@@ -406,14 +406,14 @@
 
     <div class="row">
 
-        <div class="col-sm-4" id="listoftutors"></div>
+        <div class="col-4" id="listoftutors"></div>
 
-         <div class="col-sm-4" style="text-align: center">
+         <div class="col-4" style="text-align: center">
                 <h1>Math Tutor Schedule</h1>
                 <h2 id="daylbl"></h2>
          </div>
 
-        <div  class="col-sm-4" id="daybtns" >
+        <div  class="col-4" id="daybtns" >
             <input class="btn btn-primary" id="Mondaybtn" name="daybtn" type="button" value="Monday"/>
             <input class="btn btn-primary" id="Tuesdaybtn" name="daybtn" type="button" value="Tuesday"/>
             <input class="btn btn-primary" id="Wednesdaybtn"name="daybtn" type="button" value="Wednesday"/>
@@ -424,7 +424,6 @@
 
         </div>
    </div>
-
 
     {#        <div align='center' id="here_table"> </div>#}
 
@@ -666,7 +665,7 @@
             <input type="button" value="save schedule" onclick="saveAllSchedule()">
         </div>
     </div>
-    <h2 id="Orghours"></h2>
+
 
 
 {% else %}
