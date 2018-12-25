@@ -6,12 +6,14 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse, JsonResponse
 from django.views.decorators.csrf import csrf_protect
 from django.views.generic import TemplateView
-
 from CS416Project.forms import HomeForm
 from .models import People, SI_Session, Tutor, Schedule, Timetable
 from django.core import serializers
-# Create your views here.
+from django.contrib.auth.decorators import user_passes_test
 
+
+def user_check(user):
+    return user.username == 'bakatarekun'
 
 
 class HomeView(TemplateView):
@@ -111,7 +113,7 @@ def schedule2(request):
     return render(request, 'viewAllSchedule.html', {'Monday': Monday, 'Tuesday': Tuesday, 'Wednesday': Wednesday,'Thursday': Thursday, 'Friday': Friday, 'Saturday': Saturday, 'Sunday': Sunday})
 
 
-
+@user_passes_test(user_check,login_url='/login')
 def schedule(request, day):
 
     usedhours = Schedule.objects.all().filter(day=day)
