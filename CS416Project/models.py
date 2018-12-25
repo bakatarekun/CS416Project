@@ -138,7 +138,6 @@ class People(models.Model):
 
 
 
-
 class SI_Session(models.Model):
 
     day_choices = (

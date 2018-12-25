@@ -2,7 +2,63 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e3d30188-4b21-4f4f-8d5f-3826003903ce" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/templates/mathSchedule.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/mathSchedule.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/30fe883f-0638-481f-bdac-6faeb4805729.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/30fe883f-0638-481f-bdac-6faeb4805729.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CS416Project/migrations/0002_auto_20181121_1658.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CS416Project/migrations/0003_auto_20181121_1700.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CS416Project/migrations/0004_auto_20181121_1702.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CS416Project/migrations/0005_auto_20181121_1808.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CS416Project/migrations/0006_auto_20181121_1814.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CS416Project/migrations/0007_auto_20181121_1957.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CS416Project/migrations/0008_auto_20181121_2001.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CS416Project/migrations/0009_auto_20181121_2003.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CS416Project/migrations/0010_auto_20181121_2021.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CS416Project/migrations/0011_auto_20181121_2024.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CS416Project/migrations/0012_auto_20181121_2026.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CS416Project/migrations/0013_auto_20181121_2123.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CS416Project/migrations/0014_auto_20181121_2135.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CS416Project/migrations/0015_auto_20181121_2211.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CS416Project/migrations/0016_auto_20181121_2214.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CS416Project/migrations/0017_auto_20181121_2224.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CS416Project/migrations/0018_auto_20181122_1432.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CS416Project/migrations/0019_auto_20181122_1435.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CS416Project/migrations/0020_auto_20181122_1447.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CS416Project/migrations/0021_tutor_type.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CS416Project/migrations/0022_auto_20181122_1509.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CS416Project/migrations/0023_auto_20181124_2245.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CS416Project/migrations/0024_timetable.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CS416Project/migrations/0025_schedule.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CS416Project/migrations/0026_remove_timetable_t0900.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CS416Project/migrations/0027_auto_20181125_2054.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CS416Project/migrations/0028_auto_20181125_2109.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CS416Project/migrations/0029_auto_20181125_2113.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CS416Project/migrations/0030_auto_20181125_2115.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CS416Project/migrations/0031_auto_20181125_2129.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CS416Project/migrations/0032_auto_20181126_0058.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CS416Project/migrations/0033_schedule_usedhours.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CS416Project/migrations/0034_auto_20181203_0233.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CS416Project/migrations/0035_auto_20181209_2041.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CS416Project/migrations/0036_auto_20181215_1942.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CS416Project/migrations/0037_timetable_t1230.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CS416Project/migrations/0038_timetable_tutor.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CS416Project/migrations/0039_timetable_fname.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CS416Project/migrations/0040_auto_20181222_2251.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CS416Project/migrations/0041_auto_20181222_2259.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CS416Project/migrations/0042_auto_20181222_2306.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CS416Project/migrations/0043_remove_schedule_timetableid.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CS416Project/migrations/0044_schedule_timetableid.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CS416Project/migrations/0045_auto_20181222_2348.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CS416Project/migrations/0046_auto_20181222_2356.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CS416Project/migrations/0047_auto_20181222_2358.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CS416Project/migrations/0048_auto_20181223_0002.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CS416Project/migrations/0049_auto_20181223_0004.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CS416Project/migrations/0050_auto_20181223_0011.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CS416Project/migrations/0051_auto_20181223_0012.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CS416Project/migrations/0052_auto_20181223_0013.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CS416Project/migrations/0053_auto_20181223_0015.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CS416Project/migrations/0054_auto_20181223_0049.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CS416Project/migrations/0055_auto_20181223_0055.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CS416Project/migrations/0056_remove_schedule_timetableid.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CS416Project/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/CS416Project/models.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -66,30 +122,25 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/mathSchedule.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="134">
-              <caret line="137" column="54" lean-forward="true" selection-start-line="137" selection-start-column="54" selection-end-line="137" selection-end-column="54" />
+            <state relative-caret-position="598">
+              <caret line="148" column="52" selection-start-line="148" selection-start-column="52" selection-end-line="148" selection-end-column="52" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/CS416Project/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="320">
-              <caret line="247" column="33" lean-forward="true" selection-start-line="247" selection-start-column="33" selection-end-line="247" selection-end-column="33" />
+            <state relative-caret-position="56">
+              <caret line="136" selection-start-line="136" selection-end-line="136" />
               <folding>
                 <element signature="e#0#15#0" expanded="true" />
               </folding>
             </state>
           </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/db.sqlite3">
-          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
@@ -207,18 +258,18 @@
         <option value="$PROJECT_DIR$/CS416Project/migrations/0039_timetable_fname.py" />
         <option value="$PROJECT_DIR$/templates/header.html" />
         <option value="$APPLICATION_CONFIG_DIR$/consoles/.datagrid/cell" />
-        <option value="$PROJECT_DIR$/CS416Project/models.py" />
         <option value="$PROJECT_DIR$/CS416Project/urls.py" />
         <option value="$PROJECT_DIR$/CS416Project/views.py" />
         <option value="$PROJECT_DIR$/templates/viewAllSchedule.html" />
         <option value="$PROJECT_DIR$/templates/mathSchedule.html" />
+        <option value="$PROJECT_DIR$/CS416Project/models.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="2124" />
+    <option name="x" value="2121" />
     <option name="y" value="27" />
-    <option name="width" value="990" />
+    <option name="width" value="980" />
     <option name="height" value="576" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -227,7 +278,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -243,12 +293,19 @@
             <path>
               <item name="CS416Project" type="b2602c69:ProjectViewProjectNode" />
               <item name="CS416Project" type="462c0819:PsiDirectoryNode" />
+              <item name="CS416Project" type="462c0819:PsiDirectoryNode" />
+              <item name="migrations" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CS416Project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CS416Project" type="462c0819:PsiDirectoryNode" />
               <item name="templates" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -358,7 +415,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="317693000" />
+    <option name="totallyTimeSpent" value="318275000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -370,14 +427,14 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1360" y="25" width="1920" height="990" extended-state="6" />
+    <frame x="0" y="-2" width="1360" height="770" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16755603" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2412481" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49923897" visible="true" weight="0.19258372" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49923897" weight="0.19258372" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39952153" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -386,14 +443,14 @@
       <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="9" />
       <window_info anchor="bottom" id="Database Changes" order="10" weight="0.32894737" />
-      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.49893278" weight="0.23684211" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="11" sideWeight="0.49893278" visible="true" weight="0.32142857" />
       <window_info anchor="bottom" id="Python Console" order="12" weight="0.32894737" />
       <window_info anchor="bottom" id="Event Log" order="13" sideWeight="0.5010672" side_tool="true" weight="0.23684211" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="SciView" order="3" />
-      <window_info anchor="right" id="Database" order="4" visible="true" weight="0.17982924" />
+      <window_info anchor="right" id="Database" order="4" visible="true" weight="0.2564688" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -502,8 +559,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/header.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="71" selection-start-line="7" selection-start-column="71" selection-end-line="7" selection-end-column="71" />
+        <state relative-caret-position="375">
+          <caret line="25" selection-start-line="25" selection-end-line="25" />
         </state>
       </provider>
     </entry>
@@ -578,9 +635,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/db.sqlite3">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/static/myJs.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1080">
@@ -629,20 +683,23 @@
     <entry file="file://$PROJECT_DIR$/static/style.css">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/CS416Project/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="320">
-          <caret line="247" column="33" lean-forward="true" selection-start-line="247" selection-start-column="33" selection-end-line="247" selection-end-column="33" />
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
+    <entry file="file://$PROJECT_DIR$/db.sqlite3">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/mathSchedule.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="134">
-          <caret line="137" column="54" lean-forward="true" selection-start-line="137" selection-start-column="54" selection-end-line="137" selection-end-column="54" />
+        <state relative-caret-position="598">
+          <caret line="148" column="52" selection-start-line="148" selection-start-column="52" selection-end-line="148" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CS416Project/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="56">
+          <caret line="136" selection-start-line="136" selection-end-line="136" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
