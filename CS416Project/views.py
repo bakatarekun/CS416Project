@@ -39,7 +39,7 @@ class HomeView(TemplateView):
         args = {'form': form, }
         # args = {'form':form,'text':text,'from1':from1,'to1':to1,'day':day}
         return render(request, self.template_name, args)
-       # return render(request, self.template_name, {'form':form,'text':text})
+
 
 
 def home(request):
