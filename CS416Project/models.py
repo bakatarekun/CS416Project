@@ -30,7 +30,7 @@ day_choices = (
     ('Wednesday', 'Wednesday'),
     ('Thursday', 'Thursday'),
     ('Friday', 'Friday'),
-    ('Satrurday', 'Saturday'),
+    ('Saturday', 'Saturday'),
     ('Sunday', 'Sunday'),
 
 )
@@ -147,7 +147,7 @@ class SI_Session(models.Model):
         ('Wednesday', 'Wednesday'),
         ('Thursday', 'Thursday'),
         ('Friday', 'Friday'),
-        ('Sarturday', 'Satruday'),
+        ('Saturday', 'Saturday'),
         ('Sunday', 'Sunday'),
 
     )

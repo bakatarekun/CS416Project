@@ -25,10 +25,19 @@ class HomeView(TemplateView):
     def post(self, request):
         form = HomeForm(request.POST)
         print('post is fired')
+
         if form.is_valid():
-            text = form.cleaned_data['post']
+            form.save()
+            # text = form.cleaned_data['post']
+            # tutor = form.cleaned_data['tutor']
+            from1 = form.cleaned_data['From1']
+            to1 = form.cleaned_data['To1']
+            day = form.cleaned_data['day']
             form = HomeForm()
-            args = {'form':form,'text':text}
+            return redirect('home')
+
+        args = {'form': form, }
+        # args = {'form':form,'text':text,'from1':from1,'to1':to1,'day':day}
         return render(request, self.template_name, args)
        # return render(request, self.template_name, {'form':form,'text':text})
 
