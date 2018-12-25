@@ -33,7 +33,30 @@ function togglecells2(that){
 }
 
 
+function addColorToRows(td1) {
 
+
+var list = td1;
+     list.each(function(){
+
+                if($(this).hasClass("EA"))
+                {
+                    $(this).addClass("eacellcolor");
+                }
+                else if ($(this).hasClass("SA"))
+                {
+                    $(this).addClass("sacellcolor");
+                }
+                else if ($(this).hasClass("Work"))
+                {
+                    $(this).addClass("wscellcolor");
+                }
+                else if ($(this).hasClass("Volunteer"))
+                {
+                    $(this).addClass("vtcellcolor");
+                }
+            });
+}
 function togglecells(targetcell,classname,tutorname) {
 
     var isMouseDown = false;
@@ -199,4 +222,6 @@ function toggleinputs(targetcell,classname,tutorname) {
 
 
 }
+
+
 

@@ -7,7 +7,7 @@
     <title>Second Website</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="myCss2.css">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
     <script src="{% static 'myJs.js' %}"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -39,7 +39,7 @@
                 }
             });
 
-            togglecells("td[name='ken']","wscellcolor",'ken');
+
 
             var day =  $('#dayinputhidden').val();
             $('#daylbl').text(day);
@@ -54,8 +54,8 @@
             });
 
         });
-
-        function showScheduleByDay(dayofshift) {
+{% block script %}
+function showScheduleByDay(dayofshift) {
             var URL="/allTutorsNames/";
             URL = URL+ dayofshift ;
             $.ajax({
@@ -84,54 +84,8 @@
             var setoftutors = tutors;
             var counter = 9;
             var rowcounter = 0;
-            var content = "<div class='table-responsive'><table id='tbl' class='table table-bordered'><tbody name='tb'>"
-
-            content += '<div><tr>'
-            for (s = 8; s < 33; s++) {
-
-                if (s > 8) {
-
-                    if (s % 2 == 0) {
-                        counter++;
-                        if (counter == 13) {
-                            counter = 1;
-                        }
-
-                        content += '<th class="thformat">' + counter + ': 00' + '</th>'
-
-                    } else {
-                        content += '<th class="thformat">' + counter + ': 30' + '</th>'
-                    }
-                } else {
-                    content += '<th class="thformat">' + '&nbsp' + '</th>'
-                }
-
-            }
-
-            content += '</div></tr>';
-
-            for (i = 0; i < setoftutors.length; i++) {
-                content += '<tr name="rowtest">'
-                for (s = 0; s < 25; s++) {
-
-                    if (s == 0) {
-                        content += '<td class="tdformat">' + setoftutors[i].fields.tutor[0] + '</td>'
-                        rowcounter++
-                    } else {
-                        var name = setoftutors[i].fields.tutor[0];
-                        {#content += '<td class="tdformat" name='+name + ' >' + '&nbsp' + '</td>'#}
-                        content += '<td class="tdformat" name=' + name + ' >' + '&nbsp' + '</td>'
-
-                    }
-
-                }
-                content += '</tr>';
-            }
-
-            content += "<tbody></table></div><br><input   style=\"margin-left:30px !important;\" class=\"btn btn-primary col-sm-2\" type=\"button\" onclick=\"getUsedHoursAndName()\" value=\"Save\">"
-            $('#here_table').append(content);
-
             var hours;
+
             var listoftutors = '<ul>'
             listoftutors += '<h3>Tutor\'s Hours and Availabilities</h3>'
 
@@ -298,7 +252,6 @@
                 contentType: "application/json",
                 success: function () {
 
-
                 },
 
                 error: function () {
@@ -349,57 +302,18 @@
             }
             alert("scheduel saved succesfully");
         }
-
+        {% endblock %}
     </script>
 
 
     <style type="text/css">
-        table {
-            border: 1px solid black;
 
-        }
-        th, td {
-            border: 1px solid black;
-            width:60px;
-            text-align: center;
-        }
-        .btn-primary{
-               margin-bottom: 5px;
-        }
-        .eacellcolor {
-            background: greenyellow;
-        }
-        .sacellcolor {
-            background: deepskyblue;
-        }
-        .wscellcolor {
-            background: yellow;
-        }
-        .vtcellcolor {
-            background: #fd25ff;
-        }
-        .tdformat{
-            font-size: x-large;
-            height: auto;
-            width:auto;
-        }
-        .thformat{
-            font-size: large;
-            height: auto;
-
-        }
-        .inputwidth
-        {
-            border: 1px solid black !important;
-            width:60px;
-            text-align: center;
-        }
     </style>
 </head>
 
 <!-- body of the site -->
 <body id="top">
-{% include "header.html" %}
+  {% include "header.html" %}
 <input type="hidden" id="dayinputhidden" value="{{ day }}" />
 {% if user.is_authenticated %}
     <br>
@@ -408,74 +322,35 @@
 
         <div class="col-4" id="listoftutors"></div>
 
-         <div class="col-4" style="text-align: center">
-                <h1>Math Tutor Schedule</h1>
-                <h2 id="daylbl"></h2>
-         </div>
+        <div class="col-4" style="text-align: center">
+            <h1>Math Tutor Schedule</h1>
+            <h2 id="daylbl"></h2>
+        </div>
 
         <div  class="col-4" id="daybtns" >
-            <input class="btn btn-primary" id="Mondaybtn" name="daybtn" type="button" value="Monday"/>
-            <input class="btn btn-primary" id="Tuesdaybtn" name="daybtn" type="button" value="Tuesday"/>
-            <input class="btn btn-primary" id="Wednesdaybtn"name="daybtn" type="button" value="Wednesday"/>
-            <input class="btn btn-primary" id="Thursdaybtn" name="daybtn" type="button" value="Thursday"/>
-            <input class="btn btn-primary" id="Fridaybtn" name="daybtn" type="button" value="Friday"/>
-            <input class="btn btn-primary" id="Saturdaybtn" name="daybtn" type="button" value="Saturday"/>
-            <input class="btn btn-primary" id="Sundaybtn" name="daybtn" type="button" value="Sunday"/>
+
+            <input class="btn btn-primary mybtn" id="Mondaybtn" name="daybtn" type="button" value="Monday"/>
+            <input class="btn btn-primary mybtn" id="Tuesdaybtn" name="daybtn" type="button" value="Tuesday"/>
+            <input class="btn btn-primary mybtn" id="Wednesdaybtn"name="daybtn" type="button" value="Wednesday"/>
+            <input class="btn btn-primary mybtn" id="Thursdaybtn" name="daybtn" type="button" value="Thursday"/>
+            <input class="btn btn-primary mybtn" id="Fridaybtn" name="daybtn" type="button" value="Friday"/>
+            <input class="btn btn-primary mybtn" id="Saturdaybtn" name="daybtn" type="button" value="Saturday"/>
+            <input class="btn btn-primary mybtn" id="Sundaybtn" name="daybtn" type="button" value="Sunday"/>
 
         </div>
-   </div>
 
-    {#        <div align='center' id="here_table"> </div>#}
-
+    </div>
 
 
     {% if day == "Friday"  %}
         <table align="center">
             <tbody name='tb'>
-            <tr >
-                <td>Name</td>
-                <td>9:30</td>
-                <td>10:00</td>
-                <td>10:30</td>
-                <td>11:00</td>
-                <td>11:30</td>
-                <td>12:00</td>
-                <td>12:30</td>
-                <td>1:00</td>
-                <td>1:30</td>
-                <td>2:00</td>
-                <td>2:30</td>
-                <td>3:00</td>
-                <td>3:30</td>
-                <td>4:00</td>
-
-            </tr>
+                     {% include "rowFridayTime.html" %}
             {% for s, t in zip %}
                 <tr>
+                      {% include "rowFriday.html" %}
+                      {% include "deleteButtons.html" %}
 
-                    <td> {{ s.fname }}</td>
-                    <td  name={{ s.tutor.firstname }} class={{ s.tutor.typeofstaff }}> {{ s.t0930 }}</td>
-                    <td  name={{ s.tutor.firstname }} class={{ s.tutor.typeofstaff }}>{{ s.t1000 }}</td>
-                    <td  name={{ s.tutor.firstname }} class={{ s.tutor.typeofstaff }}>{{ s.t1030 }}</td>
-                    <td  name={{ s.tutor.firstname }} class={{ s.tutor.typeofstaff }}>{{ s.t1100 }}</td>
-                    <td  name={{ s.tutor.firstname }} class={{ s.tutor.typeofstaff }}>{{ s.t1130 }}</td>
-                    <td  name={{ s.tutor.firstname }} class={{ s.tutor.typeofstaff }}>{{ s.t1200 }}</td>
-                    <td  name={{ s.tutor.firstname }} class={{ s.tutor.typeofstaff }}>{{ s.t1230 }}</td>
-                    <td name={{ s.tutor.firstname }} class={{ s.tutor.typeofstaff }}>{{ s.t1300 }}</td>
-                    <td name={{ s.tutor.firstname }} class={{ s.tutor.typeofstaff }}>{{ s.t1330 }}</td>
-                    <td name={{ s.tutor.firstname }} class={{ s.tutor.typeofstaff }}>{{ s.t1400 }}</td>
-                    <td name={{ s.tutor.firstname }} class={{ s.tutor.typeofstaff }}>{{ s.t1430 }}</td>
-                    <td name={{ s.tutor.firstname }} class={{ s.tutor.typeofstaff }}>{{ s.t1500 }}</td>
-                    <td name={{ s.tutor.firstname }} class={{ s.tutor.typeofstaff }}>{{ s.t1530 }}</td>
-                    <td name={{ s.tutor.firstname }} class={{ s.tutor.typeofstaff }}>{{ s.t1600 }}</td>
-                    <td name="delRow"><form action="/deleteRow" method="GET">
-                        <input type="hidden" value="{{ t.tutor.id }}" name="tutorId" size="1"/>
-                        <input type="hidden" value="{{ t.id }}" name="scheduleId" size="1"/>
-                        <input type="hidden" value="{{ s.id }}" name="timeTableId" size="1"/>
-                        <input type="hidden" value="{{ s.day }}" name="day" size="1"/>
-                        <input type="hidden" id="{{ s.tutor.firstname }}" name="usedHrs" value=""  size="1"/>
-                        <input type="submit" class="btn" value="Delete" name="delbtn">
-                    </form></td>
                 </tr>
 
                 <br>
@@ -484,51 +359,16 @@
         </table>
 
     {% elif day == "Saturday"  %}
-        <table align="center">
+         <table align="center">
             <tbody name='tb'>
-            <tr >
-                <td>Name</td>
-
-                <td>10:00</td>
-                <td>10:30</td>
-                <td>11:00</td>
-                <td>11:30</td>
-                <td>12:00</td>
-                <td>12:30</td>
-                <td>1:00</td>
-                <td>1:30</td>
-                <td>2:00</td>
-                <td>2:30</td>
-                <td>3:00</td>
-
-
-            </tr>
+                     {% include "rowSaturdayTime.html" %}
             {% for s, t in zip %}
                 <tr>
-
-                    <td> {{ s.fname }}</td>
-
-                    <td  name={{ s.tutor.firstname }} class={{ s.tutor.typeofstaff }}>{{ s.t1000 }}</td>
-                    <td  name={{ s.tutor.firstname }} class={{ s.tutor.typeofstaff }}>{{ s.t1030 }}</td>
-                    <td  name={{ s.tutor.firstname }} class={{ s.tutor.typeofstaff }}>{{ s.t1100 }}</td>
-                    <td  name={{ s.tutor.firstname }} class={{ s.tutor.typeofstaff }}>{{ s.t1130 }}</td>
-                    <td  name={{ s.tutor.firstname }} class={{ s.tutor.typeofstaff }}>{{ s.t1200 }}</td>
-                    <td  name={{ s.tutor.firstname }} class={{ s.tutor.typeofstaff }}>{{ s.t1230 }}</td>
-                    <td name={{ s.tutor.firstname }} class={{ s.tutor.typeofstaff }}>{{ s.t1300 }}</td>
-                    <td name={{ s.tutor.firstname }} class={{ s.tutor.typeofstaff }}>{{ s.t1330 }}</td>
-                    <td name={{ s.tutor.firstname }} class={{ s.tutor.typeofstaff }}>{{ s.t1400 }}</td>
-                    <td name={{ s.tutor.firstname }} class={{ s.tutor.typeofstaff }}>{{ s.t1430 }}</td>
-                    <td name={{ s.tutor.firstname }} class={{ s.tutor.typeofstaff }}>{{ s.t1500 }}</td>
-                    <td name="delRow"><form action="/deleteRow" method="GET">
-                        <input type="hidden" value="{{ t.tutor.id }}" name="tutorId" size="1"/>
-                        <input type="hidden" value="{{ t.id }}" name="scheduleId" size="1"/>
-                        <input type="hidden" value="{{ s.id }}" name="timeTableId" size="1"/>
-                        <input type="hidden" value="{{ s.day }}" name="day" size="1"/>
-                        <input type="hidden" id="{{ s.tutor.firstname }}" name="usedHrs" value=""  size="1"/>
-                        <input type="submit" class="btn" value="Delete" name="delbtn">
-                    </form></td>
+                      {% include "rowSaturday.html" %}
+                      {% include "deleteButtons.html" %}
 
                 </tr>
+
                 <br>
             {% endfor %}
             </tbody>
@@ -537,47 +377,14 @@
     {% elif day == "Sunday"  %}
         <table align="center">
             <tbody name='tb'>
-            <tr >
-                <td>Name</td>
-
-
-                <td>12:00</td>
-                <td>12:30</td>
-                <td>1:00</td>
-                <td>1:30</td>
-                <td>2:00</td>
-                <td>2:30</td>
-                <td>3:00</td>
-                <td>3:30</td>
-                <td>4:00</td>
-
-
-            </tr>
+                     {% include "rowsSundayTime.html" %}
             {% for s, t in zip %}
                 <tr>
-
-                    <td> {{ s.fname }}</td>
-
-
-                    <td  name={{ s.tutor.firstname }} class={{ s.tutor.typeofstaff }}>{{ s.t1200 }}</td>
-                    <td  name={{ s.tutor.firstname }} class={{ s.tutor.typeofstaff }}>{{ s.t1230 }}</td>
-                    <td name={{ s.tutor.firstname }} class={{ s.tutor.typeofstaff }}>{{ s.t1300 }}</td>
-                    <td name={{ s.tutor.firstname }} class={{ s.tutor.typeofstaff }}>{{ s.t1330 }}</td>a
-                    <td name={{ s.tutor.firstname }} class={{ s.tutor.typeofstaff }}>{{ s.t1400 }}</td>
-                    <td name={{ s.tutor.firstname }} class={{ s.tutor.typeofstaff }}>{{ s.t1430 }}</td>
-                    <td name={{ s.tutor.firstname }} class={{ s.tutor.typeofstaff }}>{{ s.t1500 }}</td>
-                    <td name={{ s.tutor.firstname }} class={{ s.tutor.typeofstaff }}>{{ s.t1530 }}</td>
-                    <td name={{ s.tutor.firstname }} class={{ s.tutor.typeofstaff }}>{{ s.t1600 }}</td>
-                    <td name="delRow"><form action="/deleteRow" method="GET">
-                        <input type="hidden" value="{{ t.tutor.id }}" name="tutorId" size="1"/>
-                        <input type="hidden" value="{{ t.id }}" name="scheduleId" size="1"/>
-                        <input type="hidden" value="{{ s.id }}" name="timeTableId" size="1"/>
-                        <input type="hidden" value="{{ s.day }}" name="day" size="1"/>
-                        <input type="hidden" id="{{ s.tutor.firstname }}" name="usedHrs" value=""  size="1"/>
-                        <input type="submit" class="btn" value="Delete" name="delbtn">
-                    </form></td>
+                      {% include "rowSunday.html" %}
+                      {% include "deleteButtons.html" %}
 
                 </tr>
+
                 <br>
             {% endfor %}
             </tbody>
@@ -586,71 +393,14 @@
     {% else %}
         <table align="center">
             <tbody name='tb'>
-            <tr >
-                <td>Name</td>
-                <td>9:30</td>
-                <td>10:00</td>
-                <td>10:30</td>
-                <td>11:00</td>
-                <td>11:30</td>
-                <td>12:00</td>
-                <td>12:30</td>
-                <td>1:00</td>
-                <td>1:30</td>
-                <td>2:00</td>
-                <td>2:30</td>
-                <td>3:00</td>
-                <td>3:30</td>
-                <td>4:00</td>
-                <td>4:30</td>
-                <td>5:00</td>
-                <td>5:30</td>
-                <td>6:00</td>
-                <td>6:30</td>
-                <td>7:00</td>
-                <td>7:30</td>
-                <td>8:00</td>
-                <td>8:30</td>
-                <td>9:00</td>
-            </tr>
-
+                     {% include "rowDuringWeekTime.html" %}
             {% for s, t in zip %}
                 <tr>
+                      {% include "rowDuringWeek.html" %}
+                      {% include "deleteButtons.html" %}
 
-                    <td> {{ s.fname }}</td>
-                    <td  name={{ s.tutor.firstname }} class={{ s.tutor.typeofstaff }}> {{ s.t0930 }}</td>
-                    <td  name={{ s.tutor.firstname }} class={{ s.tutor.typeofstaff }}>{{ s.t1000 }}</td>
-                    <td  name={{ s.tutor.firstname }} class={{ s.tutor.typeofstaff }}>{{ s.t1030 }}</td>
-                    <td  name={{ s.tutor.firstname }} class={{ s.tutor.typeofstaff }}>{{ s.t1100 }}</td>
-                    <td  name={{ s.tutor.firstname }} class={{ s.tutor.typeofstaff }}>{{ s.t1130 }}</td>
-                    <td  name={{ s.tutor.firstname }} class={{ s.tutor.typeofstaff }}>{{ s.t1200 }}</td>
-                    <td  name={{ s.tutor.firstname }} class={{ s.tutor.typeofstaff }}>{{ s.t1230 }}</td>
-                    <td name={{ s.tutor.firstname }} class={{ s.tutor.typeofstaff }}>{{ s.t1300 }}</td>
-                    <td name={{ s.tutor.firstname }} class={{ s.tutor.typeofstaff }}>{{ s.t1330 }}</td>
-                    <td name={{ s.tutor.firstname }} class={{ s.tutor.typeofstaff }}>{{ s.t1400 }}</td>
-                    <td name={{ s.tutor.firstname }} class={{ s.tutor.typeofstaff }}>{{ s.t1430 }}</td>
-                    <td name={{ s.tutor.firstname }} class={{ s.tutor.typeofstaff }}>{{ s.t1500 }}</td>
-                    <td name={{ s.tutor.firstname }} class={{ s.tutor.typeofstaff }}>{{ s.t1530 }}</td>
-                    <td name={{ s.tutor.firstname }} class={{ s.tutor.typeofstaff }}>{{ s.t1600 }}</td>
-                    <td  name={{ s.tutor.firstname }} class={{ s.tutor.typeofstaff }}>{{ s.t1630 }}</td>
-                    <td name={{ s.tutor.firstname }} class={{ s.tutor.typeofstaff }}>{{ s.t1700 }}</td>
-                    <td name={{ s.tutor.firstname }} class={{ s.tutor.typeofstaff }}>{{ s.t1730 }}</td>
-                    <td name={{ s.tutor.firstname }} class={{ s.tutor.typeofstaff }}>{{ s.t1800 }}</td>
-                    <td name={{ s.tutor.firstname }} class={{ s.tutor.typeofstaff }}>{{ s.t1830 }}</td>
-                    <td name={{ s.tutor.firstname }} class={{ s.tutor.typeofstaff }}>{{ s.t1900 }}</td>
-                    <td name={{ s.tutor.firstname }} class={{ s.tutor.typeofstaff }}>{{ s.t1930 }}</td>
-                    <td name={{ s.tutor.firstname }} class={{ s.tutor.typeofstaff }}>{{ s.t2000 }}</td>
-                    <td name={{ s.tutor.firstname }} class={{ s.tutor.typeofstaff }}>{{ s.t2030 }}</td>
-                    <td name={{ s.tutor.firstname }} class={{ s.tutor.typeofstaff }}>{{ s.t2100 }}</td>
-                    <td name="delRow"><form action="/deleteRow" method="GET">
-                        <input type="hidden" value="{{ t.tutor.id }}" name="tutorId" size="1"/>
-                        <input type="hidden" value="{{ t.id }}" name="scheduleId" size="1"/>
-                        <input type="hidden" value="{{ s.id }}" name="timeTableId" size="1"/>
-                        <input type="hidden" value="{{ s.day }}" name="day" size="1"/>
-                        <input type="hidden" id="{{ s.tutor.firstname }}" name="usedHrs" value=""  size="1"/>
-                        <input type="submit" class="btn" value="Delete" name="delbtn">
-                    </form></td>
                 </tr>
+
                 <br>
             {% endfor %}
             </tbody>
@@ -679,6 +429,9 @@
         <a class="btn btn-primary" href="{% url 'login' %}" role="button">Login</a>
     </div>
 {% endif %}
+
+</body>
+
 
 </body>
 </html>

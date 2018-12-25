@@ -8,11 +8,57 @@
     color: red;
 }
 
-h2{
-    color: darkslategray;
-}
+
 .mycontainer
 {
     max-width:25% ;
     min-width: 250px;
 }
+
+.mybtn{
+      margin-bottom: 5px !important;
+}
+   table {
+            border: 1px solid black;
+
+        }
+        th, td {
+            border: 1px solid black;
+            width:60px;
+            text-align: center;
+        }
+
+        .eacellcolor {
+            background: greenyellow;
+        }
+        .sacellcolor {
+            background: deepskyblue;
+        }
+        .wscellcolor {
+            background: yellow;
+        }
+        .vtcellcolor {
+            background: #fd25ff;
+        }
+        .tdformat{
+            font-size: x-large;
+            height: auto;
+            width:auto;
+        }
+        .thformat{
+            font-size: large;
+            height: auto;
+
+        }
+        .inputwidth
+        {
+            border: 1px solid black !important;
+            width:60px;
+            text-align: center;
+        }
+          li{
+            padding-left: 10px
+        }
+        h2{
+            text-align: center;
+        }
