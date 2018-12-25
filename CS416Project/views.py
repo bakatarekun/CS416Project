@@ -5,17 +5,47 @@ import decimal
 from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse, JsonResponse
 from django.views.decorators.csrf import csrf_protect
+from django.views.generic import TemplateView
 
+from CS416Project.forms import HomeForm
 from .models import People, SI_Session, Tutor, Schedule, Timetable
 from django.core import serializers
 # Create your views here.
 
-from django import template
 
+
+class HomeView(TemplateView):
+    template_name = 'home.html'
+
+    def get(self,request):
+        form = HomeForm()
+        print('get is fired')
+        return render(request, self.template_name,{'form':form})
+
+    def post(self, request):
+        form = HomeForm(request.POST)
+        print('post is fired')
+        if form.is_valid():
+            text = form.cleaned_data['post']
+            form = HomeForm()
+            args = {'form':form,'text':text}
+        return render(request, self.template_name, args)
+       # return render(request, self.template_name, {'form':form,'text':text})
+
+
+def home(request):
+    homeview = HomeView()
+    # return render(request, 'home.html')
+    if(request.method =='POST'):
+        return homeview.post(request)
+    else:
+        return homeview.get(request)
+    # return homeview.get(request)
 
 
 def login_redirect(request):
     return redirect('/login')
+
 
 
 def tutorInfo(request, tutor_id):
@@ -53,9 +83,7 @@ def showSiBackupbyTutor(request):
     return render(request, 'tutor_info.html', {'backupByTutors': backupByTutors,'tutorName': tutorName})
 
 
-def home(request):
 
-    return render(request, 'home.html')
 
 def location(request):
 
