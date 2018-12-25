@@ -6,6 +6,7 @@
 {% endblock %}
 
 {% block body %}
+     {% if user.is_authenticated %}
     <div class="row">
         <div class="col-1">
         </div>
@@ -25,6 +26,19 @@
             <h2>{{ to1 }}</h2>
         </div>
     </div>
+
+     {% else %}
+
+     <br>
+    <br>
+    <h2 class="tr" style="text-align: center">You are now logged out</h2>
+    <br>
+    <div class="container" style="text-align: center">
+
+        <a class="btn btn-primary" href="{% url 'login' %}" role="button">Login</a>
+    </div>
+
+    {% endif %}
     {#  <div align="center">#}
     {#<iframe width="640px" height= "480px" src= "https://forms.office.com/Pages/ResponsePage.aspx?id=ePidZ3onakmsjdmeWGBt2dcUBZwZjKpLpmZsbQC7FR9URFdKN1k2OVgxUUE5Rlc5Q1EwVTRPVUQzSC4u&embed=true" frameborder= "0" marginwidth= "0" marginheight= "0" style= "border: none; max-width:100%; max-height:100vh" allowfullscreen webkitallowfullscreen mozallowfullscreen msallowfullscreen> </iframe>#}
     {#  </div>#}
