@@ -1,6 +1,3 @@
-
-
-
 {% load staticfiles %}
 
 <!DOCTYPE html>
@@ -22,7 +19,7 @@
 
         $(document).ready(function(){
 
-         $("td").not("td:empty").each(function(){
+            $("td").not("td:empty").each(function(){
 
                 if($(this).hasClass("EA"))
                 {
@@ -44,14 +41,11 @@
 
         });
 
-
-
     </script>
 
-
     <style type="text/css">
-
     </style>
+
 </head>
 
 <!-- body of the site -->
@@ -74,18 +68,13 @@
 <table align="center">
     <h2>Monday</h2>
     <tbody name='tb'>
-   {% include "rowDuringWeekTime.html" %}
+    {% include "rowDuringWeekTime.html" %}
 
     {% for s in Monday %}
 
         <tr>
-
-{% include "rowDuringWeek.html" %}
-
-
-
+            {% include "rowDuringWeek.html" %}
         </tr>
-
 
     {% endfor %}
     </tbody>
@@ -95,16 +84,11 @@
 <table align="center">
     <h2>Tuesday</h2>
     <tbody name='tb'>
-  {% include "rowDuringWeekTime.html" %}
+    {% include "rowDuringWeekTime.html" %}
     {% for s in Tuesday %}
 
         <tr>
-
-
-      {% include "rowDuringWeek.html" %}
-
-
-
+            {% include "rowDuringWeek.html" %}
         </tr>
 
     {% endfor %}
@@ -116,17 +100,10 @@
     <h2>Wednesday</h2>
     <tbody name='tb'>
     {% include "rowDuringWeekTime.html" %}
-
-
     {% for s in Wednesday %}
 
         <tr>
-
-
- {% include "rowDuringWeek.html" %}
-
-
-
+            {% include "rowDuringWeek.html" %}
         </tr>
 
 
@@ -143,12 +120,8 @@
     {% for s in Thursday %}
 
         <tr>
-
-{% include "rowDuringWeek.html" %}
-
-
+            {% include "rowDuringWeek.html" %}
         </tr>
-
 
     {% endfor %}
     </tbody>
@@ -158,18 +131,13 @@
 <table align="center">
     <h2>Friday</h2>
     <tbody name='tb'>
-       {% include "rowFridayTime.html" %}
+    {% include "rowFridayTime.html" %}
 
     {% for s in Friday %}
 
         <tr>
-
- {% include "rowFriday.html" %}
-
-
-
+            {% include "rowFriday.html" %}
         </tr>
-
 
     {% endfor %}
     </tbody>
@@ -179,17 +147,14 @@
 <table align="center">
     <h2>Saturday</h2>
     <tbody name='tb'>
-          {% include "rowSaturday.html" %}
+    {% include "rowSaturdayTime.html" %}
 
     {% for s in Saturday %}
 
         <tr>
-
-
-       {% include "rowSaturday.html" %}
+            {% include "rowSaturday.html" %}
 
         </tr>
-
 
     {% endfor %}
     </tbody>
@@ -199,20 +164,17 @@
 <table align="center">
     <h2>Sunday</h2>
     <tbody name='tb'>
-  {% include "rowsSundayTime.html" %}
+    {% include "rowsSundayTime.html" %}
 
     {% for s in Sunday %}
 
         <tr>
-
-
-          {% include "rowSunday.html" %}
-
-
+            {% include "rowSunday.html" %}
         </tr>
-        <br>
+
 
     {% endfor %}
+       <br>
     </tbody>
 </table>
 <br>
