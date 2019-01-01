@@ -5,17 +5,39 @@
     <title>Home</title>
 {% endblock %}
 
+{%  block script %}
+
+      $(document).ready(function () {
+
+            $('#id_form-tutor').on('change', function (){
+
+                $('#id_form2-tutor').val($(this).val());
+               // $('#id_form2-tutor').prop('disabled',true);
+            });
+            //$('#id_form-day').hide();
+            $('#id_form-day').val('Monday');
+            $('#id_form2-day').val('Tuesday');
+            {#$('#id_form-day').prop('disabled',true);#}
+            {#$('#id_form2-day').prop('disabled',true);#}
+
+        });
+{% endblock %}
+
 {% block body %}
      {% if user.is_authenticated %}
     <div class="row">
         <div class="col-1">
         </div>
-        <div class="col-3">
+        <div class="col-11">
             <h1>Availability</h1>
             <form method="POST" >
                 {% csrf_token %}
-                {{ form.as_p}}
-
+                 <div style="display:inline-block;">
+                {{ form.as_ul}}
+                </div>
+                 <div style="display:inline-block;">
+                {{ form2.as_ul}}
+                </div>
                 <button type="submit">Submit</button>
             </form>
 

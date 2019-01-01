@@ -1,0 +1,33 @@
+
+
+
+{% extends 'registration/login.html' %}
+{% load staticfiles %}
+
+{% block head %}
+    <title>submission Message</title>
+{% endblock %}
+
+{%  block script %}
+
+
+{% endblock %}
+
+{% block body %}
+    {% if user.is_authenticated %}
+        <div style="text-align: center">
+            <h1 >Thank you for your submission!</h1>
+        </div>
+
+    {% else %}
+        <br>
+        <br>
+        <h2 class="tr" style="text-align: center">You are now logged out</h2>
+        <br>
+        <div class="container" style="text-align: center">
+            <a class="btn btn-primary" href="{% url 'login' %}" role="button">Login</a>
+        </div>
+
+    {% endif %}
+
+{% endblock %}
