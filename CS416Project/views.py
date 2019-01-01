@@ -24,9 +24,12 @@ class HomeView(TemplateView):
         form2 = HomeForm(prefix="form2")
         form3 = HomeForm(prefix="form3")
         form4 = HomeForm(prefix="form4")
+        form5 = HomeForm(prefix="form5")
+        form6 = HomeForm(prefix="form6")
+        form7 = HomeForm(prefix="form7")
         nameform = NameForm()
         print('get is fired')
-        return render(request, self.template_name,{'form':form,'form2':form2,'form3':form3,'form4':form4,'nameform':nameform})
+        return render(request, self.template_name,{'form':form,'form2':form2,'form3':form3,'form4':form4,'form5':form5,'form6':form6,'form7':form7,'nameform':nameform})
 
     def post(self, request):
 
@@ -58,11 +61,31 @@ class HomeView(TemplateView):
             if from1value4 != '0':
                 form4.save()
 
+        form5 = HomeForm(request.POST, prefix="form5")
+        if form5.is_valid():
+            from1value5 = form5.cleaned_data['From1']
+
+            if from1value5 != '0':
+                form5.save()
+
+        form6 = HomeForm(request.POST, prefix="form6")
+        if form6.is_valid():
+            from1value6 = form6.cleaned_data['From1']
+
+            if from1value6 != '0':
+                form6.save()
+
+        form7 = HomeForm(request.POST, prefix="form7")
+        if form7.is_valid():
+            from1value7 = form7.cleaned_data['From1']
+
+            if from1value7 != '0':
+                form7.save()
 
             form = HomeForm()
             return redirect('submissionMessage')
 
-        args = {'form': form,'form2': form2,'form3': form3,'form4': form4, }
+        args = {'form': form,'form2': form2,'form3': form3,'form4': form4,'form5': form5,'form6': form6,'form7': form7, }
         # args = {'form':form,'text':text,'from1':from1,'to1':to1,'day':day}
         return render(request, self.template_name, args)
 

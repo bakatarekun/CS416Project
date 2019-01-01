@@ -15,21 +15,37 @@
     $('#id_form-tutor').val($(this).val());
     $('#id_form3-tutor').val($(this).val());
     $('#id_form4-tutor').val($(this).val());
+    $('#id_form5-tutor').val($(this).val());
+    $('#id_form6-tutor').val($(this).val());
+    $('#id_form7-tutor').val($(this).val());
 
     });
 
     $('#id_form-tutor').hide();
     $('#id_form2-tutor').hide();
-      $('#id_form3-tutor').hide();
+    $('#id_form3-tutor').hide();
     $('#id_form4-tutor').hide();
+    $('#id_form5-tutor').hide();
+    $('#id_form6-tutor').hide();
+    $('#id_form7-tutor').hide();
+
     $("#id_form-day").prop("readonly", true);
     $("#id_form2-day").prop("readonly", true);
-     $("#id_form3-day").prop("readonly", true);
+    $("#id_form3-day").prop("readonly", true);
     $("#id_form4-day").prop("readonly", true);
+    $("#id_form5-day").prop("readonly", true);
+    $("#id_form6-day").prop("readonly", true);
+    $("#id_form7-day").prop("readonly", true);
+
+
     $('#id_form-day').val('Monday');
     $('#id_form2-day').val('Tuesday');
-     $('#id_form3-day').val('Wednesday');
+    $('#id_form3-day').val('Wednesday');
     $('#id_form4-day').val('Thursday');
+    $('#id_form5-day').val('Friday');
+    $('#id_form6-day').val('Saturday');
+    $('#id_form7-day').val('Sunday');
+
     {#$('#id_form-day').prop('disabled',true);#}
     {#$('#id_form2-day').prop('disabled',true);#}
 
@@ -45,7 +61,12 @@
                 <h1>Availability</h1>
                 <form method="POST" >
                     {% csrf_token %}
-                    {{ nameform.as_p}}
+                    <div>
+                        <div style="display: inline-block">
+                        {{ nameform.as_p}}
+                        </div>
+                        <button type="submit" style="display: inline-block" class="btn btn-success">Submit</button>
+                      </div>
                     <div style="display:inline-block;">
                         {{ form.as_p}}
                     </div>
@@ -58,7 +79,16 @@
                     <div style="display:inline-block;">
                         {{ form4.as_p}}
                     </div>
-                    <button type="submit">Submit</button>
+                    <div style="display:inline-block;">
+                        {{ form5.as_p}}
+                    </div>
+                    <div style="display:inline-block;">
+                        {{ form6.as_p}}
+                    </div>
+                    <div style="display:inline-block;">
+                        {{ form7.as_p}}
+                    </div>
+
                 </form>
 
 
