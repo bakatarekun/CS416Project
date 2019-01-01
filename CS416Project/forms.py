@@ -62,6 +62,7 @@ class TodoFrom(forms.Form):
     ))
 
 class HomeForm(forms.ModelForm):
+    prefix = 'form'
     # post = forms.CharField(max_length=50, widget=forms.TextInput(
     #     attrs={'placeholder' : 'Enter to do here'}
     # ))
@@ -71,9 +72,9 @@ class HomeForm(forms.ModelForm):
     # )
     # )
 
-
-
-
     class Meta:
         model = Schedule
-        fields = ('tutor','day', 'From1','To1','From2','To2',)
+        fields = ('day','tutor', 'From1','To1','From2','To2',)
+
+
+

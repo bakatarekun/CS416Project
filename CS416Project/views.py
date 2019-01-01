@@ -20,29 +20,36 @@ class HomeView(TemplateView):
     template_name = 'home.html'
 
     def get(self,request):
-        form = HomeForm()
+        form = HomeForm(prefix="form")
+        form2 = HomeForm(prefix="form2")
         print('get is fired')
-        return render(request, self.template_name,{'form':form})
+        return render(request, self.template_name,{'form':form,'form2':form2})
 
     def post(self, request):
-        form = HomeForm(request.POST)
-        print('post is fired')
 
+        form = HomeForm(request.POST, prefix="form")
         if form.is_valid():
-            form.save()
-            # text = form.cleaned_data['post']
-            # tutor = form.cleaned_data['tutor']
-            from1 = form.cleaned_data['From1']
-            to1 = form.cleaned_data['To1']
-            day = form.cleaned_data['day']
-            form = HomeForm()
-            return redirect('home')
+            from1value = form.cleaned_data['From1']
+            print(from1value)
+            if from1value != '0':
+                form.save()
 
-        args = {'form': form, }
+        form2 = HomeForm(request.POST, prefix="form2")
+        if form2.is_valid():
+            from1value2 = form2.cleaned_data['From1']
+            print(from1value2)
+            if from1value2 != '0':
+                form2.save()
+
+            form = HomeForm()
+            return redirect('submissionMessage')
+
+        args = {'form': form,'form2': form2, }
         # args = {'form':form,'text':text,'from1':from1,'to1':to1,'day':day}
         return render(request, self.template_name, args)
 
-
+def submissionMessage(request):
+    return render(request, 'submissionMessage.html', {})
 
 def home(request):
     homeview = HomeView()
