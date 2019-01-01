@@ -6,7 +6,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse, JsonResponse
 from django.views.decorators.csrf import csrf_protect
 from django.views.generic import TemplateView
-from CS416Project.forms import HomeForm
+from CS416Project.forms import HomeForm,NameForm
 from .models import People, SI_Session, Tutor, Schedule, Timetable
 from django.core import serializers
 from django.contrib.auth.decorators import user_passes_test
@@ -22,29 +22,70 @@ class HomeView(TemplateView):
     def get(self,request):
         form = HomeForm(prefix="form")
         form2 = HomeForm(prefix="form2")
+        form3 = HomeForm(prefix="form3")
+        form4 = HomeForm(prefix="form4")
+        form5 = HomeForm(prefix="form5")
+        form6 = HomeForm(prefix="form6")
+        form7 = HomeForm(prefix="form7")
+        nameform = NameForm()
         print('get is fired')
-        return render(request, self.template_name,{'form':form,'form2':form2})
+        return render(request, self.template_name,{'form':form,'form2':form2,'form3':form3,'form4':form4,'form5':form5,'form6':form6,'form7':form7,'nameform':nameform})
 
     def post(self, request):
 
         form = HomeForm(request.POST, prefix="form")
         if form.is_valid():
             from1value = form.cleaned_data['From1']
-            print(from1value)
+
             if from1value != '0':
                 form.save()
 
         form2 = HomeForm(request.POST, prefix="form2")
         if form2.is_valid():
             from1value2 = form2.cleaned_data['From1']
-            print(from1value2)
+
             if from1value2 != '0':
                 form2.save()
+
+        form3 = HomeForm(request.POST, prefix="form3")
+        if form3.is_valid():
+            from1value3 = form.cleaned_data['From1']
+
+            if from1value3 != '0':
+                form3.save()
+
+        form4 = HomeForm(request.POST, prefix="form4")
+        if form4.is_valid():
+            from1value4 = form4.cleaned_data['From1']
+
+            if from1value4 != '0':
+                form4.save()
+
+        form5 = HomeForm(request.POST, prefix="form5")
+        if form5.is_valid():
+            from1value5 = form5.cleaned_data['From1']
+
+            if from1value5 != '0':
+                form5.save()
+
+        form6 = HomeForm(request.POST, prefix="form6")
+        if form6.is_valid():
+            from1value6 = form6.cleaned_data['From1']
+
+            if from1value6 != '0':
+                form6.save()
+
+        form7 = HomeForm(request.POST, prefix="form7")
+        if form7.is_valid():
+            from1value7 = form7.cleaned_data['From1']
+
+            if from1value7 != '0':
+                form7.save()
 
             form = HomeForm()
             return redirect('submissionMessage')
 
-        args = {'form': form,'form2': form2, }
+        args = {'form': form,'form2': form2,'form3': form3,'form4': form4,'form5': form5,'form6': form6,'form7': form7, }
         # args = {'form':form,'text':text,'from1':from1,'to1':to1,'day':day}
         return render(request, self.template_name, args)
 
