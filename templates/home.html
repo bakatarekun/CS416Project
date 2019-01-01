@@ -9,12 +9,16 @@
 
       $(document).ready(function () {
 
-            $('#id_form-tutor').on('change', function (){
+            $('#id_tutor').on('change', function (){
 
                 $('#id_form2-tutor').val($(this).val());
+               $('#id_form-tutor').val($(this).val());
                // $('#id_form2-tutor').prop('disabled',true);
             });
-            //$('#id_form-day').hide();
+            $('#id_form-tutor').hide();
+            $('#id_form2-tutor').hide();
+            $("#id_form-day").prop("readonly", true);
+            $("#id_form2-day").prop("readonly", true);
             $('#id_form-day').val('Monday');
             $('#id_form2-day').val('Tuesday');
             {#$('#id_form-day').prop('disabled',true);#}
@@ -32,11 +36,12 @@
             <h1>Availability</h1>
             <form method="POST" >
                 {% csrf_token %}
+                {{ nameform.as_p}}
                  <div style="display:inline-block;">
-                {{ form.as_ul}}
+                {{ form.as_p}}
                 </div>
                  <div style="display:inline-block;">
-                {{ form2.as_ul}}
+                {{ form2.as_p}}
                 </div>
                 <button type="submit">Submit</button>
             </form>

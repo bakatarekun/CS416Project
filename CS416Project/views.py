@@ -6,7 +6,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse, JsonResponse
 from django.views.decorators.csrf import csrf_protect
 from django.views.generic import TemplateView
-from CS416Project.forms import HomeForm
+from CS416Project.forms import HomeForm,NameForm
 from .models import People, SI_Session, Tutor, Schedule, Timetable
 from django.core import serializers
 from django.contrib.auth.decorators import user_passes_test
@@ -22,8 +22,9 @@ class HomeView(TemplateView):
     def get(self,request):
         form = HomeForm(prefix="form")
         form2 = HomeForm(prefix="form2")
+        nameform = NameForm()
         print('get is fired')
-        return render(request, self.template_name,{'form':form,'form2':form2})
+        return render(request, self.template_name,{'form':form,'form2':form2,'nameform':nameform})
 
     def post(self, request):
 

@@ -1,4 +1,5 @@
 from django import forms
+from django.forms import Textarea,TextInput
 
 from CS416Project.models import Schedule, Tutor
 
@@ -75,6 +76,18 @@ class HomeForm(forms.ModelForm):
     class Meta:
         model = Schedule
         fields = ('day','tutor', 'From1','To1','From2','To2',)
+        widgets = {
+            'day': TextInput(attrs={'placeholder' : 'Enter to do here'}),
+
+        }
+
+        labels = {
+            'tutor': (''),
+        }
 
 
+class NameForm(forms.ModelForm):
 
+    class Meta:
+        model = Schedule
+        fields = ('tutor',)
