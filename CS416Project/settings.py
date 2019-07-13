@@ -128,7 +128,7 @@ LOGOUT_REDIRECT_URL = '/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
     # uncomment when use on pythonanywhere
-    '/home/Majikayo/Majikayo.pythonanywhere.com/static',
+    '/home/Majikayo/majikayo.pythonanywhere.com/static',
     #'/var/www/static/',
 ]
 
