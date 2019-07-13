@@ -129,7 +129,7 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
     # uncomment when use on pythonanywhere
     #'/home/Bakatarekun2/bakatarekun2.pythonanywhere.com/static',
-    '/var/www/static/',
+    #'/var/www/static/',
 ]
 
 MEDIA_URL = '/media/'
