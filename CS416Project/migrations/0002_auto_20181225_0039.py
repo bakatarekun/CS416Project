@@ -11,7 +11,53 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-      
+        migrations.CreateModel(
+            name='Schedule',
+            fields=[
+                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('day', models.CharField(choices=[('', '--------'), ('Monday', 'Monday'), ('Tuesday', 'Tuesday'), ('Wednesday', 'Wednesday'), ('Thursday', 'Thursday'), ('Friday', 'Friday'), ('Satrurday', 'Saturday'), ('Sunday', 'Sunday')], default='', max_length=50)),
+                ('From1', models.CharField(choices=[('', '--------'), ('09:30', '9:30'), ('10:00', '10:00'), ('10:30', '10:30'), ('11:00', '11:00'), ('11:30', '11:30'), ('12:00', '12:00'), ('12:30', '12:30'), ('13:00', '1:00'), ('13:30', '1:30'), ('14:00', '2:00'), ('14:30', '2:30'), ('15:00', '3:00'), ('15:30', '3:30'), ('16:00', '4:00'), ('16:30', '4:30'), ('17:00', '5:00'), ('17:30', '5:30'), ('18:00', '6:00'), ('18:30', '6:30'), ('19:00', '7:00'), ('19:30', '7:30'), ('20:00', '8:00'), ('20:30', '8:30')], default='', max_length=50)),
+                ('To1', models.CharField(choices=[('', '--------'), ('09:30', '9:30'), ('10:00', '10:00'), ('10:30', '10:30'), ('11:00', '11:00'), ('11:30', '11:30'), ('12:00', '12:00'), ('12:30', '12:30'), ('13:00', '1:00'), ('13:30', '1:30'), ('14:00', '2:00'), ('14:30', '2:30'), ('15:00', '3:00'), ('15:30', '3:30'), ('16:00', '4:00'), ('16:30', '4:30'), ('17:00', '5:00'), ('17:30', '5:30'), ('18:00', '6:00'), ('18:30', '6:30'), ('19:00', '7:00'), ('19:30', '7:30'), ('20:00', '8:00'), ('20:30', '8:30')], default='', max_length=50)),
+                ('From2', models.CharField(blank=True, choices=[('', '--------'), ('09:30', '9:30'), ('10:00', '10:00'), ('10:30', '10:30'), ('11:00', '11:00'), ('11:30', '11:30'), ('12:00', '12:00'), ('12:30', '12:30'), ('13:00', '1:00'), ('13:30', '1:30'), ('14:00', '2:00'), ('14:30', '2:30'), ('15:00', '3:00'), ('15:30', '3:30'), ('16:00', '4:00'), ('16:30', '4:30'), ('17:00', '5:00'), ('17:30', '5:30'), ('18:00', '6:00'), ('18:30', '6:30'), ('19:00', '7:00'), ('19:30', '7:30'), ('20:00', '8:00'), ('20:30', '8:30')], default='', max_length=50)),
+                ('To2', models.CharField(blank=True, choices=[('', '--------'), ('09:30', '9:30'), ('10:00', '10:00'), ('10:30', '10:30'), ('11:00', '11:00'), ('11:30', '11:30'), ('12:00', '12:00'), ('12:30', '12:30'), ('13:00', '1:00'), ('13:30', '1:30'), ('14:00', '2:00'), ('14:30', '2:30'), ('15:00', '3:00'), ('15:30', '3:30'), ('16:00', '4:00'), ('16:30', '4:30'), ('17:00', '5:00'), ('17:30', '5:30'), ('18:00', '6:00'), ('18:30', '6:30'), ('19:00', '7:00'), ('19:30', '7:30'), ('20:00', '8:00'), ('20:30', '8:30')], default='', max_length=50)),
+                ('usedhours', models.DecimalField(decimal_places=1, default=0, max_digits=3)),
+            ],
+            options={
+                'ordering': ['day', 'tutor__firstname'],
+            },
+        ),
+        migrations.CreateModel(
+            name='Timetable',
+            fields=[
+                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('day', models.CharField(choices=[('', '--------'), ('Monday', 'Monday'), ('Tuesday', 'Tuesday'), ('Wednesday', 'Wednesday'), ('Thursday', 'Thursday'), ('Friday', 'Friday'), ('Satrurday', 'Saturday'), ('Sunday', 'Sunday')], default='', max_length=50)),
+                ('fname', models.CharField(blank=True, default='', max_length=10, null=True)),
+                ('t0930', models.CharField(blank=True, default='', max_length=10, null=True)),
+                ('t1000', models.CharField(blank=True, default='', max_length=10, null=True)),
+                ('t1030', models.CharField(blank=True, default='', max_length=10, null=True)),
+                ('t1100', models.CharField(blank=True, default='', max_length=10, null=True)),
+                ('t1130', models.CharField(blank=True, default='', max_length=10, null=True)),
+                ('t1200', models.CharField(blank=True, default='', max_length=10, null=True)),
+                ('t1230', models.CharField(blank=True, default='', max_length=10, null=True)),
+                ('t1300', models.CharField(blank=True, default='', max_length=10, null=True)),
+                ('t1330', models.CharField(blank=True, default='', max_length=10, null=True)),
+                ('t1400', models.CharField(blank=True, default='', max_length=10, null=True)),
+                ('t1430', models.CharField(blank=True, default='', max_length=10, null=True)),
+                ('t1500', models.CharField(blank=True, default='', max_length=10, null=True)),
+                ('t1530', models.CharField(blank=True, default='', max_length=10, null=True)),
+                ('t1600', models.CharField(blank=True, default='', max_length=10, null=True)),
+                ('t1630', models.CharField(blank=True, default='', max_length=10, null=True)),
+                ('t1700', models.CharField(blank=True, default='', max_length=10, null=True)),
+                ('t1730', models.CharField(blank=True, default='', max_length=10, null=True)),
+                ('t1800', models.CharField(blank=True, default='', max_length=10, null=True)),
+                ('t1830', models.CharField(blank=True, default='', max_length=10, null=True)),
+                ('t1900', models.CharField(blank=True, default='', max_length=10, null=True)),
+                ('t1930', models.CharField(blank=True, default='', max_length=10, null=True)),
+                ('t2000', models.CharField(blank=True, default='', max_length=10, null=True)),
+                ('t2030', models.CharField(blank=True, default='', max_length=10, null=True)),
+                ('t2100', models.CharField(blank=True, default='', max_length=10, null=True)),
+            ],
+        ),
         migrations.AlterModelOptions(
             name='si_session',
             options={'ordering': ['day', 'sessionTime_from']},
