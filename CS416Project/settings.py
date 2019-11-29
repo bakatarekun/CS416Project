@@ -23,10 +23,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '&!!s6x*76vsi4c=kwl6h8$szdim3(9w(1hg(77e*j86k@22okl'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 
-ALLOWED_HOSTS = ['bakatarekun2.pythonanywhere.com','127.0.0.1']
+ALLOWED_HOSTS = ['bakatarekun.pythonanywhere.com','127.0.0.1']
 
 # Application definition
 
@@ -127,4 +127,9 @@ LOGOUT_REDIRECT_URL = '/'
 
 MEDIA_URL = '/media/'
 
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+MEDIA_URL = '/media/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+#STATIC_ROOT = "/home/bakatarekun/bakatarekun.pythonanywhere.com/static"
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

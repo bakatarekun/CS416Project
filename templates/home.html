@@ -2,12 +2,15 @@
 {% load staticfiles %}
 
 {% block head %}
+<!--needed to include js file-->
+<script src="{% static 'myJs.js' %}"></script>
     <title>Home</title>
 {% endblock %}
 
 {%  block script %}
 
     $(document).ready(function () {
+
 
     $('#id_tutor').on('change', function (){
 
@@ -49,18 +52,58 @@
 
     jQuery('select[id*="To1"]').css('margin-left', 20 + 'px');
     jQuery('select[id*="To2"]').css('margin-left', 20 + 'px');
+
+    jQuery('select[id*="To1"]').on("change",validateTime);
+    jQuery('select[id*="To2"]').on("change", validateTime);
+    jQuery('select[id*="From1"]').on("change",validateTime2);
+    jQuery('select[id*="From2"]').on("change",validateTime2);
+
+
+<!--function validateTime () {-->
+
+<!--		    var thisTime = this.value;-->
+<!--			var thisId = this.id;-->
+<!--		    var newID = thisId.replace("To", "From");-->
+<!--			var prevTime = document.getElementById(newID).value;-->
+
+<!--          if(thisTime != 0){-->
+<!--		      if(thisTime <= prevTime){-->
+<!--		        alert ( "time smaller than From. invalid");-->
+<!--			    this.value = 0;-->
+<!--		      }-->
+<!--	      }-->
+<!--}-->
+
+<!--function validateTime2 () {-->
+
+<!--		    var thisTime = this.value;-->
+<!--			var thisId = this.id;-->
+<!--		    var newID = thisId.replace("From", "To");-->
+<!--			var afterTime = document.getElementById(newID).value;-->
+
+<!--         if(afterTime != 0){-->
+<!--		      if(thisTime >= afterTime){-->
+<!--		        alert ( "time larger than To. invalid");-->
+<!--			    this.value = 0;-->
+<!--		      }-->
+<!-- 	      }-->
+<!--}-->
+
+
+
+
+
     {#$('#id_form-day').prop('disabled',true);#}
     {#$('#id_form2-day').prop('disabled',true);#}
 
-    });
+});
 {% endblock %}
 
 {% block body %}
     {% if user.is_authenticated %}
-        <div class="row">
-            <div class="col-1">
-            </div>
-            <div class="col-11">
+        <div class="row" align="center">
+
+            <div class="jumbotron" style="width:100%">
                 <h1>Availability</h1>
                 <form method="POST" >
                     {% csrf_token %}
@@ -69,7 +112,8 @@
                         {{ nameform.as_p}}
                         </div>
                         <button type="submit" style="display: inline-block" class="btn btn-success">Submit</button>
-                      </div>
+                    </div>
+                    <br>
                     <div style="display:inline-block;">
                         {{ form.as_p}}
                     </div>
