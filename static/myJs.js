@@ -223,5 +223,34 @@ function toggleinputs(targetcell,classname,tutorname) {
 
 }
 
+function validateTime () {
+
+		    var thisTime = this.value;
+			var thisId = this.id;
+		    var newID = thisId.replace("To", "From");
+			var prevTime = document.getElementById(newID).value;
+
+          if(thisTime != 0){
+		      if(thisTime <= prevTime){
+		        alert ( "time smaller than the previous. invalid");
+			    this.value = 0;
+		      }
+	      }
+}
+
+function validateTime2 () {
+
+		    var thisTime = this.value;
+			var thisId = this.id;
+		    var newID = thisId.replace("From", "To");
+			var afterTime = document.getElementById(newID).value;
+
+          if(afterTime != 0){
+		      if(thisTime >= afterTime){
+		        alert ( "time larger than the after. invalid");
+			    this.value = 0;
+		      }
+  	      }
+}
 
 
