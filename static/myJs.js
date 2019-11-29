@@ -253,6 +253,7 @@ function validateTime2 () {
   	      }
 }
 
+
 function test(){
 
     alert("testing static file");
@@ -298,6 +299,8 @@ function test(){
                 displayHours2(setoftutors);
 
                 $('tr td[name!="delRow"]').mouseleave(function () {
+
+
 
                     displayHours2(setoftutors);
                     saveAccumulatedHours(setoftutors,accumulatedHours);
