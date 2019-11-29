@@ -232,7 +232,7 @@ function validateTime () {
 
           if(thisTime != 0){
 		      if(thisTime <= prevTime){
-		        alert ( "time smaller than the previous. invalid");
+		        alert ( "time smaller than From. invalid");
 			    this.value = 0;
 		      }
 	      }
@@ -247,7 +247,7 @@ function validateTime2 () {
 
           if(afterTime != 0){
 		      if(thisTime >= afterTime){
-		        alert ( "time larger than the after. invalid");
+		        alert ( "time larger than To. invalid");
 			    this.value = 0;
 		      }
   	      }
