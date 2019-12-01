@@ -130,6 +130,7 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 MEDIA_URL = '/media/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-#STATIC_ROOT = "/home/bakatarekun/bakatarekun.pythonanywhere.com/static"
+#STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+#uncomment this line in production
+STATIC_ROOT = "/home/bakatarekun/bakatarekun.pythonanywhere.com/static"
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
