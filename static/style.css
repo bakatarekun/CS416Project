@@ -69,3 +69,12 @@
             margin-bottom: 5px;
 
         }
+
+        .divContainer
+        {
+            background-color: white;
+            border-style: solid;
+            padding : 10px;
+            margin : 10px;
+            border-radius: 8px;
+        }

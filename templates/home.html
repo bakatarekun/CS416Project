@@ -77,14 +77,16 @@
     adjustTimeSelectSun(document.getElementById("id_form7-From2"));
     adjustTimeSelectSun(document.getElementById("id_form7-To2"));
 
+    $("div.jumbotron > div").addClass("divContainer");
+    $("div.jumbotron:only-child").attr("align", "left");
 });
 {% endblock %}
 
 {% block body %}
     {% if user.is_authenticated %}
-        <div class="row" align="center">
+        <div class="row" >
 
-             <div class="jumbotron" style="width:100%;padding-left: 50px" align="left">
+             <div class="jumbotron" style="width:100%;padding-left: 50px" align="center">
                 <div   align="center">
                 <h1>Availability</h1>
                 <form method="POST" >
