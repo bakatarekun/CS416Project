@@ -484,3 +484,49 @@ function test(){
                 }
                 alert("scheduel saved succesfully");
             }
+
+              function adjustTimeSelect(thisobj, begin, end){
+            var timeList =document.getElementById(thisobj);
+                for (var i=begin;i<end ;i++ )
+                {
+                    timeList[i].style.display= "none";
+                 }
+            }
+
+              function adjustTimeSelectFri(thislist){
+
+
+                for (var i=15;i< thislist.length ;i++ )
+                {
+                    thislist[i].style.display= "none";
+                 }
+
+             }
+
+             function adjustTimeSelectSat(thislist){
+
+                for (let i=1;i< 2 ;i++ )
+                {
+                    thislist[i].style.display= "none";
+                 }
+
+                for (let i=13;i< thislist.length ;i++ )
+                {
+                    thislist[i].style.display= "none";
+                 }
+
+            }
+
+             function adjustTimeSelectSun(thislist){
+
+                for (let i=1;i< 6 ;i++ )
+                {
+                    thislist[i].style.display= "none";
+                 }
+
+                 for (let i=15;i< thislist.length ;i++ )
+                {
+                    thislist[i].style.display= "none";
+                 }
+
+             }
