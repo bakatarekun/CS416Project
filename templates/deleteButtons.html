@@ -4,5 +4,5 @@
     <input type="hidden" value="{{ s.id }}" name="timeTableId" size="1"/>
     <input type="hidden" value="{{ s.day }}" name="day" size="1"/>
     <input type="hidden" id="{{ s.tutor.firstname }}" name="usedHrs" value=""  size="1"/>
-    <input type="submit" class="btn" value="Delete" name="delbtn">
+    <input type="submit" class="btn" value="Delete" name="{{ s.tutor.firstname }}">
 </form></td>
