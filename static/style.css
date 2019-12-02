@@ -1,8 +1,32 @@
+table {
+    border: 1px solid black;
+    margin-left:10px;
+    margin-right:10px;
+
+}
+th, td {
+    border: 1px solid black;
+    width:60px;
+    text-align: center;
+}
+
+ul {
+    list-style-type: none;
+   }
+
 .tr{
     color: deeppink;
     font-size:2rem ;
     text-align: center;
 }
+
+li{
+    padding-left: 10px
+}
+h2{
+    text-align: center;
+}
+
 .myb
 {
     color: red;
@@ -18,15 +42,7 @@
 .mybtn{
       margin-bottom: 5px !important;
 }
-   table {
-            border: 1px solid black;
-
-        }
-        th, td {
-            border: 1px solid black;
-            width:60px;
-            text-align: center;
-        }
+  
 
         .eacellcolor {
             background: greenyellow;
@@ -56,13 +72,7 @@
             width:60px;
             text-align: center;
         }
-          li{
-            padding-left: 10px
-        }
-        h2{
-            text-align: center;
-        }
-
+     
         .marginBottom5
         {
 
@@ -78,3 +88,7 @@
             margin : 10px;
             border-radius: 8px;
         }
+
+     
+
+       

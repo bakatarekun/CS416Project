@@ -18,7 +18,9 @@
         var accumulatedHours = [];
 
         $(document).ready(function(){
-
+            $("input.btn[value='Delete']").on("click", function(){var result = confirm("Do you want to delete " + this.name +" ?");
+             if(result) return true;else return false;});
+           
             $("td").not("td:empty").each(function(){
 
                 if($(this).hasClass("EA"))

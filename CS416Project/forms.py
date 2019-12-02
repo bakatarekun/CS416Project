@@ -76,6 +76,7 @@ class HomeForm(forms.ModelForm):
     class Meta:
         model = Schedule
         fields = ('day','tutor', 'From1','To1','From2','To2',)
+        
         widgets = {
             'day': TextInput(attrs={'placeholder' : 'Enter to do here'}),
 
