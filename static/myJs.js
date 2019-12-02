@@ -540,66 +540,30 @@ function adjustTimeSelectSun(thislist) {
 
 }
 
-// function checkRequiredField() {
-
-//     var isPassed = true;
-//     var t = jQuery('select[id*="From1"]');
-//   // var t = jQuery(fromField);
-//     for (i = 0; i < t.length; i++) {
-
-//         if (t[i].value != 0) {
-
-//             let newID = t[i].id.replace("From", "To");
-//             let afterTime = document.getElementById(newID);;
-//             if (afterTime.value == 0) {
-//                 isPassed = false;
-//                 alert("one of the fields is missing");
-//                 afterTime.focus();
-//                 return isPassed;
-//             }
-
-//         } else if (t[i].value == 0) {
-
-//             let newID2 = t[i].id.replace("From", "To");
-//             let afterTime2 = document.getElementById(newID2);
-
-//             if (afterTime2.value != 0) {
-//                 isPassed = false;
-//                 alert("one of the fields is missing");
-//                 t[i].focus();
-//                 return isPassed;
-//             }
-
-
-//         }
-
-//     }
-//     return isPassed;
-// }
 
 function checkRequiredField() {
- //debugger;
+ debugger;
 
     var reuslt1= true;
     var reuslt2= true;
     result1 = checkFields('select[id*="From1"]');
-    //  if (result1 == false)
-    //  {
-    //     return result1;
+     if (result1 == false)
+     {
+        return result1;
 
-    //  }
-    //  else
-    //  {
-    //     result2 = checkFields('select[id*="From2"]');
-    //     if( reuslt1 == true && reuslt2 == true)
-    //     {
-    //         return true;
-    //     }
-    //     else
-    //     {
-    //         return false;
-    //     }
-    //  }
+     }
+     else
+     {
+        result2 = checkFields('select[id*="From2"]');
+        if( result1 == true && result2 == true)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+     }
 
 
 
